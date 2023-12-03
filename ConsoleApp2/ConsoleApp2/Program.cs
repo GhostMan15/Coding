@@ -21,7 +21,7 @@
 
             i = new string("Roni");
             t = new int();
-            drumba;
+            
             stPik = 500;
 
         }
