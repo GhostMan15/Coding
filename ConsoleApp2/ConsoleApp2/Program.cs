@@ -1,4 +1,4 @@
-﻿namespace Vaja5
+﻿namespace ConsoleApp2
 {
     class Pes
     {
@@ -13,13 +13,15 @@
         }
         public void Izpis()
         {
-            Console.Write($"Ime : {ime}, Težea {teza} kg " );
+            Console.Write($"Ime : {ime}, Teža: {teza} kg " );
         }
 
     }
     class Dalmatinec : Pes
     {
-        private int stPik;
+
+        public int stPik;
+      
         public void Nastavi(int stPik, int t, string i)
         {
             base.Nastavi(i, t);
@@ -41,7 +43,7 @@
             dalmatinec.Nastavi (1001,25,"Roni");
             dalmatinec.Izpisi();
 
-
+            Console.ReadLine();
         }
     }
 
