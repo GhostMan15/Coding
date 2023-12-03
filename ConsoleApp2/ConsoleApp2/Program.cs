@@ -1,8 +1,4 @@
-﻿using System;
-using System.Text;
-using System.Collections;
-
-namespace Vaja5
+﻿namespace Vaja5
 {
     class Pes
     {
@@ -12,7 +8,7 @@ namespace Vaja5
         public void Izpis(string i, int t)
         {
             this.ime = i;
-            this.teza = t;             
+            this.teza = t;
         }
 
     }
@@ -24,8 +20,8 @@ namespace Vaja5
             base.Nastavi(i, t);
 
             i = new string("Roni");
-            t = new int ();
-
+            t = new int();
+            drumba;
             stPik = 500;
 
         }
