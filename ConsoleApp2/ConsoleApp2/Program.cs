@@ -13,7 +13,7 @@
         }
         public void Izpis()
         {
-            Console.Write($"Ime : {ime}, Teža: {teza} kg " );
+            Console.Write($"Ime : {ime}, Teža: {teza} kg, " );
         }
 
     }

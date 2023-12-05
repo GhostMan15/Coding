@@ -56,7 +56,7 @@ namespace Yolo
         {
             Planet erath = new Planet("earth", 9.8);
             Planet moon = new Planet("moon", 1.6);
-            Astronaut forestGump = new Astronaut(20);
+            Astronaut forestGump = new Astronaut(97.5);
             forestGump.CurrentPlanet = erath;
             forestGump.Jump();
             forestGump.CurrentPlanet = moon;
