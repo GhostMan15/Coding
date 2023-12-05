@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Obrazec za prijavo na SMV</title>
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
+    <script lang="javascript" type="text/javascript" src="scripts.js"></script>
+</head>
+<body>
+    <table class="table">
+        <!--TOP-->
+        <tr>
+            <td colspan="2">
+                <div class="title">
+                    Prijava v skupine izbirnih tematik SMV
+                </div>
+                <div class="desc">
+                    Pri SMV bomo izvedli vaje naslednjih nekaj srečanj v skupinah, kjer bomo spoznavali sodobne tehnologije z različnih področij. 
+                    Spodaj so prikazane skupine in kratko opisane vsebine, ki jih bomo spoznali.
+                    Vsak dijak se lahko prijavi v le eno skupino, poda pa lahko tudi drugo opcijo, če bi želel naknadno spremeniti skupino. 
+                    <br>
+                    Prijave v skupine bomo omogočili ob dogovorjenem času, da boste imeli vsi enake možnosti za prijavo.
+                    V primeru prevelikega števila prijav v skupino, bo po določeni kvoti (največje število dovoljenih prijav) izbira in prijava v skupino onemogočena. V primeru neenakomerne porazdelitve po skupinah si pridržujemo pravico, da iz skupine s (pre)več prijavljenih dijakov prestavimo v druge skupine zadnje prijavljene v prevelikih skupinah.
+                </div>
+            </td>
+        </tr>
+        <!--TOP-->
+
+        <!--BOTTOM-->
+        <tr>
+            <td class="bottom_l" id="TabelaSkupin">
+                
+            </td>
+            <td class="bottom_r">
+                <div class="top_r">
+                    <p>
+                        Največje število prijavljenih v skupini: 15
+
+                        <br>
+
+                        Prijava je mogoča le za dijake oddelkov:
+                        <br>
+                        R4A, R4B
+
+                        <br>
+
+                        Za prijavo v skupino moraš vpistati naslednje podatke:
+                    </p>
+                </div>
+                <div>
+                    <form method="post">
+                        <table class="table_3">
+                            <tr>
+                                <td>
+                                    EMŠO:
+                                </td>
+                                <td>
+                                    <input type="text" name="emso" required>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Prva Izbira:</td>
+                                <td>
+                                    <select name="prva" required id="prva_izbira">
+                                        <option value="">-- Izberi skupino --</option>
+                                        <option value="1">1 - Android</option>
+                                        <option value="2">2 - Python</option>
+                                        <option value="3">3 - Linux</option>
+                                        <option value="4">4 - JavaScript</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Druga izbira:
+                                </td>
+                                <td>
+                                    <select name="druga" required id="druga_izbira">
+                                        <option value="">-- Izberi skupino --</option>
+                                        <option value="1">1 - Android</option>
+                                        <option value="2">2 - Python</option>
+                                        <option value="3">3 - Linux</option>
+                                        <option value="4">4 - JavaScript</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <input type="submit" value="Pošlji">
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+            </td>
+        </tr>
+        <!--BOTTOM-->
+    </table>
+</body>
+
+<script>
+    IzpisPodatkov()
+</script>
+
+</html>
