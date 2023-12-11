@@ -31,7 +31,7 @@ namespace Projekt
         }
     }
 
-    class Racun : Transakcija
+    class Racun 
     {
         public void IzracunajStanje()
         {
