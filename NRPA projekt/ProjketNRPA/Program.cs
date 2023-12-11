@@ -18,7 +18,7 @@ namespace Projekt
 
 
 
-    class Uporabnik : Oseba
+    class Uporabnik : Oseba  
     {
         public void DodajTransakcijo(Transakcija transakcija)
         {
