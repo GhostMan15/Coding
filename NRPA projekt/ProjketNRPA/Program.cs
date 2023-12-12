@@ -3,16 +3,19 @@ using System.Buffers;
 
 namespace Projekt
 {
-    class Oseba
+    class Oseba                      
     {
-        public string Ime { get; set; }
+        public string Ime { get; set; } 	//Lahko je Zaposleni ali Uporabnik
         public int Starost { get; set; }
 
 
-
+          public  Oseba + (Oseba oseba 1, Oseba, oseba 2)
+	  {
+		  return Oseba ($"Uporabik: {oseba1.Ime} in {oseba2.Ime};
+	  }
         ~Oseba()
         {
-            Console.WriteLine($"Oseba {Ime} je zbrisana");
+            Console.WriteLine($"Oseba {Ime} je zbrisana");   
         }
     }
 
@@ -20,10 +23,11 @@ namespace Projekt
 
     class Uporabnik : Oseba  
     {
-        public void DodajTransakcijo(Transakcija transakcija)
+	    
+        public void DodajTransakcijo(Transakcija transakcija) //Dodajanje transakcij uporabniku
         {
 
-        }
+       }
 
         public virtual void PrikaziPodatke()
         {
@@ -33,7 +37,7 @@ namespace Projekt
 
     class Racun 
     {
-        public void IzracunajStanje()
+        public void IzracunajStanje() //Izracun in prikaz trenutnega stanja
         {
 
         }
@@ -45,9 +49,10 @@ namespace Projekt
 
     class Transakcija 
     {
-        private void PrikaziPodatke()
+        private void PrikaziPodatke() //Prikaz posamezne transakcije
         {
-
+		float znesek;
+		DateTime datum;
         }
     }
 }

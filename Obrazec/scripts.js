@@ -42,7 +42,7 @@ function IzpisPodatkov(){
     var izpis = "";
     izpis = `
     <table border='1' class='table_2'>
-    <tr>
+    <tr allgin = "center">
         <td class="col_15">
             Skupina
         </td>
@@ -57,7 +57,7 @@ function IzpisPodatkov(){
         </td>
     </tr>
     `;
-    //LOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOP
+    
     for(var i = 0; i < stSkupin; i++){
         izpis += `
             <td class="col_15">
