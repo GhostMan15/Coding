@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Buffers;
-using Projekt;
+
 
 namespace Projekt
 {
@@ -10,13 +10,11 @@ namespace Projekt
         public int Starost { get; set; }
 
 
-          public  Oseba + (Oseba oseba 1, Oseba, oseba 2) //Preoblikovanje operatorjev (Ugibam?)
-	    {
-		  return Oseba ($"Uporabik: {oseba1.Ime} in {oseba2.Ime};
-	    }
+          public  static Oseba operator +(Oseba oseba 1, Oseba, oseba 2) =>  new Oseba ($"Uporabik: {oseba1.Ime} * {oseba2.Ime}; //Preoblikovanje operatorjev (Ugibam?)
+	    
         ~Oseba()
         {
-            Console.WriteLine($"Oseba {Ime} je zbrisana");   
+            Console.WriteLine($"Oseba {Ime} je zbrisana")   
         }
 
 	
@@ -26,7 +24,7 @@ namespace Projekt
 
     class Uporabnik : Oseba  
     {
-        public virtual void PredstaviSe()
+        public void PredstaviSe()
         {
             Console.WriteLine($"Ime:{Ime}/n Starost:{Starost}/n Tip porabnika:Navadni uporabnik ");
         }
@@ -71,4 +69,5 @@ namespace Projekt
         }
     }
 }
+
 
