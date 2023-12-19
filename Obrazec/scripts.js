@@ -1,102 +1,149 @@
 var maxPrijavljenih;
-var stPrijavljenih = [0, 0, 0, 0];
-var oddelki = ['R4B', 'R4A'];
-var skupine = ['B. Resinovič',
-    'B. Lubej',  
-    'J. Koren', 
-    'B. Slemenšek', 
+var stPrijavljenih = [];
+var oddelki = [];
+var skupine = [
+  "B. Resinovič", "Humanoidni robot NAO in Brain Computer Interface", "Vsebine: programiranje robota Nao, izdelava programa z uporabo možgansko računalniškega vmesnika",
+  "B. Lubej", "Python", "Vsebine: osnovni ukazi in metode za delo, izdelava preproste igre",
+  "J. Koren", "Processing", "Vsebine: programiranje proceduralnih animacij in generiranje slik, izdelava interaktivne animacije",
+  "B. Slemenšek", "JavaScript", "JavaScript, JS za postavitev aktivnih strani, izdelava igre"
 ];
-var imeSkupin = [
-    'Humanoidni robot NAO in Brain Computer Interface',
-    'Phyton',
-    'Processing',
-    'JavaScript'
-];
-var opisi = [
-    "programiranje robota Nao, izdelava programa z uporabo možgansko računalniškega vmesnika",
-    "osnovni ukazi in metode za delo, izdelava preproste igre",
-    "programiranje proceduralnih animacij in generiranje slik, izdelava interaktivne animacije",
-    "JS za postavitev aktivnih strani, izdelava igre"
-];
-var stSkupin = 4;
+var stSkupin;
+var EMSO_ok = 0;
 
-function Connect(){
-    prejetOdgovor();
+function Connect() {
+  prejetOdgovor();
 }
 
-function prejetOdgovor(){
-    maxPrijavljenih = 15;
-    stSkupin = 4;/*
-    for(i = 0; i < stSkupin; i++){
-    //shranimo podatke o prijavljenih
-    }*/
-    stPrijavljenih[0] = 3;
-    stPrijavljenih[1] = 5;
-    stPrijavljenih[2] = 12;
-    stPrijavljenih[3] = 1;
-    //shranimo podatke o oddelkih
+function prejetOdgovor() {
+  maxPrijavljenih = 15;
+  stSkupin = 4;
 
-} 
+  stPrijavljenih[0] = 3;
+  stPrijavljenih[1] = 5;
+  stPrijavljenih[2] = 12;
+  stPrijavljenih[3] = 1;
 
-function IzpisPodatkov(){
-    var izpis = "";
-    izpis = `
-    <table border='1' class='table_2'>
-    <tr allgin = "center">
-        <td class="col_15">
-            Skupina
-        </td>
-        <td class="col_15">
-            Prijavljeni
-        </td>
-        <td class="col_35">
-            Nosilec
-        </td>
-        <td class="col_35">
-            Tematika
-        </td>
-    </tr>
-    `;
-    
-    for(var i = 0; i < stSkupin; i++){
-        izpis += `
-            <td class="col_15">
-            ` + (i + 1) + `
-            </td>
-            <td class="col_15">
-            ` + stPrijavljenih[i] + `
-            </td>
-            <td class="col_35">
-            ` +  skupine[i] + `
-            </td>
-            <td class="col_35">
-            ` + imeSkupin[i] +   `
-            </td>
-        </tr>
-        <tr>
-            <td colspan="2"></td>
-            <td colspan="2">` + opisi[i] + `</td>
-        </tr>
-        `;
-    }
-    izpis += `</table>`;
-    document.getElementById('TabelaSkupin').innerHTML = izpis;
+  oddelki[0] = "R4A";
+  oddelki[1] = "R4A";
+
+  izpisPodatkov();
+  izpisObrazca();
 }
 
-function IzpisIzbir(){
-    var izbira1 = `<select name='prva' required></select>
-        <option value="">-- Prva skupina --</option>
-    `;
-    var izbira2 = `<select name="druga" required></select>
-        <option value="">-- Druga skupina --</option>
-    `;
-    var options = ``;
-    for(var i = 0; i < stSkupin; i++){
-        options += `<option value="` + (i + 1) + `">`+ (i + 1) + ` - ` + imeSkupin[i] + `</option>`;
-    }
-    izbira1 += options + `</select>`;
-    izbira2 += options + `</select>`;
+function izpisPodatkov() {
+  var str = 'Skupina	Prijavljeni	Nosilec	Tematika\n';
 
-    document.getElementById('prva_izbira').innerHTML = izbira1;
-    document.getElementById('druga_izbira').innerHTML = izbira2;
+  for (var i = 0; i < stSkupin; i++) {
+    str += i + 1 + '	' + stPrijavljenih[i] + '	' + skupine[i * 3] + '	' + skupine[i * 3 + 1] + ' ' + skupine[i * 3 + 2] + '\n';
+  }
+
+  console.log(str);
+}
+
+function izpisObrazca() {
+  var str = 'Največje število prijavljenih v skupini: ' + maxPrijavljenih + '\n';
+  str += 'Za prijavo v skupino moraš vnesti naslednje podatke:\nEMŠO: <input type="text" id="EMSOdijaka" onkeyup="preveriStevke()">\nOddelek: <select id="Oddelekdijaka">\n';
+
+  for (var i = 0; i < oddelki.length; i++) {
+    str += '<option value="' + oddelki[i] + '">' + oddelki[i] + '</option>\n';
+  }
+
+  str += '</select>\nPrva izbira: <select id="prvaizbira">\n';
+  
+  for (var i = 1; i < skupine.length; i += 3) {
+    str += '<option value="' + i + '">' + skupine[i] + '</option>\n';
+  }
+
+  str += '</select>\nDruga izbira: <select id="drugaizbira" disabled="true" onclick="PosljiPodatke()"></select>\n';
+
+  console.log(str);
+}
+
+function preveriStevke() {
+  var pod = document.getElementById("EMSOdijaka").value;
+  var text = '';
+
+  for (var i = 0; i < pod.length; i++) {
+    var ch = pod.charAt(i);
+    if ((ch >= '0') && (ch <= '9')) text += ch;
+    else break;
+  }
+
+  document.getElementById("EMSOdijaka").value = text;
+
+  if (text.length == 13) preveriEmso();
+}
+
+function preveriEmso() {
+  EMSO_ok = 0;
+  var emso = document.getElementById("EMSOdijaka").value;
+
+  if (emso.length == 13) {
+    var sum = 0;
+    var num;
+    var pond = 7;
+
+    for (var poz = 0; poz < 12; poz++) {
+      num = Number(emso.charAt(poz));
+
+      if (pond == 1) pond = 7;
+      num *= pond--;
+
+      sum += num;
+    }
+
+    sum % 11;
+
+    if (sum < 2) sum = 0;
+    else sum = 11 - sum;
+
+    num = Number(emso.charAt(12));
+
+    if (sum == num) EMSO_ok = 1;
+  }
+
+  if ((EMSO_ok === 0) && (emso !== '')) alert('NAPAKA v EMŠO');
+  omogociPoslji();
+}
+
+function omogociPoslji() {
+  var omogoci = true;
+
+  if (EMSO_ok === 1) {
+    if (document.getElementById("Oddelekdijaka").value !== "0") {
+      if (document.getElementById("prvaizbira").value !== "-1") {
+        if (document.getElementById("drugaizbira").value !== "-1") {
+          omogoci = false;
+        }
+      }
+    }
+  }
+
+  document.getElementById("gumbposlji").disabled = omogoci;
+}
+
+function pripraviDrugoIzbiro() {
+  var str = '';
+  var prva = document.getElementById("prvaizbira").value;
+
+  if (prva !== "-1") {
+    str += '<option value="-1">--izberi skupino--</option>\n';
+
+    for (var i = 1; i < skupine.length; i += 3) {
+      str += '<option value="' + i + '">' + skupine[i] + '</option>\n';
+    }
+  } else {
+    str += '<option value="-1">Najprej izberi prvo možnost!</option>\n';
+  }
+
+  document.getElementById("drugaizbira").innerHTML = str;
+}
+
+function PosljiPodatke() {
+  var str = 'EMŠO: ' + document.getElementById('EMSOdijaka').value;
+  str += '\nOddelek: ' + document.getElementById('Oddelekdijaka').value;
+  str += '\nPrva Izbira: ' + document.getElementById('prvaizbira').value;
+  str += '\nDruga Izbira: ' + document.getElementById('drugaizbira').value;
+
+  alert(str);
 }
