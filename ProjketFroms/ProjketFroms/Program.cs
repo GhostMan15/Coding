@@ -44,12 +44,7 @@ namespace ProjketFroms
             Application.Run(new Form1());
 
 
-            List<Oseba> osebe = new List<Oseba>()
-            {
-                   new Oseba("Duško", 1234, "SI78965DD"),
-
-
-            };
+          
         }
     }
 }
