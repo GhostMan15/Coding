@@ -1,7 +1,7 @@
 namespace ProjketFroms
 {
 
-    class Oseba
+    public class Oseba
     {
         string ime { get; set; }
         int pin { get; set; }
@@ -15,12 +15,7 @@ namespace ProjketFroms
             this.pin = pin;
         }
 
-        private List<Oseba> osebe = new List<Oseba>()
-            {
-                   new Oseba("Duško", 1234, "SI78965DD"),
-
-
-            };
+      
 
     }
 
@@ -50,7 +45,12 @@ namespace ProjketFroms
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             Application.Run(new Form1());
+        private List<Oseba> osebe = new List<Oseba>()
+        {
+            new Oseba("Duï¿½ko", 1234, "SI78965DD"),
 
+
+        };
 
         }
     }
