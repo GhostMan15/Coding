@@ -14,6 +14,14 @@ namespace ProjketFroms
             this.ime = ime;
             this.pin = pin;
         }
+
+        private List<Oseba> osebe = new List<Oseba>()
+            {
+                   new Oseba("Duško", 1234, "SI78965DD"),
+
+
+            };
+
     }
 
     class Uporabnik 
@@ -44,7 +52,6 @@ namespace ProjketFroms
             Application.Run(new Form1());
 
 
-          
         }
     }
 }
