@@ -11,7 +11,7 @@ namespace ProjektFormsNRPA
 
         private static HashSet<int> obstojecPin = new HashSet<int>();
 
-        private bool UniquePin(int pin)
+        private bool UnikatenPin(int pin)
         {
             return obstojecPin.Add(pin);
         }
@@ -20,7 +20,7 @@ namespace ProjektFormsNRPA
         public Oseba(string ime, int pin, string id)
         {
 
-            if (!UniquePin(pin))
+            if (!UnikatenPin(pin))
             {
                 throw new Exception("Pin mora biti unikaten");
             }
