@@ -3,19 +3,34 @@ namespace ProjektFormsNRPA
 
     public class Oseba
     {
-        string Ime { get; set; }
-        int Pin { get; set; }
+        public string Ime { get; set; }
+        public int Pin { get; set; }
 
-        string Id { get; set; }
+        public string Id { get; set; }
+
+
+        private static HashSet<int> obstojecPin = new HashSet<int>();
+
+        private bool UniquePin(int pin)
+        {
+            return obstojecPin.Add(pin);
+        }
+
 
         public Oseba(string ime, int pin, string id)
         {
+
+            if (!UniquePin(pin))
+            {
+                throw new Exception("Pin mora biti unikaten");
+            }
+
             this.Id = id;
             this.Ime = ime;
             this.Pin = pin;
         }
 
-
+     
 
     }
 
@@ -29,19 +44,38 @@ namespace ProjektFormsNRPA
 
     }
 
-    class ZapisOseb
+    class ZapisOseb 
     {
         private List<Oseba> osebe = new List<Oseba>()
         {
             new Oseba("Duško", 1234, "SI78965DD"),
-
-
+            new Oseba("Milan",5674,"SI64356DD"),
+            new Oseba("Dragan",6547,"SI56239DD"),
         };
 
 
-        public void PreveriPin()
+        public void PreveriPin(int vnesenPin)
         {
-
+            bool pravilenPin = false;
+            foreach (Oseba oseba in osebe)
+            {
+                if (oseba.Pin == vnesenPin)
+                {
+                    pravilenPin = true;
+                    break;
+                }
+            }
+            if (pravilenPin)
+            {
+                MessageBox.Show("Vstop odobren");
+                Form2 form2 = new Form2();
+                form2.Show();
+             
+            }
+            else
+            {
+                MessageBox.Show("Nepravilen pin \n Vstop zavrnjen");
+            }
         }
     }
 
@@ -57,6 +91,7 @@ namespace ProjektFormsNRPA
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             Application.Run(new Form1());
+
         }
     }
 }
