@@ -7,14 +7,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace ProjektFormsNRPA
 {
     public partial class Form2 : Form
     {
-        public Form2()
+        private Oseba _oseba;
+        public Form2(Oseba osebe)
         {
             InitializeComponent();
+            _oseba = osebe;
+            ime.Text += osebe.Ime;
+            id.Text += osebe.Id;
         }
     }
 }

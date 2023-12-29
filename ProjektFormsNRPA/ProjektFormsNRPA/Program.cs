@@ -56,6 +56,7 @@ namespace ProjektFormsNRPA
 
         public void PreveriPin(int vnesenPin)
         {
+            int i = 0;
             bool pravilenPin = false;
             foreach (Oseba oseba in osebe)
             {
@@ -64,13 +65,14 @@ namespace ProjektFormsNRPA
                     pravilenPin = true;
                     break;
                 }
+                i++;
             }
             if (pravilenPin)
             {
                 MessageBox.Show("Vstop odobren");
-                Form2 form2 = new Form2();
+                Form2 form2 = new Form2(osebe[i]);
                 form2.Show();
-             
+
             }
             else
             {

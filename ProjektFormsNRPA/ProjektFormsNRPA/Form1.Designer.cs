@@ -61,13 +61,21 @@
             // 
             // Form1
             // 
+            AccessibleRole = AccessibleRole.None;
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoValidate = AutoValidate.EnableAllowFocusChange;
             ClientSize = new Size(800, 450);
             Controls.Add(button1);
             Controls.Add(textBox1);
             Controls.Add(label1);
+            FormBorderStyle = FormBorderStyle.None;
+            MaximizeBox = false;
+            MdiChildrenMinimizedAnchorBottom = false;
+            MinimizeBox = false;
             Name = "Form1";
+            SizeGripStyle = SizeGripStyle.Hide;
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
             ResumeLayout(false);
             PerformLayout();

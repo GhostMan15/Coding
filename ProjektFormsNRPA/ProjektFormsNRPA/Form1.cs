@@ -13,7 +13,7 @@ namespace ProjektFormsNRPA
         private void button1_Click(object sender, EventArgs e)
         {
             CekiriPin();
-            
+            this.Hide();
         }
 
         private void CekiriPin()
@@ -22,7 +22,7 @@ namespace ProjektFormsNRPA
             if (int.TryParse(vnesenPin, out int pin))
             {
                 zapisOseb.PreveriPin(pin);
-
+              
             }
             else
             {
