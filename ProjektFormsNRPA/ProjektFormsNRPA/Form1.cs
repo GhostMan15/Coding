@@ -2,11 +2,11 @@ namespace ProjektFormsNRPA
 {
     public partial class Form1 : Form
     {
-        private ZapisOseb zapisOseb;
+        private ZapisOseb _zapisOseb;
         public Form1()
         {
             InitializeComponent();
-            zapisOseb = new ZapisOseb();
+            _zapisOseb = new ZapisOseb();
 
         }
 
@@ -19,9 +19,9 @@ namespace ProjektFormsNRPA
         private void CekiriPin()
         {
             string vnesenPin = textBox1.Text;
-            if (int.TryParse(vnesenPin, out int pin))
+            if (int.TryParse(vnesenPin, out int pin)) //converta pin v int 
             {
-                zapisOseb.PreveriPin(pin);
+                _zapisOseb.PreveriPin(pin);
               
             }
             else

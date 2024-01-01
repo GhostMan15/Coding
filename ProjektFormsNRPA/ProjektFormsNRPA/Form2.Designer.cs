@@ -31,6 +31,7 @@
             ime = new Label();
             id = new Label();
             transakcije = new ListBox();
+            Zaposleni = new Button();
             SuspendLayout();
             // 
             // ime
@@ -49,7 +50,7 @@
             id.Name = "id";
             id.Size = new Size(20, 15);
             id.TabIndex = 1;
-            id.Text = "Id:";
+            id.Text = "Id:&";
             // 
             // transakcije
             // 
@@ -60,15 +61,31 @@
             transakcije.Size = new Size(120, 94);
             transakcije.TabIndex = 2;
             // 
+            // Zaposleni
+            // 
+            Zaposleni.Location = new Point(600, 17);
+            Zaposleni.Name = "Zaposleni";
+            Zaposleni.Size = new Size(172, 23);
+            Zaposleni.TabIndex = 3;
+            Zaposleni.Text = "DodajUporabnika";
+            Zaposleni.UseVisualStyleBackColor = true;
+            Zaposleni.Click += Zaposleni_Click;
+            // 
             // Form2
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(Zaposleni);
             Controls.Add(transakcije);
             Controls.Add(id);
             Controls.Add(ime);
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "Form2";
+            ShowIcon = false;
+            ShowInTaskbar = false;
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Form2";
             ResumeLayout(false);
             PerformLayout();
@@ -79,5 +96,6 @@
         private Label ime;
         private Label id;
         private ListBox transakcije;
+        private Button Zaposleni;
     }
 }

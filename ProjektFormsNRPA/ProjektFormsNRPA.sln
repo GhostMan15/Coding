@@ -3,7 +3,12 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34316.72
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjektFormsNRPA", "ProjektFormsNRPA\ProjektFormsNRPA.csproj", "{9BC9D3A3-5A13-4F58-A221-1944144E4C76}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjektFormsNRPA", "ProjektFormsNRPA\ProjektFormsNRPA.csproj", "{9BC9D3A3-5A13-4F58-A221-1944144E4C76}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{1CEC4293-5E39-4194-9901-026521EBE65E}"
+	ProjectSection(SolutionItems) = preProject
+		ProjektFormsNRPA\bin\Debug\net7.0-windows\Osebe.txt = ProjektFormsNRPA\bin\Debug\net7.0-windows\Osebe.txt
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
