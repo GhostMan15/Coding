@@ -13,8 +13,8 @@
             stanje.Text += osebe.Stanje;
 
             Zaposleni.Visible = _oseba.Zaposlen;
-
-
+            Transakcija.NaloziIzFile("Transakcije.txt");
+            transakcije.DataSource = Transakcija.NaloziIzFile("Transakcije.txt");
         }
 
         private void Zaposleni_Click(object sender, EventArgs e)
@@ -51,22 +51,23 @@
         private void dvig_Click(object sender, EventArgs e)
         {
             Form5 form5 = new Form5(_oseba, transakcije);
-         //  form5.UpdateTransakcije += Form5_UpdateTransakcije;
-            if (form5.ShowDialog() == DialogResult.OK)
-            {
-                float znesek;
-                if (float.TryParse(form5.Znesek, out znesek))
-                {
-                    Transakcija transakcija = new Transakcija(DateTime.Now, $"Dvig: {znesek} €", znesek, _oseba);
-                    transakcija.IzvediTransakcijo(_oseba);
-                    transakcija.PrikaziPodatke(transakcija, transakcije);
-                    stanje.Text = $"Stanje: {_oseba.Stanje} €";
-                }
-                else
-                {
-                    MessageBox.Show("Vnos ni veljaven");
-                }
-            }
+            form5.Show();
+           // form5.UpdateTransakcije += Form5_UpdateTransakcije;
+            //if (form5.ShowDialog() == DialogResult.OK)
+            //{
+            //    float znesek;
+            //    if (float.TryParse(form5.Znesek, out znesek))
+            //    {
+            //        Transakcija transakcija = new Transakcija(DateTime.Now, $"Dvig: {znesek} €", znesek, _oseba);
+            //        transakcija.IzvediTransakcijo(_oseba);
+            //        transakcija.PrikaziPodatke(transakcija, transakcije);
+            //        stanje.Text = $"Stanje: {_oseba.Stanje} €";
+            //    }
+            //    else
+            //    {
+            //        MessageBox.Show("Vnos ni veljaven");
+            //    }
+            //}
 
         }
         private void PrikaziTransakcijoT(string tipTransakcije)

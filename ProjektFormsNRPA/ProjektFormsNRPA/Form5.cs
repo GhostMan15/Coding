@@ -38,6 +38,7 @@ namespace ProjektFormsNRPA
                 Znesek = znesek.ToString();
                 DialogResult = DialogResult.OK;
                 Close();
+                
             }
             else
             {
