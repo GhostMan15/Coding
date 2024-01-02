@@ -23,10 +23,12 @@ namespace ProjektFormsNRPA
         {
             string ime = Ime.Text;
             string pinText = nPin.Text;
+            string id = Id.Text;
+            string stanje = Stanje.Text;
 
             if (int.TryParse(pinText, out int pin))
             {
-                _zapisOseb.DodajOsebo(ime, pin, string.Empty, checkBox1.Checked, this);
+                _zapisOseb.DodajOsebo(ime, pin, id, checkBox1.Checked, this, float.Parse(stanje));
                 _zapisOseb.ShraniOsebeVFile();
                 _zapisOseb.PreberiOsebeIzFile();
             }

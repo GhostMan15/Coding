@@ -34,11 +34,15 @@
             label1 = new Label();
             label2 = new Label();
             checkBox1 = new CheckBox();
+            label3 = new Label();
+            Id = new TextBox();
+            Stanje = new TextBox();
+            label4 = new Label();
             SuspendLayout();
             // 
             // Dodaj
             // 
-            Dodaj.Location = new Point(324, 231);
+            Dodaj.Location = new Point(323, 341);
             Dodaj.Name = "Dodaj";
             Dodaj.Size = new Size(75, 23);
             Dodaj.TabIndex = 0;
@@ -81,18 +85,54 @@
             // checkBox1
             // 
             checkBox1.AutoSize = true;
-            checkBox1.Location = new Point(324, 191);
+            checkBox1.Location = new Point(324, 300);
             checkBox1.Name = "checkBox1";
             checkBox1.Size = new Size(74, 19);
             checkBox1.TabIndex = 7;
             checkBox1.Text = "Zaposlen";
             checkBox1.UseVisualStyleBackColor = true;
             // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(324, 188);
+            label3.Name = "label3";
+            label3.Size = new Size(20, 15);
+            label3.TabIndex = 8;
+            label3.Text = "Id:";
+            // 
+            // Id
+            // 
+            Id.Location = new Point(324, 206);
+            Id.Name = "Id";
+            Id.Size = new Size(100, 23);
+            Id.TabIndex = 9;
+            // 
+            // Stanje
+            // 
+            Stanje.Location = new Point(323, 254);
+            Stanje.Name = "Stanje";
+            Stanje.Size = new Size(101, 23);
+            Stanje.TabIndex = 10;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(323, 236);
+            label4.Name = "label4";
+            label4.Size = new Size(42, 15);
+            label4.TabIndex = 11;
+            label4.Text = "Stanje:";
+            // 
             // Form3
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(label4);
+            Controls.Add(Stanje);
+            Controls.Add(Id);
+            Controls.Add(label3);
             Controls.Add(checkBox1);
             Controls.Add(label2);
             Controls.Add(label1);
@@ -113,5 +153,9 @@
         private Label label1;
         private Label label2;
         private CheckBox checkBox1;
+        private Label label3;
+        private TextBox Id;
+        private TextBox Stanje;
+        private Label label4;
     }
 }

@@ -32,6 +32,9 @@
             id = new Label();
             transakcije = new ListBox();
             Zaposleni = new Button();
+            stanje = new Label();
+            dvig = new Button();
+            nakazi = new Button();
             SuspendLayout();
             // 
             // ime
@@ -56,10 +59,11 @@
             // 
             transakcije.FormattingEnabled = true;
             transakcije.ItemHeight = 15;
-            transakcije.Location = new Point(23, 71);
+            transakcije.Location = new Point(271, 134);
             transakcije.Name = "transakcije";
-            transakcije.Size = new Size(120, 94);
+            transakcije.Size = new Size(517, 304);
             transakcije.TabIndex = 2;
+            transakcije.SelectedIndexChanged += transakcije_SelectedIndexChanged;
             // 
             // Zaposleni
             // 
@@ -71,11 +75,43 @@
             Zaposleni.UseVisualStyleBackColor = true;
             Zaposleni.Click += Zaposleni_Click;
             // 
+            // stanje
+            // 
+            stanje.AutoSize = true;
+            stanje.Location = new Point(23, 75);
+            stanje.Name = "stanje";
+            stanje.Size = new Size(42, 15);
+            stanje.TabIndex = 5;
+            stanje.Text = "Stanje:";
+            // 
+            // dvig
+            // 
+            dvig.Location = new Point(295, 27);
+            dvig.Name = "dvig";
+            dvig.Size = new Size(75, 23);
+            dvig.TabIndex = 6;
+            dvig.Text = "Dvig";
+            dvig.UseVisualStyleBackColor = true;
+            dvig.Click += dvig_Click;
+            // 
+            // nakazi
+            // 
+            nakazi.Location = new Point(295, 67);
+            nakazi.Name = "nakazi";
+            nakazi.Size = new Size(75, 23);
+            nakazi.TabIndex = 7;
+            nakazi.Text = "Nakaži";
+            nakazi.UseVisualStyleBackColor = true;
+            nakazi.Click += nakazi_Click;
+            // 
             // Form2
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(nakazi);
+            Controls.Add(dvig);
+            Controls.Add(stanje);
             Controls.Add(Zaposleni);
             Controls.Add(transakcije);
             Controls.Add(id);
@@ -97,5 +133,8 @@
         private Label id;
         private ListBox transakcije;
         private Button Zaposleni;
+        private Label stanje;
+        private Button dvig;
+        private Button nakazi;
     }
 }

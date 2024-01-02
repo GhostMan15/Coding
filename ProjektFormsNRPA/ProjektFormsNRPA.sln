@@ -8,6 +8,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{1CEC4293-5E39-4194-9901-026521EBE65E}"
 	ProjectSection(SolutionItems) = preProject
 		ProjektFormsNRPA\bin\Debug\net7.0-windows\Osebe.txt = ProjektFormsNRPA\bin\Debug\net7.0-windows\Osebe.txt
+		ProjektFormsNRPA\bin\Debug\net7.0-windows\Transakcije.txt = ProjektFormsNRPA\bin\Debug\net7.0-windows\Transakcije.txt
 	EndProjectSection
 EndProject
 Global
