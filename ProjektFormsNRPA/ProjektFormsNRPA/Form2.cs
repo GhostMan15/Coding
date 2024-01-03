@@ -14,7 +14,11 @@
 
             Zaposleni.Visible = _oseba.Zaposlen;
             Transakcija.NaloziIzFile("Transakcije.txt");
-            transakcije.DataSource = Transakcija.NaloziIzFile("Transakcije.txt");
+            var objekt =  Transakcija.NaloziIzFile("Transakcije.txt");
+            foreach( var item in objekt )
+            {
+                transakcije.Items.Add( item );
+            }
         }
 
         private void Zaposleni_Click(object sender, EventArgs e)
@@ -47,6 +51,10 @@
                 }
 
             }
+
+            //doda transakcijo v file
+            //refresh/add v listbox
+
         }
         private void dvig_Click(object sender, EventArgs e)
         {

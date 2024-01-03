@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using System.Runtime.Intrinsics.X86;
 using System.Security.Cryptography.X509Certificates;
 using static System.Runtime.InteropServices.JavaScript.JSType;
@@ -12,7 +13,8 @@ namespace ProjektFormsNRPA
         public string Id { get; set; }
         public bool Zaposlen { get; set; }
         public float Stanje { get; set; }
-
+        
+        public BindingList<Transakcija> Transakcije { get; set; }
 
         public static HashSet<int> obstojecPin = new HashSet<int>();
 
@@ -258,7 +260,7 @@ namespace ProjektFormsNRPA
         {
             try
             {
-                using (StreamWriter writer = new StreamWriter(filePath, false))
+                using (StreamWriter writer = new StreamWriter(filePath, true))
                 {
                     foreach (var transakcija in transakcije)
                     {
