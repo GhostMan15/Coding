@@ -7,6 +7,11 @@ namespace ProjektFormsNRPA
         {
             InitializeComponent();
             _zapisOseb = new ZapisOseb();
+            List<Oseba> osebeList = _zapisOseb.VrniVseOsebe();
+            foreach (var oseba in osebeList)
+            {
+                oseba.PredstaviSe(); // This will call the overridden method in SpecialOseba if the object is of that type
+            }
 
         }
 

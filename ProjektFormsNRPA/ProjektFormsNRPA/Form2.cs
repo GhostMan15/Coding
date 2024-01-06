@@ -21,7 +21,7 @@ namespace ProjektFormsNRPA
             transakcije.Text += osebe;
             Zaposleni.Visible = _oseba.Zaposlen;
             PrikaziTransakcije();
-            
+           
 
         }
 
@@ -70,15 +70,7 @@ namespace ProjektFormsNRPA
             }
             
         }
-        private void Form4_UpdateTransakcije(object sender, EventArgs e)
-        {
-            PrikaziTransakcije();
-        }
-
-        private void Form5_UpdateTransakcije(object sender, EventArgs e)
-        {
-            PrikaziTransakcije();
-        }
+    
 
     
         //private void RefreshTransactions(object sender, EventArgs e)

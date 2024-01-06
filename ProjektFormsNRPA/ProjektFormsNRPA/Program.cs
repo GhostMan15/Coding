@@ -105,6 +105,10 @@ namespace ProjektFormsNRPA
             }
         }
 
+        public List<Oseba> VrniVseOsebe()
+        {
+            return osebe;
+        }
         public static Oseba PoisciOsebo(int pin)
         {
             Oseba poisciOsebo = osebe.FirstOrDefault(o => o.Pin == pin);
@@ -322,15 +326,12 @@ namespace ProjektFormsNRPA
                             if (!string.IsNullOrEmpty(line))
                             {
                                 string[] deli = line.Split(',');
-                                if (deli.Length == 3 && DateTime.TryParse(deli[0], out DateTime datum ))
-                                    
-
-                                
+                                if (deli.Length == 3 && DateTime.TryParse(deli[0], out DateTime datum ))     
                                 {
                                         float zensek = float.Parse(deli[2]);      
                                         Oseba poisciOsebo = ZapisOseb.PoisciOsebo(pin);
                                         transakcije.Add(new Transakcija(datum, deli[1], zensek, poisciOsebo));
-                                    
+                                        
                                 }
                             }
                         }
