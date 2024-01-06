@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.AxHost;
+using static System.Windows.Forms.DataFormats;
 
 namespace ProjektFormsNRPA
 {
@@ -17,28 +18,38 @@ namespace ProjektFormsNRPA
         private Oseba _oseba;
         public ListBox transakcije;
         public event EventHandler UpdateTransakcije;
-        private static string filePath = "Transakcije.txt";
+        private Transakcija _user;
+        private static string GetTransactionFilePath(Oseba oseba)
+        {
+            return $"{oseba.Id}_Transakcije.txt";
+        }
+
         public Form5(Oseba oseba, ListBox transakcije)
         {
             InitializeComponent();
             _oseba = oseba;
             this.transakcije = transakcije;
+
         }
+    
 
         private void dvigP_Click(object sender, EventArgs e)
         {
+
             if (float.TryParse(dvig.Text, out float znesek))
             {
                 Transakcija transakcija = new Transakcija(DateTime.Now, $"Dvig: {znesek} €", znesek, _oseba);
-                transakcija.IzvediTransakcijo(_oseba);
-                transakcija.PrikaziPodatke(transakcija,transakcije);
+                string filePath = GetTransactionFilePath(_oseba);
+                transakcija.IzvediTransakcijo(_oseba, _oseba,transakcija, new List<Transakcija>());
+                transakcija.PrikaziPodatke(transakcija, transakcije);
 
-                Transakcija.ShraniTransakcijoVFile(new List<Transakcija> { transakcija }, filePath);
-                UpdateTransakcije?.Invoke(this, EventArgs.Empty);
+                List<Transakcija> transactions = new List<Transakcija> { transakcija };
+                Transakcija.ShraniTransakcijoVFile(_oseba,transakcija, transactions);
                 Znesek = znesek.ToString();
                 DialogResult = DialogResult.OK;
                 Close();
                 
+
             }
             else
             {

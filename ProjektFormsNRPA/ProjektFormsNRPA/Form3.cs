@@ -18,7 +18,7 @@ namespace ProjektFormsNRPA
             InitializeComponent();
             _zapisOseb = new ZapisOseb();
         }
-
+       
         private void Dodaj_Click(object sender, EventArgs e)
         {
             string ime = Ime.Text;

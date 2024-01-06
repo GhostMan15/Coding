@@ -1,9 +1,16 @@
-﻿namespace ProjektFormsNRPA
+﻿using Microsoft.VisualBasic.ApplicationServices;
+
+namespace ProjektFormsNRPA
 {
     public partial class Form2 : Form
     {
         private Oseba _oseba;
         public string Znesek { get; private set; }
+        public EventHandler UpdateTransakcije;
+        private static string GetTransactionFilePath(Oseba oseba)
+        {
+            return $"{oseba.Id}_Transakcije.txt";
+        }
         public Form2(Oseba osebe)
         {
             InitializeComponent();
@@ -11,14 +18,11 @@
             ime.Text += osebe.Ime;
             id.Text += osebe.Id;
             stanje.Text += osebe.Stanje;
-
+            transakcije.Text += osebe;
             Zaposleni.Visible = _oseba.Zaposlen;
-            Transakcija.NaloziIzFile("Transakcije.txt");
-            var objekt =  Transakcija.NaloziIzFile("Transakcije.txt");
-            foreach( var item in objekt )
-            {
-                transakcije.Items.Add( item );
-            }
+            PrikaziTransakcije();
+            
+
         }
 
         private void Zaposleni_Click(object sender, EventArgs e)
@@ -34,24 +38,14 @@
 
         private void nakazi_Click(object sender, EventArgs e)
         {
-            Form4 form4 = new Form4();
-            if (form4.ShowDialog() == DialogResult.OK)
-            {
-                float znesek;
-                if (float.TryParse(form4.Znesek, out znesek))
-                {
-                    Transakcija transakcija = new Transakcija(DateTime.Now, $"Nakaži: {znesek} €", znesek, _oseba);
-                    transakcija.IzvediTransakcijo(_oseba);
-                    transakcija.PrikaziPodatke(transakcija, transakcije);
-                    stanje.Text = $"Stanje: {_oseba.Stanje} €";
-                }
-                else
-                {
-                    MessageBox.Show("Vnos ni veljaven");
-                }
+            Form4 form4 = new Form4(_oseba, transakcije);
+            form4.ShowDialog();
+            PrikaziTransakcije();
 
-            }
 
+            stanje.Text = $"Stanje: {_oseba.Stanje} €";
+               
+            
             //doda transakcijo v file
             //refresh/add v listbox
 
@@ -59,49 +53,41 @@
         private void dvig_Click(object sender, EventArgs e)
         {
             Form5 form5 = new Form5(_oseba, transakcije);
-            form5.Show();
-           // form5.UpdateTransakcije += Form5_UpdateTransakcije;
-            //if (form5.ShowDialog() == DialogResult.OK)
-            //{
-            //    float znesek;
-            //    if (float.TryParse(form5.Znesek, out znesek))
-            //    {
-            //        Transakcija transakcija = new Transakcija(DateTime.Now, $"Dvig: {znesek} €", znesek, _oseba);
-            //        transakcija.IzvediTransakcijo(_oseba);
-            //        transakcija.PrikaziPodatke(transakcija, transakcije);
-            //        stanje.Text = $"Stanje: {_oseba.Stanje} €";
-            //    }
-            //    else
-            //    {
-            //        MessageBox.Show("Vnos ni veljaven");
-            //    }
-            //}
+            form5.ShowDialog();
+            PrikaziTransakcije();
+            stanje.Text = $"Stanje: {_oseba.Stanje} €";
+
 
         }
-        private void PrikaziTransakcijoT(string tipTransakcije)
+
+        private void PrikaziTransakcije() 
         {
-            string input = Microsoft.VisualBasic.Interaction.InputBox("Vpište znesek:", "Znsek", "0", -1, -1);
-
-            if (float.TryParse(input, out float znesek))
+            transakcije.Items.Clear();
+            var objekt = Transakcija.NaloziIzFile(GetTransactionFilePath(_oseba), _oseba.Pin);
+            foreach (var item in objekt)
             {
-                Transakcija transakcija = new Transakcija(DateTime.Now, $"{tipTransakcije}: {znesek} €", znesek, _oseba);
-                transakcija.IzvediTransakcijo(_oseba);
-
-                transakcije.Items.Add(transakcija.ToString());
-                stanje.Text = $"Stanje: {_oseba.Stanje} €";
+                transakcije.Items.Add(item);
             }
-            else
-            {
-                MessageBox.Show("Vnos ni validen.");
-            }
+            
         }
-        //private void form5_updatetransakcije(object sender, eventargs e)
+        private void Form4_UpdateTransakcije(object sender, EventArgs e)
+        {
+            PrikaziTransakcije();
+        }
+
+        private void Form5_UpdateTransakcije(object sender, EventArgs e)
+        {
+            PrikaziTransakcije();
+        }
+
+    
+        //private void RefreshTransactions(object sender, EventArgs e)
         //{
-        //    transakcije.items.clear();
-        //    list<transakcija> loadedtransakcije = transakcija.naloziizfile("transakcije.txt");
-        //    foreach (transakcija t in loadedtransakcije)
+        //    transakcije.Items.Clear();
+        //    var transactions = Transakcija.NaloziIzFile(GetTransactionFilePath(_oseba));
+        //    foreach (var transaction in transactions)
         //    {
-        //        t.prikazipodatke(transakcije);
+        //        transakcije.Items.Add(transaction);
         //    }
         //}
     }
