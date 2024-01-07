@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic.ApplicationServices;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -40,15 +41,14 @@ namespace ProjektFormsNRPA
             {
                 Transakcija transakcija = new Transakcija(DateTime.Now, $"Dvig: {znesek} €", znesek, _oseba);
                 string filePath = GetTransactionFilePath(_oseba);
-                transakcija.IzvediTransakcijo(_oseba, _oseba,transakcija, new List<Transakcija>());
-                transakcija.PrikaziPodatke(transakcija, transakcije);
+                transakcija.IzvediTransakcijo(_oseba,_oseba,transakcija,new List<Transakcija>());
+                transakcija.PrikaziPodatke(transakcija,transakcije);
 
                 List<Transakcija> transactions = new List<Transakcija> { transakcija };
                 Transakcija.ShraniTransakcijoVFile(_oseba,transakcija, transactions);
                 Znesek = znesek.ToString();
                 DialogResult = DialogResult.OK;
                 Close();
-                
 
             }
             else

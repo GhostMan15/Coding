@@ -54,6 +54,11 @@ namespace ProjektFormsNRPA
         {
             MessageBox.Show($"Ime: {Ime}, ID: {Id}, Zaposlen: {Zaposlen}, Stanje: {Stanje} €");
         }
+        ~Oseba()
+        {
+             MessageBox.Show($"Oseba z id: {Id} je bila unièena");
+            
+        }
     }
 
     class Uporabnik : Oseba
@@ -105,10 +110,7 @@ namespace ProjektFormsNRPA
             }
         }
 
-        public List<Oseba> VrniVseOsebe()
-        {
-            return osebe;
-        }
+     
         public static Oseba PoisciOsebo(int pin)
         {
             Oseba poisciOsebo = osebe.FirstOrDefault(o => o.Pin == pin);
@@ -257,39 +259,44 @@ namespace ProjektFormsNRPA
             this._Oseba = oseba;
 
         }
-
-        public void IzvediTransakcijo(Oseba oseba, Oseba user, Transakcija transakcija, List<Transakcija> transakcijež)
+        public virtual void IzvediTransakcijo(Oseba oseba, Oseba user, Transakcija transakcija, List<Transakcija> transakcijež)
         {
-            if (Znesek <= 0)
-            {
-                MessageBox.Show("Znesek mora biti pozitiven.");
-                return;
-            }
-            if (Opis.StartsWith("Nakaži"))
-            {
-                oseba.Stanje += Znesek;
-            }
-            else if (Opis.StartsWith("Dvig"))
-            {
-                if (oseba.Stanje >= Math.Abs(Znesek))
-                {
-                    oseba.Stanje -= Math.Abs(Znesek);
-                }
-                else
-                {
-                    MessageBox.Show("Nimate dovolj sredstev za dvig");
-                    return;
-                }
-            }
+            MessageBox.Show($"{Opis}");
             ShraniTransakcijoVFile(user, transakcija, transakcijež);
         }
-        public void PrikaziPodatke(Transakcija transakcija, ListBox transakcije)
+
+        //public void IzvediTransakcijo(Oseba oseba, Oseba user, Transakcija transakcija, List<Transakcija> transakcijež)
+        //{
+        //    if (Znesek <= 0)
+        //    {
+        //        MessageBox.Show("Znesek mora biti pozitiven.");
+        //        return;
+        //    }
+        //    if (Opis.StartsWith("Nakaži"))
+        //    {
+        //        oseba.Stanje += Znesek;
+        //    }
+        //    else if (Opis.StartsWith("Dvig"))
+        //    {
+        //        if (oseba.Stanje >= Math.Abs(Znesek))
+        //        {
+        //            oseba.Stanje -= Math.Abs(Znesek);
+        //        }
+        //        else
+        //        {
+        //            MessageBox.Show("Nimate dovolj sredstev za dvig");
+        //            return;
+        //        }
+        //    }
+        //    ShraniTransakcijoVFile(user, transakcija, transakcijež);
+        //}
+        //public void PrikaziPodatke(Transakcija transakcija, ListBox transakcije)
+        //{
+        //    transakcije.Items.Add($"Datum: {transakcija.Datum}, Opis: {transakcija.Opis}, Znesek: {transakcija.Znesek} €");
+        //}
+        public virtual string PrikaziPodatke(Transakcija transakcija, ListBox transakcije)
         {
-            transakcije.Items.Add($"Datum: {transakcija.Datum}, Opis: {transakcija.Opis}, Znesek: {transakcija.Znesek} €");
-        }
-        public override string ToString()
-        {
-            return $"{Datum}: {Opis}";
+            return $"{Datum}: {Opis}, Znesek: {Znesek} €";
         }
 
         public static void ShraniTransakcijoVFile(Oseba user, Transakcija transakcija, List<Transakcija> transakcijež)
@@ -344,7 +351,48 @@ namespace ProjektFormsNRPA
             }
             return transakcije;
         }
+        public class Nakazilo : Transakcija
+        {
+            public Nakazilo(DateTime datum, float znesek, Oseba oseba) : base(datum, $"Nakaži: {znesek} €", znesek, oseba)
+            {
+            }
 
+            public override void IzvediTransakcijo(Oseba oseba, Oseba user, Transakcija transakcija, List<Transakcija> transakcijež)
+            {
+                base.IzvediTransakcijo(oseba,user,transakcija,transakcijež);
+                _Oseba.Stanje += Znesek;
+            }
+
+            public override string PrikaziPodatke(Transakcija transakcija, ListBox transakcije)
+            {
+                return base.PrikaziPodatke(transakcija, transakcije) + " (Nakazilo)";
+            }
+        }
+
+        public class Dvig : Transakcija
+        {
+            public Dvig(DateTime datum, float znesek, Oseba oseba) : base(datum, $"Dvig: {znesek} €", znesek, oseba)
+            {
+            }
+
+            public override void IzvediTransakcijo(Oseba oseba, Oseba user, Transakcija transakcija, List<Transakcija> transakcijež)
+            {
+                base.IzvediTransakcijo(oseba,user,transakcija,transakcijež);
+                if (_Oseba.Stanje >= Math.Abs(Znesek))
+                {
+                    _Oseba.Stanje -= Math.Abs(Znesek);
+                }
+                else
+                {
+                    MessageBox.Show("Nimate dovolj sredstev za dvig");
+                }
+            }
+
+            public override string PrikaziPodatke(Transakcija transakcija, ListBox transakcije)
+            {
+                return base.PrikaziPodatke(transakcija,transakcije) + " (Dvig)";
+            }
+        }
     }
 
 

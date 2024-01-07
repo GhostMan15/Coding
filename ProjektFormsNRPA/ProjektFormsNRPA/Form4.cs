@@ -34,7 +34,7 @@ namespace ProjektFormsNRPA
             {
                 if (float.TryParse(nakazi.Text, out float znesek))
                 {
-                    Transakcija transakcija = new Transakcija(DateTime.Now, $"Nakaži: {znesek} €", znesek, _oseba);
+                    Transakcija transakcija = new Transakcija(DateTime.Now, $"Nakaži: {znesek}", znesek, _oseba);
                     string filePath = GetTransactionFilePath(_oseba);
 
                     if (transakcija != null)
@@ -43,7 +43,6 @@ namespace ProjektFormsNRPA
 
                         List<Transakcija> transactions = new List<Transakcija> { transakcija };
                         Transakcija.ShraniTransakcijoVFile(_oseba, transakcija, transactions);
-
                         Znesek = znesek.ToString();
                         DialogResult = DialogResult.OK;
                         Close();
@@ -63,5 +62,8 @@ namespace ProjektFormsNRPA
                 MessageBox.Show("_oseba is null.");
             }
         }
+       
+
+       
     }
 }

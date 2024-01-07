@@ -1,3 +1,6 @@
+using Banka;
+
+
 namespace ProjektFormsNRPA
 {
     public partial class Form1 : Form
@@ -7,12 +10,7 @@ namespace ProjektFormsNRPA
         {
             InitializeComponent();
             _zapisOseb = new ZapisOseb();
-            List<Oseba> osebeList = _zapisOseb.VrniVseOsebe();
-            foreach (var oseba in osebeList)
-            {
-                oseba.PredstaviSe(); // This will call the overridden method in SpecialOseba if the object is of that type
-            }
-
+          
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -27,7 +25,8 @@ namespace ProjektFormsNRPA
             if (int.TryParse(vnesenPin, out int pin)) //converta pin v int 
             {
                 _zapisOseb.PreveriPin(pin);
-              
+                MessageBox.Show($"Dobrodošli v {Konstane.ImeBanke}");
+               
             }
             else
             {

@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualBasic.ApplicationServices;
+﻿using Banka;
+using Microsoft.VisualBasic.ApplicationServices;
 
 namespace ProjektFormsNRPA
 {
@@ -7,6 +8,7 @@ namespace ProjektFormsNRPA
         private Oseba _oseba;
         public string Znesek { get; private set; }
         public EventHandler UpdateTransakcije;
+        private Transakcija transakcija { get; set; }
         private static string GetTransactionFilePath(Oseba oseba)
         {
             return $"{oseba.Id}_Transakcije.txt";
@@ -22,7 +24,7 @@ namespace ProjektFormsNRPA
             Zaposleni.Visible = _oseba.Zaposlen;
             PrikaziTransakcije();
            
-
+          
         }
 
         private void Zaposleni_Click(object sender, EventArgs e)
@@ -40,9 +42,7 @@ namespace ProjektFormsNRPA
         {
             Form4 form4 = new Form4(_oseba, transakcije);
             form4.ShowDialog();
-            PrikaziTransakcije();
-
-
+            _oseba.Stanje += float.Parse(form4.Znesek);
             stanje.Text = $"Stanje: {_oseba.Stanje} €";
                
             
@@ -54,7 +54,7 @@ namespace ProjektFormsNRPA
         {
             Form5 form5 = new Form5(_oseba, transakcije);
             form5.ShowDialog();
-            PrikaziTransakcije();
+            _oseba.Stanje -= float.Parse(form5.Znesek);
             stanje.Text = $"Stanje: {_oseba.Stanje} €";
 
 
@@ -66,22 +66,10 @@ namespace ProjektFormsNRPA
             var objekt = Transakcija.NaloziIzFile(GetTransactionFilePath(_oseba), _oseba.Pin);
             foreach (var item in objekt)
             {
-                transakcije.Items.Add(item);
+                transakcije.Items.Add(item.PrikaziPodatke(transakcija,transakcije));
             }
             
         }
-    
-
-    
-        //private void RefreshTransactions(object sender, EventArgs e)
-        //{
-        //    transakcije.Items.Clear();
-        //    var transactions = Transakcija.NaloziIzFile(GetTransactionFilePath(_oseba));
-        //    foreach (var transaction in transactions)
-        //    {
-        //        transakcije.Items.Add(transaction);
-        //    }
-        //}
     }
 
 }
