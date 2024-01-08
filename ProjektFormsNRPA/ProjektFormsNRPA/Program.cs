@@ -54,7 +54,7 @@ namespace ProjektFormsNRPA
         }
         ~Oseba()
         {
-            MessageBox.Show($"Oseba z id: {Id} je bila uni�ena");
+            MessageBox.Show($"Oseba z id: {Id} je bila uničena");
 
         }
       
@@ -96,11 +96,11 @@ namespace ProjektFormsNRPA
         public ZapisOseb()
         {
             PreberiOsebeIzFile();
-            if (osebe.Count == 0)
-            {
-                osebe.Add(new Oseba("Janko", 5555, "SI73856DD", true, 300));
-                osebe.Add(new Zaposleni("On", 5346, "SI41345DD",  300));
-            }
+            //if (osebe.Count == 0)
+            //{
+            //    osebe.Add(new Oseba("Janko", 5555, "SI73856DD", true, 300));
+            //    osebe.Add(new Zaposleni("On", 5346, "SI41345DD", 300));
+            //}
         }
 
      
@@ -196,7 +196,7 @@ namespace ProjektFormsNRPA
         {
             if (!Oseba.UnikatenPin(pin))
             {
-                MessageBox.Show("Pin �e obstaja.\n Prosim vnesite unikaten pin");
+                MessageBox.Show("Pin ne obstaja.\n Prosim vnesite unikaten pin");
                 return;
             }
             osebe.Add(new Oseba(ime, pin, id, zaposlen, stanje));
@@ -290,7 +290,7 @@ namespace ProjektFormsNRPA
         //}
         public virtual string PrikaziPodatke(ListBox transakcije)
         {
-            return $"{Datum}: {Opis}, Znesek: {Znesek} �";
+            return $"{Datum}: {Opis}, Znesek: {Znesek} €";
            
         }
 

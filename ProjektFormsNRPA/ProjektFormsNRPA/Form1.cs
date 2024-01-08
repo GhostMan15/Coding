@@ -5,7 +5,7 @@ namespace ProjektFormsNRPA
 {
     public partial class Form1 : Form
     {
-        private ZapisOseb _zapisOseb;
+        private readonly ZapisOseb _zapisOseb;
         public Form1()
         {
             InitializeComponent();

@@ -13,7 +13,7 @@ namespace ProjektFormsNRPA
     public partial class Form4 : Form
     {
         public string Znesek { get; private set; }
-        private Oseba _oseba;
+        private readonly Oseba _oseba;
         public ListBox transakcije;
         private static string GetTransactionFilePath(Oseba oseba)
         {
@@ -48,7 +48,7 @@ namespace ProjektFormsNRPA
                     }
                     else
                     {
-                        MessageBox.Show("Transakcija is null.");
+                        MessageBox.Show("Transakcijo ni bilo mogoče sprocesuirati .");
                     }
                 }
                 else

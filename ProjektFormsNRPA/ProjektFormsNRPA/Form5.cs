@@ -55,7 +55,7 @@ namespace ProjektFormsNRPA
                     }
                     else
                     {
-                        MessageBox.Show("Transakcija ne obstaja.");
+                        MessageBox.Show("Transakcijo ni bilo mogoče sporcesuirati.");
                     }
                 }
                 else
