@@ -6,9 +6,6 @@ namespace ProjektFormsNRPA
     public partial class Form2 : Form
     {
         private readonly Oseba _oseba;
-        public string Znesek { get; private set; }
-        public EventHandler UpdateTransakcije;
-        private Transakcija transakcija { get; set; }
         private static string GetTransactionFilePath(Oseba oseba)
         {
             return $"{oseba.Id}_Transakcije.txt";

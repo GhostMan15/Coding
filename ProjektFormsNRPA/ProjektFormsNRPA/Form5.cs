@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using static ProjektFormsNRPA.Transakcija;
 using static System.Windows.Forms.AxHost;
 using static System.Windows.Forms.DataFormats;
+using Banka;
 
 namespace ProjektFormsNRPA
 {

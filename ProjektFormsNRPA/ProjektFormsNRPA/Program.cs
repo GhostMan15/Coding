@@ -96,11 +96,11 @@ namespace ProjektFormsNRPA
         public ZapisOseb()
         {
             PreberiOsebeIzFile();
-            //if (osebe.Count == 0)
-            //{
-            //    osebe.Add(new Oseba("Janko", 5555, "SI73856DD", true, 300));
-            //    osebe.Add(new Zaposleni("On", 5346, "SI41345DD", 300));
-            //}
+            if (osebe.Count == 0)
+            {
+                osebe.Add(new Oseba("fds", 5634, "SI73856DD", true, 300));
+                osebe.Add(new Zaposleni("On", 5346, "SI41345DD", 300));
+            }
         }
 
      
