@@ -5,6 +5,8 @@ using System.Drawing.Text;
 using System.Runtime.Intrinsics.X86;
 using System.Security.Cryptography.X509Certificates;
 using static System.Runtime.InteropServices.JavaScript.JSType;
+using static System.Windows.Forms.AxHost;
+using Banka;
 
 namespace ProjektFormsNRPA
 {
@@ -14,13 +16,14 @@ namespace ProjektFormsNRPA
         public string Ime { get; set; }
         public int Pin { get; set; }
         public string Id { get; set; }
-        public bool Zaposlen { get; set; }
+        public  bool Zaposlen { get; set; }
         public float Stanje { get; set; }
         
        // public BindingList<Transakcija> Transakcije { get; set; }
 
-        public static HashSet<int> obstojecPin = new HashSet<int>();
-
+        public static readonly HashSet<int> obstojecPin = new HashSet<int>();
+     
+        
 
 
         public static bool UnikatenPin(int pin)
@@ -45,20 +48,16 @@ namespace ProjektFormsNRPA
             this.Stanje = stanje;
             obstojecPin.Add(pin);
         }
-
-        public string GetId()
-        {
-            return Id;
-        }
         public virtual void PredstaviSe()
         {
-            MessageBox.Show($"Ime: {Ime}, ID: {Id}, Zaposlen: {Zaposlen}, Stanje: {Stanje} €");
+            MessageBox.Show($"Ime: {Ime}, ID: {Id}, Zaposlen: {Zaposlen}, Stanje: {Stanje} ï¿½");
         }
         ~Oseba()
         {
-             MessageBox.Show($"Oseba z id: {Id} je bila unièena");
-            
+            MessageBox.Show($"Oseba z id: {Id} je bila uniï¿½ena");
+
         }
+      
     }
 
     class Uporabnik : Oseba
@@ -72,12 +71,6 @@ namespace ProjektFormsNRPA
         {
             base.PredstaviSe();
             MessageBox.Show("Uporabnik");
-        }
-
-
-        public void IzvediTransakcijo(float znesek)
-        {
-           
         }
     }
 
@@ -132,7 +125,7 @@ namespace ProjektFormsNRPA
                         writer.WriteLine($"{oseba.Ime},{oseba.Pin},{oseba.Id},{oseba.Zaposlen},{oseba.Stanje}");
                     }
                 }
-                MessageBox.Show("Oseba uspešno sharnjena");
+                MessageBox.Show("Oseba uspeï¿½no sharnjena");
             }
             catch (Exception ex)
             {
@@ -176,7 +169,7 @@ namespace ProjektFormsNRPA
                             }
                         }
                     }
-                    MessageBox.Show("Uspešno naložena oseba");
+                    
                 }
                 else
                 {
@@ -189,7 +182,7 @@ namespace ProjektFormsNRPA
             }
 
         }
-        public void UstvariTransakcijskiFile(string id)
+        public static void UstvariTransakcijskiFile(string id)
         {
             string filePath = $"{id}_Transakcije.txt";
 
@@ -203,7 +196,7 @@ namespace ProjektFormsNRPA
         {
             if (!Oseba.UnikatenPin(pin))
             {
-                MessageBox.Show("Pin že obstaja.\n Prosim vnesite unikaten pin");
+                MessageBox.Show("Pin ï¿½e obstaja.\n Prosim vnesite unikaten pin");
                 return;
             }
             osebe.Add(new Oseba(ime, pin, id, zaposlen, stanje));
@@ -233,7 +226,7 @@ namespace ProjektFormsNRPA
             if (pravilenPin && i< osebe.Count)
             {
                 MessageBox.Show("Vstop odobren");
-                Form2 form2 = new Form2(osebe[i]);
+                Form2 form2 = new(osebe[i]);
                 form2.Show();
 
             }
@@ -259,20 +252,21 @@ namespace ProjektFormsNRPA
             this._Oseba = oseba;
 
         }
-        public virtual void IzvediTransakcijo(Oseba oseba, Oseba user, Transakcija transakcija, List<Transakcija> transakcijež)
+        public virtual bool IzvediTransakcijo(Oseba oseba, Oseba user, Transakcija transakcija, List<Transakcija> transakcijeï¿½)
         {
             MessageBox.Show($"{Opis}");
-            ShraniTransakcijoVFile(user, transakcija, transakcijež);
+            ShraniTransakcijoVFile(oseba, transakcija, new List<Transakcija>());
+            return true;
         }
 
-        //public void IzvediTransakcijo(Oseba oseba, Oseba user, Transakcija transakcija, List<Transakcija> transakcijež)
+        //public void IzvediTransakcijo(Oseba oseba, Oseba user, Transakcija transakcija, List<Transakcija> transakcijeï¿½)
         //{
         //    if (Znesek <= 0)
         //    {
         //        MessageBox.Show("Znesek mora biti pozitiven.");
         //        return;
         //    }
-        //    if (Opis.StartsWith("Nakaži"))
+        //    if (Opis.StartsWith("Nakaï¿½i"))
         //    {
         //        oseba.Stanje += Znesek;
         //    }
@@ -288,25 +282,26 @@ namespace ProjektFormsNRPA
         //            return;
         //        }
         //    }
-        //    ShraniTransakcijoVFile(user, transakcija, transakcijež);
+        //    ShraniTransakcijoVFile(user, transakcija, transakcijeï¿½);
         //}
         //public void PrikaziPodatke(Transakcija transakcija, ListBox transakcije)
         //{
-        //    transakcije.Items.Add($"Datum: {transakcija.Datum}, Opis: {transakcija.Opis}, Znesek: {transakcija.Znesek} €");
+        //    transakcije.Items.Add($"Datum: {transakcija.Datum}, Opis: {transakcija.Opis}, Znesek: {transakcija.Znesek} ï¿½");
         //}
-        public virtual string PrikaziPodatke(Transakcija transakcija, ListBox transakcije)
+        public virtual string PrikaziPodatke(ListBox transakcije)
         {
-            return $"{Datum}: {Opis}, Znesek: {Znesek} €";
+            return $"{Datum}: {Opis}, Znesek: {Znesek} ï¿½";
+           
         }
 
-        public static void ShraniTransakcijoVFile(Oseba user, Transakcija transakcija, List<Transakcija> transakcijež)
+        public static void ShraniTransakcijoVFile(Oseba user, Transakcija transakcija, List<Transakcija> transakcijeï¿½)
         {
             string filePath = $"{user.Id}_Transakcije.txt";
             try
             {
                 using (StreamWriter writer = new StreamWriter(filePath, true))
                 {
-                    foreach (Transakcija t in transakcijež)
+                    foreach (Transakcija t in transakcijeï¿½)
                     {
                         writer.WriteLine($"{transakcija.Datum},{transakcija.Opis},{transakcija.Znesek}");
                     }
@@ -353,61 +348,67 @@ namespace ProjektFormsNRPA
         }
         public class Nakazilo : Transakcija
         {
-            public Nakazilo(DateTime datum, float znesek, Oseba oseba) : base(datum, $"Nakaži: {znesek} €", znesek, oseba)
+            public Nakazilo(DateTime datum, float znesek, Oseba oseba) : base(datum, $"Nakaï¿½i: {znesek} ï¿½", znesek, oseba)
             {
             }
 
-            public override void IzvediTransakcijo(Oseba oseba, Oseba user, Transakcija transakcija, List<Transakcija> transakcijež)
+            public override bool IzvediTransakcijo(Oseba oseba, Oseba user, Transakcija transakcija, List<Transakcija> transakcijeï¿½)
             {
-                base.IzvediTransakcijo(oseba,user,transakcija,transakcijež);
+                base.IzvediTransakcijo(oseba,user,transakcija,transakcijeï¿½);
                 _Oseba.Stanje += Znesek;
+                return true;
             }
 
-            public override string PrikaziPodatke(Transakcija transakcija, ListBox transakcije)
+            public override string PrikaziPodatke(ListBox transakcije)
             {
-                return base.PrikaziPodatke(transakcija, transakcije) + " (Nakazilo)";
+                return base.PrikaziPodatke(transakcije) + " (Nakazilo)";
             }
         }
 
         public class Dvig : Transakcija
         {
-            public Dvig(DateTime datum, float znesek, Oseba oseba) : base(datum, $"Dvig: {znesek} €", znesek, oseba)
+            public Dvig(DateTime datum, float znesek, Oseba oseba) : base(datum, $"Dvig: {znesek} ï¿½", znesek, oseba)
             {
             }
 
-            public override void IzvediTransakcijo(Oseba oseba, Oseba user, Transakcija transakcija, List<Transakcija> transakcijež)
+            public override bool IzvediTransakcijo(Oseba oseba, Oseba user, Transakcija transakcija, List<Transakcija> transakcijeï¿½)
             {
-                base.IzvediTransakcijo(oseba,user,transakcija,transakcijež);
+                base.IzvediTransakcijo(oseba, user, transakcija, transakcijeï¿½);
                 if (_Oseba.Stanje >= Math.Abs(Znesek))
                 {
                     _Oseba.Stanje -= Math.Abs(Znesek);
+                    return true;
+
                 }
                 else
                 {
                     MessageBox.Show("Nimate dovolj sredstev za dvig");
+                    return false;   
                 }
             }
 
-            public override string PrikaziPodatke(Transakcija transakcija, ListBox transakcije)
+            public override string PrikaziPodatke(ListBox transakcije)
             {
-                return base.PrikaziPodatke(transakcija,transakcije) + " (Dvig)";
+                return base.PrikaziPodatke(transakcije) + " (Dvig)";
             }
         }
+       
     }
 
 
-        internal static class Program
-        {   
-        /// <summary>
-        ///  The main entry point for the application.
-        /// </summary>
-        [STAThread]
-           static void Main()
-           {
-            // To customize application configuration such as set high DPI settings or default font,
-            // see https://aka.ms/applicationconfiguration.
-            ApplicationConfiguration.Initialize();
-            Application.Run(new Form1());
-           }
-        }
+    internal static class Program
+    {
+            /// <summary>
+            ///  The main entry point for the application.
+            /// </summary>
+            [STAThread]
+            static void Main()
+            {
+                // To customize application configuration such as set high DPI settings or default font,
+                // see https://aka.ms/applicationconfiguration.
+                ApplicationConfiguration.Initialize();
+                Application.Run(new Form1());
+            }
+    }
+    
 }

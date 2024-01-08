@@ -15,7 +15,6 @@ namespace ProjektFormsNRPA
         public string Znesek { get; private set; }
         private Oseba _oseba;
         public ListBox transakcije;
-        public event EventHandler UpdateTransakcije;
         private static string GetTransactionFilePath(Oseba oseba)
         {
             return $"{oseba.Id}_Transakcije.txt";
@@ -23,7 +22,6 @@ namespace ProjektFormsNRPA
         public Form4(Oseba _oseba, ListBox transakcije)
         {
             InitializeComponent();
-            // transakcije = transakcije ?? new ListBox();
             this._oseba = _oseba;
             this.transakcije = transakcije;
         }
@@ -34,12 +32,13 @@ namespace ProjektFormsNRPA
             {
                 if (float.TryParse(nakazi.Text, out float znesek))
                 {
-                    Transakcija transakcija = new Transakcija(DateTime.Now, $"Nakaži: {znesek}", znesek, _oseba);
+                    Transakcija.Nakazilo transakcija = new(DateTime.Now,znesek, _oseba);
                     string filePath = GetTransactionFilePath(_oseba);
 
                     if (transakcija != null)
                     {
-                        transakcija.IzvediTransakcijo(_oseba, _oseba, transakcija, new List<Transakcija>());
+                        
+                        transakcija.IzvediTransakcijo(_oseba,_oseba,transakcija,new List<Transakcija>());
 
                         List<Transakcija> transactions = new List<Transakcija> { transakcija };
                         Transakcija.ShraniTransakcijoVFile(_oseba, transakcija, transactions);

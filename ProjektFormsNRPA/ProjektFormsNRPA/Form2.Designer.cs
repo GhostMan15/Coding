@@ -35,6 +35,7 @@
             stanje = new Label();
             dvig = new Button();
             nakazi = new Button();
+            button1 = new Button();
             SuspendLayout();
             // 
             // ime
@@ -104,11 +105,22 @@
             nakazi.UseVisualStyleBackColor = true;
             nakazi.Click += nakazi_Click;
             // 
+            // button1
+            // 
+            button1.Location = new Point(23, 415);
+            button1.Name = "button1";
+            button1.Size = new Size(191, 23);
+            button1.TabIndex = 8;
+            button1.Text = "Odjava";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
             // Form2
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(button1);
             Controls.Add(nakazi);
             Controls.Add(dvig);
             Controls.Add(stanje);
@@ -136,5 +148,6 @@
         private Label stanje;
         private Button dvig;
         private Button nakazi;
+        private Button button1;
     }
 }

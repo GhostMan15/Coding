@@ -31,6 +31,16 @@ namespace ProjektFormsNRPA
                 _zapisOseb.DodajOsebo(ime, pin, id, checkBox1.Checked, this, float.Parse(stanje));
                 _zapisOseb.ShraniOsebeVFile();
                 _zapisOseb.PreberiOsebeIzFile();
+
+                Ime.Text = "";
+                nPin.Text = "";
+                Id.Text = "";
+                Stanje.Text = "";
+                checkBox1.Checked = false;
+            }
+            else
+            {
+                MessageBox.Show("Vnesite obvezne podatke");
             }
 
         }

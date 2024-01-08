@@ -5,7 +5,7 @@ namespace ProjektFormsNRPA
 {
     public partial class Form2 : Form
     {
-        private Oseba _oseba;
+        private readonly Oseba _oseba;
         public string Znesek { get; private set; }
         public EventHandler UpdateTransakcije;
         private Transakcija transakcija { get; set; }
@@ -23,8 +23,8 @@ namespace ProjektFormsNRPA
             transakcije.Text += osebe;
             Zaposleni.Visible = _oseba.Zaposlen;
             PrikaziTransakcije();
-           
-          
+
+
         }
 
         private void Zaposleni_Click(object sender, EventArgs e)
@@ -40,35 +40,39 @@ namespace ProjektFormsNRPA
 
         private void nakazi_Click(object sender, EventArgs e)
         {
-            Form4 form4 = new Form4(_oseba, transakcije);
+            Form4 form4 = new(_oseba, transakcije);
             form4.ShowDialog();
-            _oseba.Stanje += float.Parse(form4.Znesek);
             stanje.Text = $"Stanje: {_oseba.Stanje} €";
-               
-            
+            PrikaziTransakcije();
+
             //doda transakcijo v file
             //refresh/add v listbox
 
         }
         private void dvig_Click(object sender, EventArgs e)
         {
-            Form5 form5 = new Form5(_oseba, transakcije);
+            Form5 form5 = new(_oseba, transakcije);
             form5.ShowDialog();
-            _oseba.Stanje -= float.Parse(form5.Znesek);
             stanje.Text = $"Stanje: {_oseba.Stanje} €";
+            PrikaziTransakcije();
 
 
         }
 
-        private void PrikaziTransakcije() 
+        private void PrikaziTransakcije()
         {
             transakcije.Items.Clear();
             var objekt = Transakcija.NaloziIzFile(GetTransactionFilePath(_oseba), _oseba.Pin);
             foreach (var item in objekt)
             {
-                transakcije.Items.Add(item.PrikaziPodatke(transakcija,transakcije));
+                transakcije.Items.Add(item.PrikaziPodatke(transakcije));
             }
-            
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 

@@ -31,6 +31,7 @@
             label1 = new Label();
             dvig = new TextBox();
             dvigP = new Button();
+            button1 = new Button();
             SuspendLayout();
             // 
             // label1
@@ -59,12 +60,23 @@
             dvigP.UseVisualStyleBackColor = true;
             dvigP.Click += dvigP_Click;
             // 
+            // button1
+            // 
+            button1.Location = new Point(30, 108);
+            button1.Name = "button1";
+            button1.Size = new Size(100, 22);
+            button1.TabIndex = 3;
+            button1.Text = "Zapri";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
             // Form5
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(152, 122);
+            ClientSize = new Size(162, 142);
             ControlBox = false;
+            Controls.Add(button1);
             Controls.Add(dvigP);
             Controls.Add(dvig);
             Controls.Add(label1);
@@ -85,5 +97,6 @@
         private Label label1;
         private TextBox dvig;
         private Button dvigP;
+        private Button button1;
     }
 }
