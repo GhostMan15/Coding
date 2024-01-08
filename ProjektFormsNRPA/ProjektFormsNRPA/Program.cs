@@ -290,7 +290,7 @@ namespace ProjektFormsNRPA
         //}
         public virtual string PrikaziPodatke(ListBox transakcije)
         {
-            return $"{Datum}: {Opis}, Znesek: {Znesek} �";
+            return $"{Datum}: {Opis}, Znesek: {Znesek} €";
            
         }
 
