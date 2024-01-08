@@ -23,7 +23,7 @@ namespace ProjektFormsNRPA
 
         public static readonly HashSet<int> obstojecPin = new HashSet<int>();
      
-        
+   
 
 
         public static bool UnikatenPin(int pin)
@@ -290,7 +290,7 @@ namespace ProjektFormsNRPA
         //}
         public virtual string PrikaziPodatke(ListBox transakcije)
         {
-            return $"{Datum}: {Opis}, Znesek: {Znesek} €";
+            return $"{Datum}: {Opis}, Znesek: {Znesek} �";
            
         }
 
