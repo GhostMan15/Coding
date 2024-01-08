@@ -252,7 +252,7 @@ namespace ProjektFormsNRPA
             this._Oseba = oseba;
 
         }
-        public virtual bool IzvediTransakcijo(Oseba oseba, Oseba user, Transakcija transakcija, List<Transakcija> transakcije�)
+        public virtual bool IzvediTransakcijo(Oseba oseba, Oseba user, Transakcija transakcija, List<Transakcija> transakcijež)
         {
             MessageBox.Show($"{Opis}");
             ShraniTransakcijoVFile(oseba, transakcija, new List<Transakcija>());
@@ -294,14 +294,14 @@ namespace ProjektFormsNRPA
            
         }
 
-        public static void ShraniTransakcijoVFile(Oseba user, Transakcija transakcija, List<Transakcija> transakcije�)
+        public static void ShraniTransakcijoVFile(Oseba user, Transakcija transakcija, List<Transakcija> transakcijež)
         {
             string filePath = $"{user.Id}_Transakcije.txt";
             try
             {
                 using (StreamWriter writer = new StreamWriter(filePath, true))
                 {
-                    foreach (Transakcija t in transakcije�)
+                    foreach (Transakcija t in transakcijež)
                     {
                         writer.WriteLine($"{transakcija.Datum},{transakcija.Opis},{transakcija.Znesek}");
                     }
@@ -348,13 +348,13 @@ namespace ProjektFormsNRPA
         }
         public class Nakazilo : Transakcija
         {
-            public Nakazilo(DateTime datum, float znesek, Oseba oseba) : base(datum, $"Naka�i: {znesek} �", znesek, oseba)
+            public Nakazilo(DateTime datum, float znesek, Oseba oseba) : base(datum, $"Nakaži: {znesek} €", znesek, oseba)
             {
             }
 
-            public override bool IzvediTransakcijo(Oseba oseba, Oseba user, Transakcija transakcija, List<Transakcija> transakcije�)
+            public override bool IzvediTransakcijo(Oseba oseba, Oseba user, Transakcija transakcija, List<Transakcija> transakcijež)
             {
-                base.IzvediTransakcijo(oseba,user,transakcija,transakcije�);
+                base.IzvediTransakcijo(oseba,user,transakcija,transakcijež);
                 _Oseba.Stanje += Znesek;
                 return true;
             }
@@ -367,13 +367,13 @@ namespace ProjektFormsNRPA
 
         public class Dvig : Transakcija
         {
-            public Dvig(DateTime datum, float znesek, Oseba oseba) : base(datum, $"Dvig: {znesek} �", znesek, oseba)
+            public Dvig(DateTime datum, float znesek, Oseba oseba) : base(datum, $"Dvig: {znesek} €", znesek, oseba)
             {
             }
 
-            public override bool IzvediTransakcijo(Oseba oseba, Oseba user, Transakcija transakcija, List<Transakcija> transakcije�)
+            public override bool IzvediTransakcijo(Oseba oseba, Oseba user, Transakcija transakcija, List<Transakcija> transakcijež)
             {
-                base.IzvediTransakcijo(oseba, user, transakcija, transakcije�);
+                base.IzvediTransakcijo(oseba, user, transakcija, transakcijež);
                 if (_Oseba.Stanje >= Math.Abs(Znesek))
                 {
                     _Oseba.Stanje -= Math.Abs(Znesek);
