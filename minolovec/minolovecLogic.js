@@ -1,9 +1,10 @@
 var velikost
 var zastavice;
 var stMin;
+var poljeMin=[];
 function omogociIgro(){
-    valikost = document.getElementById("velikostPloscadi").value;
-    if(velikost = 0){
+    velikost = document.getElementById("velikostPloscadi").value;
+    if(velikost == 0){
         document.getElementById("novaIgra").disabled = true;
         document.getElementById("IgralnoPolje").innerHTML = '';
 
@@ -21,25 +22,42 @@ function pozeniIgro(){
     stMin = Math.round(Math.random()*st_min)+8;
     document.getElementById("stevilkoMin").innerHTML = stMin;
     var str = '<table border="1">'
-    for(var i=0; i<velikost; i++){
-        str += '<tr heiht="40px">';
-        for(var j=0; j<velikost; j++){
-            str += '<td vallign="middle" allign="middle" width="40px">'+i+', '+j;
+    for(var i=0; i<velikost; i++)
+    {
+        str += '<tr height="40px">';
+        for(var j=0; j<velikost; j++)
+        {
+            str += '<td vallign="middle" allign="middle" width="40px"id="C'+i+'_'+j+'">'+i+', '+j;
 
             str +='</td>';
         }
         str += '</tr>';
     }
+    document.getElementById("IgralnoPolje").innerHTML=str;
 
-    //doloci in izpisi stevilo min
+    poljeMin.length =velikost*velikost;
+    st_min =stMin
+    while(st_min>0)
+    {
+        var ind=Math.floor(Math.random()*poljeMin.length);
+        if(poljeMin[ind]!='M')
+        {
+            poljeMin[ind]='M';
+            st_min--;
+        }
+    }
+    st_min=0;
+    for(var i=0; i<velikost; i++)
+    {
+       for(var j=0; j<velikost; j++)
+        {
+            if(poljeMin[st_min]=='M')
+            {
+                document.getElementById('C'+i+'_'+j).innerHTML='<img src="img/mina.jpg" width="40px">';
+            }
+            st_min++;
 
-    //pripravi igralno polje
-
-    //razpodeli mine
-
-    //dilici stike z minami
-
-    //poišči prazno začetno polje
-
-    //poženi uro
+        }
+       
+    }
 }
