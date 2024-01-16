@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script language="javascript" src="minolovecLogic.js"></script>
+    <title>Bombaclaat</title>
+</head>
+<body>
+    <table width="100%" border="1">
+        <tr>
+            <td width="40%">
+                <img src="img/minolovec.jpg" alt="BOMBACLAAT" width="100%" height="130px">
+                <h1 align="">Minolovec</h1>
+                <p>
+                    Igro se začne v praznem polju. S kliki po zakritih poljih odkrivate mesta postavljenih min.
+                    Polja, ki se dotikajo min, imajo zapisano število, koliko polj z minami se
+                    dotikajo. Polja z minami morajo ostati nedotaknjena. Število min na ploščadi je
+                    izpisano pod navodili. Pred začetkom si izberite število polj na igralni ploščadi
+                    . V skladu z izbiro se bo avtomatsko generiralo število min. S klikom na zakrito
+                    polje začnete z igro in merjenjem časa. Če menite, da je na določenem polju mina,
+                    jo lahko označite z zastavico. Novo igro poženete s klikom na gumb "Nova igra".
+                </p>
+                <p>izberite željeno velikost igralnega polja:
+                <select name="" id="velikostPloscadi" onchange="omogociIgro()">
+                    <option value="0" selected>-- izberi polje--</option>
+                    <option value="8" selected>8x8</option>
+                    <option value="9" selected>9x9</option>
+                    <option value="10" selected>10x10</option>
+                    <option value="11" selected>11x11</option>
+                    <option value="12" selected>12x12</option>
+                    <option value="13" selected>13x13</option>
+                    <option value="14" selected>14x14</option>
+                    <option value="15" selected>15x15</option>
+                </select>
+                </p>
+                <p><input type="button" id="novaIgra" disabled="true" value=" Nova igra " onclick="pozeniIgro()"></p>
+                <p>
+                    Število min: <span id="stevilkoMin"></span><br>
+                    Štecilo zasztavic: <span id="stevilkoZastavic"></span><br>
+                    Čas igranja: <span id="casIgranja"></span><br>
+                </p>
+                <p id="obvestilo"></p>
+            </td>
+            <td id="IgralnoPolje" width="60%" align="center">
+
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

@@ -1,0 +1,7 @@
+Igro se začne v praznem polju. S kliki po zakritih poljih odkrivate mesta postavljenih min.
+ Polja, ki se dotikajo min, imajo zapisano število, koliko polj z minami se
+ dotikajo. Polja z minami morajo ostati nedotaknjena. Število min na ploščadi je
+ izpisano pod navodili. Pred začetkom si izberite število polj na igralni ploščadi
+. V skladu z izbiro se bo avtomatsko generiralo število min. S klikom na zakrito
+ polje začnete z igro in merjenjem časa. Če menite, da je na določenem polju mina,
+ jo lahko označite z zastavico. Novo igro poženete s klikom na gumb "Nova igra".
