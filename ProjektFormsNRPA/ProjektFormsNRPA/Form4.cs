@@ -20,7 +20,7 @@ namespace ProjektFormsNRPA
         {
             return $"{oseba.Id}_Transakcije.txt";
         }
-        public Form4(Oseba _oseba, ListBox transakcije)
+        internal Form4(Oseba _oseba, ListBox transakcije)
         {
             InitializeComponent();
             this._oseba = _oseba;

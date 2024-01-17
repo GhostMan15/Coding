@@ -25,7 +25,7 @@ namespace ProjektFormsNRPA
             return $"{oseba.Id}_Transakcije.txt";
         }
 
-        public Form5(Oseba oseba, ListBox transakcije)
+        internal Form5(Oseba oseba, ListBox transakcije)
         {
             InitializeComponent();
             _oseba = oseba;

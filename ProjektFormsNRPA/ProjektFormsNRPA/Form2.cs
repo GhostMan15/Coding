@@ -10,7 +10,8 @@ namespace ProjektFormsNRPA
         {
             return $"{oseba.Id}_Transakcije.txt";
         }
-        public Form2(Oseba osebe)
+    
+        internal Form2(Oseba osebe)
         {
             InitializeComponent();
             _oseba = osebe;
@@ -20,8 +21,6 @@ namespace ProjektFormsNRPA
             transakcije.Text += osebe;
             Zaposleni.Visible = _oseba.Zaposlen;
             PrikaziTransakcije();
-
-
         }
 
         private void Zaposleni_Click(object sender, EventArgs e)

@@ -6,4 +6,20 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="System.Windows.Forms.Ribbon35" Version="3.5.8" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Banka">
+      <HintPath>bin\Debug\net7.0\Banka.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\ProjektFormsNRPA\ProjektFormsNRPA\bin\Debug\net7.0-windows\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="ProjektFormsNRPA">
+      <HintPath>..\..\ProjektFormsNRPA\ProjektFormsNRPA\bin\Debug\net7.0-windows\ProjektFormsNRPA.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>
