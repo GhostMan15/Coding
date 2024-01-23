@@ -68,25 +68,36 @@ function pozeniIgro(){
     for(var i=0; i<poljeMin.length; i++)
     {   if(poljeMin[i]=='M')
 
-        for(var j=0; j<8; j++)
+        for(var j=0; j<5; j++)
         {   switch(j)
             {
                 case 0: stik = i - velikost - 1;
-                if(i%velikost==0)stik==-1;
+                        if(i%velikost==0)stik==-1;
                     break;
                 case 1:
+                    stik = i-velikost;
                     break;
                 case 2:
+                    stik = i- velikost +1;
+                    if((i+1)%velikost==0)stik==-1;
                     break;
                 case 3:
+                    stik = i-1;
+                    if((i+1)&velikost==0)stik==-1;
                     break;
                 case 4:
+                    stik = i+1;
+                    if((i+1)&velikost==0)stik==-1;
                     break;
                 case 5:   
+                    stik=i+velikost-1;
+                    if((i+1)&velikost==0)stik==-1;
                     break; 
                 case 6:
+                    stik=i+velikost;
                     break;
                 case 7:     
+                    stik=i+velikost+1;
                     break;
             }
             if(stik>=0)
