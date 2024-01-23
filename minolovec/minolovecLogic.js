@@ -36,6 +36,7 @@ function pozeniIgro(){
     document.getElementById("IgralnoPolje").innerHTML=str;
 
     poljeMin.length =velikost*velikost;
+    for(var i=0; i<poljeMin.length;i++)poljeMin[i]=0;
     st_min =stMin
     while(st_min>0)
     {
@@ -55,8 +56,44 @@ function pozeniIgro(){
             {
                 document.getElementById('C'+i+'_'+j).innerHTML='<img src="img/mina.jpg" width="40px">';
             }
+            else
+            {
+                document.getElementById('C'+i+'_'+j).innerHTML=poljeMin[st_min];
+            }
             st_min++;
 
+        }
+       
+    }
+    for(var i=0; i<poljeMin.length; i++)
+    {   if(poljeMin[i]=='M')
+
+        for(var j=0; j<8; j++)
+        {   switch(j)
+            {
+                case 0: stik = i - velikost - 1;
+                if(i%velikost==0)stik==-1;
+                    break;
+                case 1:
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    break;
+                case 5:   
+                    break; 
+                case 6:
+                    break;
+                case 7:     
+                    break;
+            }
+            if(stik>=0)
+            {
+                if(poljeMin[stik]='M') poljeMin[stik]++;
+            }
+            
         }
        
     }
