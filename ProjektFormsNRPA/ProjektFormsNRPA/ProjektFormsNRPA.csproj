@@ -13,6 +13,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ClassLibrary1\ClassLibrary1.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Reference Include="Banka">
       <HintPath>..\..\Banka\Banka\bin\Debug\net7.0\Banka.dll</HintPath>
     </Reference>
