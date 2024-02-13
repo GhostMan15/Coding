@@ -1,4 +1,4 @@
-var velikost
+var velikost;
 var zastavice;
 var stMin;
 var poljeMin = [];
@@ -31,9 +31,10 @@ function pozeniIgro(){
     for(var i=0; i<velikost; i++){
         str += '<tr height="40px">';
         for(var j=0; j<velikost; j++){
-            str += '<td vallign="middle" allign="middle" width="40px" id="C'+i+'_'+j+'">';
-            str += '<img src="img/pokrito.png" width="40px">';
-            str +='</td>';
+            str += '<td vallign = "middle" allign="middle" width="40px" id = "C'+i+'_'+j+'" ';
+            str += 'onmouseover = this.style.cursor="pointer" onmouseout = this.style.cursor="default" ';
+            str += 'onmousedown = "preveriGumb(event,'+(i*velikost+j)+')" oncontextmenu = "return false;">';
+            str += '<img src="img/pokrito.png" width="40px"></td>';
         }
         str += '</tr>';
     }
@@ -108,8 +109,8 @@ function pozeniIgro(){
         var ind = Math.floor(Math.random()*poljeMin.length);
         if(poljeMin[ind] == 0){
             poljeOdkrito[ind] = 1;
-            var i = (ind - i) / velikost;
             var j = ind % velikost;
+            var i = (ind - j) / velikost;
             document.getElementById('C'+i+'_'+j).innerHTML = '';
             break;
         }
@@ -135,4 +136,58 @@ function pozeniIgro(){
     
     
     //poženi uro
+    var interval;
+    function pozeniTimer()
+    {
+        interval = setInterval(function (){izpisCasa();},1000);
+    }
+    function preveriGumb(event,stPolja)
+    {
+        if(event.button==0){
+            poljeOdkrito[stPolja]=1;
+            if(poljeMin[stPolja]=='M')
+            {
+                var j =stPolja%velikost;
+                var i =(stPolja-j)/velikost;
+                document.getElementById('C'+i+'_'+j).innerHTML = '<img src="img/mina.jpg" width="40px">';
+                document.getElementById('Obvestilo').innerHTML = 'Odkril si mino.Igra je končana.';
+                ustaviTimer();
+            }
+            else 
+            {
+                var vsebina = poljeMin[stPolja];
+                if(vsebina=='0')vsebina='';
+                document.getElementById('C'+i+'_'+j).innerHTML = vsebina;
+            }
+        }
+        if(event.button==2){
+            if(zastavice<stMin)
+            {
+                document.getElementById('C'+i+'_'+j).innerHTML = '<img src="img/zastavica.png" width="40px">';
+                zastavice++;
+                document.getElementById('C'+i+'_'+j).innerHTML = zastavice;
+            }
+        }
+    }
+
+    function preveriKonecIgre()
+    {
+
+    }
+    var cas =0;
+    function izpisCasa()
+    {
+        cas++;
+        var min = (cas - sek)/60;
+        var sek = cas%60;
+        min +=':';
+        if(sek<10)min='0';
+        min+=sek;
+        document.getElementById('casIgranja').innerHTML = min;
+
+    }
+    function ustaviTimer()
+    {
+
+    }
 }
