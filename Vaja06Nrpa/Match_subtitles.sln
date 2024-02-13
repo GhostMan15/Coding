@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vaja06Nrpa", "Vaja06Nrpa\Vaja06Nrpa.csproj", "{E0E8A268-4F9B-46D1-A805-5BC02E0FB7BA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Match_subtitles", "Match_subtitles\Match_subtitles.csproj", "{E0E8A268-4F9B-46D1-A805-5BC02E0FB7BA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
