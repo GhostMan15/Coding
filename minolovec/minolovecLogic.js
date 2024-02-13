@@ -1,4 +1,4 @@
-var velikost
+var velikost;
 var zastavice;
 var stMin;
 var poljeMin = [];
@@ -16,6 +16,7 @@ function omogociIgro(){
 }
 function pozeniIgro(){
     zastavice = 0;
+    document.getElementById("obvestilo").innerHTML = '';
 
     //pobrisi podatke prejsnje igre
     document.getElementById("stevilkoZastavic").innerHTML = '';
@@ -31,7 +32,9 @@ function pozeniIgro(){
     for(var i=0; i<velikost; i++){
         str += '<tr height="40px">';
         for(var j=0; j<velikost; j++){
-            str += '<td vallign="middle" allign="middle" width="40px" id="C'+i+'_'+j+'">';
+            str += '<td vallign="middle" allign="middle" width="40px" id="C'+i+'_'+j+'" ';
+            str += 'onmouseover = this.style.cursor="pointer" onmouseout = this.style.cursor="default" ';
+            str += 'onmousedown = PreveriGumb(event,' + (i * velikost + j) + ') oncontextmenu="return false;">';
             str += '<img src="img/pokrito.png" width="40px">';
             str +='</td>';
         }
@@ -108,16 +111,20 @@ function pozeniIgro(){
         var ind = Math.floor(Math.random()*poljeMin.length);
         if(poljeMin[ind] == 0){
             poljeOdkrito[ind] = 1;
-            var i = (ind - i) / velikost;
             var j = ind % velikost;
+            var i = (ind - j) / velikost;
             document.getElementById('C'+i+'_'+j).innerHTML = '';
             break;
         }
     }
 
+    //poženi uro
+    cas = 0;
+    pozeniTimer();
+
     //izrisi polje
     /*
-    st_min = 0; 
+    st_min = 0;
     for(var i=0; i<velikost; i++){
         for(var j=0; j<velikost; j++){
             if(poljeMin[st_min] == 'M'){
@@ -131,8 +138,64 @@ function pozeniIgro(){
             st_min++;
         }
     }*/
-    
-    
-    
-    //poženi uro
+}
+
+var interval;
+function pozeniTimer(){
+    interval = setInterval(function(){izpisCasa();}, 1000);
+}
+
+function ustaviTimer(){
+    clearInterval(interval);
+}
+
+var cas = 0;
+function izpisCasa(){
+    cas++;
+    var sec = cas % 60;
+    var min = (cas - sec)/60;
+    min += ':'
+    if(sec < 10)min+='0';
+    min += sec;
+    document.getElementById('casIgranja').innerHTML = min;
+}
+
+function PreveriGumb(event,stPolja){
+    poljeOdkrito[stPolja] = 1;
+    var j = stPolja % velikost;
+    var i = (stPolja - j) / velikost;
+    if(event.button == 0){
+        if(poljeMin[stPolja] == 'M'){
+            //konec igre
+            document.getElementById('C'+i+'_'+j).innerHTML = '<img src="img/mina.jpg" width="40px">';
+            document.getElementById('obvestilo').innerHTML = "Mrtu žuž";
+            ustaviTimer();
+        }else{
+            var vsebina = poljeMin[stPolja];
+            if(vsebina == '0')vsebina = '';
+            document.getElementById('C'+i+'_'+j).innerHTML = vsebina;
+            PreveriKonecIgre();
+        }
+    }
+    if(event.button == 2){
+        if(zastavice < stMin){
+            document.getElementById('C'+i+'_'+j).innerHTML = '<img src="img/zastavica.png" width="40px">';
+            zastavice ++;
+            document.getElementById('stevilkoZastavic').innerHTML = zastavice;
+        }
+    }
+}
+
+function PreveriKonecIgre(){
+    var l = velikost * velikost;
+    var neodkrito = 0;
+    for(i = 0; i < l; i++){
+        if(poljeOdkrito[i] == 0){
+            neodkrito++;
+            break;
+        }
+    }
+    if(neodkrito == 0)document.getElementById('obvestilo').innerHTML = "Zgubu" ;
+
+    ustaviTimer();
 }
