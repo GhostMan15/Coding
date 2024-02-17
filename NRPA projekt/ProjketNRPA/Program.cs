@@ -10,11 +10,11 @@ namespace Projekt
         public int Starost { get; set; }
 
 
-          public  static Oseba operator +(Oseba oseba 1, Oseba, oseba 2) =>  new Oseba ($"Uporabik: {oseba1.Ime} * {oseba2.Ime}; //Preoblikovanje operatorjev (Ugibam?)
+          public  static Oseba operator +(Oseba oseba 1, Oseba oseba 2) =>  new Oseba ($"Uporabik: {oseba1.Ime} * {oseba2.Ime}; //Preoblikovanje operatorjev (Ugibam?)
 	    
         ~Oseba()
         {
-            Console.WriteLine($"Oseba {Ime} je zbrisana")   
+            Console.WriteLine($"Oseba {Ime} je zbrisana");
         }
 
 	
