@@ -28,7 +28,7 @@ function pozeniIgro(){
     document.getElementById("stevilkoMin").innerHTML = stMin;
 
     //pripravi igralno polje
-    var str = '<table border="1">'
+    var str = '<table cellspacing="0" cellpadding="0" border="0">'
     for(var i=0; i<velikost; i++){
         str += '<tr height="40px">';
         for(var j=0; j<velikost; j++){
@@ -37,6 +37,7 @@ function pozeniIgro(){
             str += 'onmousedown = PreveriGumb(event,' + (i * velikost + j) + ') oncontextmenu="return false;">';
             str += '<img src="img/pokrito.png" width="40px">';
             str +='</td>';
+
         }
         str += '</tr>';
     }
@@ -123,8 +124,8 @@ function pozeniIgro(){
     pozeniTimer();
 
     //izrisi polje
-    /*
-    st_min = 0;
+
+   /* st_min = 0;
     for(var i=0; i<velikost; i++){
         for(var j=0; j<velikost; j++){
             if(poljeMin[st_min] == 'M'){
@@ -143,10 +144,12 @@ function pozeniIgro(){
 var interval;
 function pozeniTimer(){
     interval = setInterval(function(){izpisCasa();}, 1000);
+    var klik_aktiven=1;
 }
-
+var klik_aktiven=0;
 function ustaviTimer(){
     clearInterval(interval);
+    var klik_aktiven=0;
 }
 
 var cas = 0;
@@ -161,29 +164,31 @@ function izpisCasa(){
 }
 
 function PreveriGumb(event,stPolja){
-    poljeOdkrito[stPolja] = 1;
-    var j = stPolja % velikost;
-    var i = (stPolja - j) / velikost;
-    if(event.button == 0){
-        if(poljeMin[stPolja] == 'M'){
-            //konec igre
-            document.getElementById('C'+i+'_'+j).innerHTML = '<img src="img/mina.jpg" width="40px">';
-            document.getElementById('obvestilo').innerHTML = "Mrtu žuž";
-            ustaviTimer();
-        }else{
-            var vsebina = poljeMin[stPolja];
-            if(vsebina == '0')vsebina = '';
-            document.getElementById('C'+i+'_'+j).innerHTML = vsebina;
-            PreveriKonecIgre();
+
+        poljeOdkrito[stPolja] = 1;
+        var j = stPolja % velikost;
+        var i = (stPolja - j) / velikost;
+        if(event.button == 0){
+            if(poljeMin[stPolja] == 'M'){
+                //konec igre
+                document.getElementById('C'+i+'_'+j).innerHTML = '<img src="img/mina.jpg" width="40px">';
+                document.getElementById('obvestilo').innerHTML = "Mrtu žuž";
+                ustaviTimer();
+            }else{
+                    var vsebina = poljeMin[stPolja];
+                    if(vsebina == '0')vsebina = '';
+                    document.getElementById('C'+i+'_'+j).innerHTML = vsebina;
+                    OdkrijPolja();
+                    PreveriKonecIgre();
+            }
         }
-    }
-    if(event.button == 2){
-        if(zastavice < stMin){
-            document.getElementById('C'+i+'_'+j).innerHTML = '<img src="img/zastavica.png" width="40px">';
-            zastavice ++;
-            document.getElementById('stevilkoZastavic').innerHTML = zastavice;
+        if(event.button == 2){
+            if(zastavice < stMin){
+                document.getElementById('C'+i+'_'+j).innerHTML = '<img src="img/zastavica.png" width="40px">';
+                zastavice ++;
+                document.getElementById('stevilkoZastavic').innerHTML = zastavice;
+            }
         }
-    }
 }
 
 function PreveriKonecIgre(){
@@ -195,7 +200,26 @@ function PreveriKonecIgre(){
             break;
         }
     }
-    if(neodkrito == 0)document.getElementById('obvestilo').innerHTML = "Zgubu" ;
+    if(neodkrito == 0)
+    {
+        var str ='Čestitam izognil si se minam</br>';
+        str +='<span onclick="">Natisni rezultat!</span>';
+        document.getElementById('obvestilo').innerHTML = "Zgubu" ;
+        ustaviTimer();
+    }
 
-    ustaviTimer();
+}
+function OdkrijPolja(){
+      if(stMin ===0)
+      {
+            for (let i = 0; i<velikost; i++) {
+                for (let  j = 0; j<velikost; j++)
+                {
+                    var vsebina = poljeMin[stPolja];
+                    if(vsebina == '0')vsebina = '';
+                    document.getElementById('C'+i+'_'+j).innerHTML = vsebina;
+                }
+
+            }
+      }
 }
