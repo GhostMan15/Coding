@@ -62,40 +62,40 @@ function pozeniIgro(){
 
     //doloci stike z minami
     for(var i=0; i<poljeMin.length; i++){
-        if(poljeMin[i] == 'M')
+        if(poljeMin[i] === 'M')
         {
             var stik = -1;
             for(var j=0; j<8; j++){
                 switch(j){
                     case 0:
                         stik = i - velikost - 1;
-                        if(i % velikost == 0)stik = -1;
+                        if(i % velikost === 0)stik = -1;
                         break;
                     case 1:
                         stik = i - velikost;
                         break;
                     case 2:
                         stik = i - velikost + 1;
-                        if((i+1) % velikost == 0)stik = -1;
+                        if((i+1) % velikost === 0)stik = -1;
                         break;
                     case 3:
                         stik = i - 1;
-                        if(i % velikost == 0)stik = -1;
+                        if(i % velikost === 0)stik = -1;
                         break;
                     case 4:
                         stik = i + 1;
-                        if((i+1) % velikost == 0)stik = -1;
+                        if((i+1) % velikost === 0)stik = -1;
                         break;
                     case 5:
                         stik = i + velikost - 1;
-                        if(i % velikost == 0)stik = -1;
+                        if(i % velikost === 0)stik = -1;
                         break;
                     case 6:
                         stik = i + velikost;
                         break;
                     case 7:
                         stik = i + velikost + 1;
-                        if((i+1) % velikost == 0)stik = -1;
+                        if((i+1) % velikost === 0)stik = -1;
                         break;
 
                 }
@@ -168,21 +168,24 @@ function PreveriGumb(event,stPolja){
         poljeOdkrito[stPolja] = 1;
         var j = stPolja % velikost;
         var i = (stPolja - j) / velikost;
-        if(event.button == 0){
-            if(poljeMin[stPolja] == 'M'){
+        if(event.button === 0){
+            if(poljeMin[stPolja] === 'M'){
                 //konec igre
                 document.getElementById('C'+i+'_'+j).innerHTML = '<img src="img/mina.jpg" width="40px">';
                 document.getElementById('obvestilo').innerHTML = "Mrtu žuž";
                 ustaviTimer();
             }else{
                     var vsebina = poljeMin[stPolja];
-                    if(vsebina == '0')vsebina = '';
+                    if(vsebina === '0')
+                    {
+                        vsebina = '';
+                        razkrijSosednjaPolja(i, j);
+                    }
                     document.getElementById('C'+i+'_'+j).innerHTML = vsebina;
-                    OdkrijPolja();
                     PreveriKonecIgre();
             }
         }
-        if(event.button == 2){
+        if(event.button === 2){
             if(zastavice < stMin){
                 document.getElementById('C'+i+'_'+j).innerHTML = '<img src="img/zastavica.png" width="40px">';
                 zastavice ++;
@@ -195,12 +198,12 @@ function PreveriKonecIgre(){
     var l = velikost * velikost;
     var neodkrito = 0;
     for(i = 0; i < l; i++){
-        if(poljeOdkrito[i] == 0){
+        if(poljeOdkrito[i] === 0){
             neodkrito++;
             break;
         }
     }
-    if(neodkrito == 0)
+    if(neodkrito === 0)
     {
         var str ='Čestitam izognil si se minam</br>';
         str +='<span onclick="">Natisni rezultat!</span>';
@@ -209,17 +212,29 @@ function PreveriKonecIgre(){
     }
 
 }
-function OdkrijPolja(){
-      if(stMin ===0)
-      {
-            for (let i = 0; i<velikost; i++) {
-                for (let  j = 0; j<velikost; j++)
+function razkrijSosednjaPolja(vrst, stolp)
+{
+    for (let v = vrst - 1; v <= vrst + 1; v++)
+    {
+        for (let s = stolp - 1; s <= stolp + 1; s++)
+        {
+            if (v >= 0 && v < velikost && s >= 0 && s < velikost)
+            {
+                let index = v * velikost + s;
+                if (poljeOdkrito[index] === 0) 
                 {
-                    var vsebina = poljeMin[stPolja];
-                    if(vsebina == '0')vsebina = '';
-                    document.getElementById('C'+i+'_'+j).innerHTML = vsebina;
+                    poljeOdkrito[index] = 1;
+                    if (poljeMin[index] === '0')
+                    {
+                        document.getElementById('C' + v + '_' + s).innerHTML = '';
+                        razkrijSosednjaPolja(v, s);
+                    }
+                    else
+                    {
+                        document.getElementById('C' + v + '_' + s).innerHTML = poljeMin[index];
+                    }
                 }
-
             }
-      }
+        }
+    }
 }
