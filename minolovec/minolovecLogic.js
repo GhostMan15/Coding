@@ -176,7 +176,7 @@ function PreveriGumb(event,stPolja){
                 ustaviTimer();
             }else{
                     var vsebina = poljeMin[stPolja];
-                    if(vsebina === '0')
+                    if(vsebina == '0')
                     {
                         vsebina = '';
                         razkrijSosednjaPolja(i, j);
@@ -212,25 +212,18 @@ function PreveriKonecIgre(){
     }
 
 }
-function razkrijSosednjaPolja(vrst, stolp)
-{
-    for (let v = vrst - 1; v <= vrst + 1; v++)
-    {
-        for (let s = stolp - 1; s <= stolp + 1; s++)
-        {
-            if (v >= 0 && v < velikost && s >= 0 && s < velikost)
-            {
+function razkrijSosednjaPolja(vrst, stolp){
+    for (let v = vrst - 1; v <= vrst + 1; v++){
+        for (let s = stolp - 1; s <= stolp + 1; s++){
+            if (v >= 0 && v < velikost && s >= 0 && s < velikost){
                 let index = v * velikost + s;
-                if (poljeOdkrito[index] === 0) 
-                {
+                if (poljeOdkrito[index] == 0) {
                     poljeOdkrito[index] = 1;
-                    if (poljeMin[index] === '0')
-                    {
+                    if (poljeMin[index] == '0'){
                         document.getElementById('C' + v + '_' + s).innerHTML = '';
                         razkrijSosednjaPolja(v, s);
                     }
-                    else
-                    {
+                    else{
                         document.getElementById('C' + v + '_' + s).innerHTML = poljeMin[index];
                     }
                 }
