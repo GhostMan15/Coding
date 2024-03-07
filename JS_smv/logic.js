@@ -1,0 +1,12 @@
+
+
+
+
+function omogociIgro()
+{
+
+}
+function pozeniIgro()
+{
+
+}

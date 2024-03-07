@@ -6,9 +6,41 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src = "logic.js"></script>
+    <link rel="stylesheet" href="style.css">
     <title>Tombola</title>
 </head>
 <body>
+<h1 id="naslov">Tombola</h1>
+<div class="glava">
+<img src="tombola.png" alt="Tombola">
+</div>
+<div class="navodila">
+    <p>Navodila za igro</p>
+    <p>Igralec si izbere eno izmed igralnih kartic na desni strani,računlanik pa naključno eno izemd <br/>
+        preostalih.Nato računalnik generira naključna števila in označuje mesta,katerih so bila<br/>
+        generirana.Enako naredi igralec.Ko ima računalnik ali igralec označena vsa števila v eni vrstici.<br/>
+        klikne na gumb BINGO - zmaga. Goljufanje uporabnika preverja računalnik pred potrditvijo<br/>
+        zmage.Novo igro požene igralec s klikom na gumb "Nova igra".
+    </p>
+    <p>
+        Izberite število vrstic na igralni kartici:
+        <select name="" id="steviloKartic" onchange="omogociIgro()">
+            <option value="0" selected>Izberi število kartic</option>
+            <option value="3" selected>3</option>
+            <option value="2" selected>4</option>
+            <option value="5" selected>5</option>
+        </select>
+    </p>
+    <button id="novaIgra" onclick="pozeniIgro()">Nova Igra</button>
+    <p>Čas igranja: <span id="casIgranja"></span><br/>
+        Novo število: <span id="novoStevilo"></span> </p>
+</div>
+<div class="podatki">
 
+
+</div>
+<div class="igralnoPolje">
+
+</div>
 </body>
 </html>

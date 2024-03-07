@@ -1,0 +1,7 @@
+.glava, .navodila{
+    display: inline-block;
+    vertical-align:  top;
+}
+#naslov{
+    text-align: center;
+}
