@@ -25,7 +25,7 @@ namespace ProjektFormsNRPA
             if (int.TryParse(vnesenPin, out int pin)) //converta pin v int 
             {
                 _zapisOseb.PreveriPin(pin);
-                MessageBox.Show($"Dobrodoöli v {Konstane.ImeBanke}");
+                MessageBox.Show($"Dobrodo≈°li v {Konstane.ImeBanke}");
                
             }
             else
