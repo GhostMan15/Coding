@@ -5,7 +5,6 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src = "logic.js"></script>
     <link rel="stylesheet" href="style.css">
     <title>Tombola</title>
 </head>
@@ -26,21 +25,29 @@
         Izberite število vrstic na igralni kartici:
         <select name="" id="steviloKartic" onchange="omogociIgro()">
             <option value="0" selected>Izberi število kartic</option>
-            <option value="3" selected>3</option>
-            <option value="2" selected>4</option>
-            <option value="5" selected>5</option>
+            <option value="3">3 vrstice</option>
+            <option value="4">4 vrstice</option>
+            <option value="5">5 vrstic</option>
         </select>
     </p>
-    <button id="novaIgra" onclick="pozeniIgro()">Nova Igra</button>
+    <button id="novaIgra" onclick="pozeniIgro()" disabled="true">Nova Igra</button>
     <p>Čas igranja: <span id="casIgranja"></span><br/>
         Novo število: <span id="novoStevilo"></span> </p>
 </div>
-<div class="podatki">
 
-
-</div>
 <div class="igralnoPolje">
-
+    <div class="racunalnik" id="racunalnik">
+        <h2>Računalnik</h2>
+    </div>
+    <div class="igralec" id="igralec">
+        <h2>Igralec</h2>
+        <button id="naprej" disabled="true">Naprej </button>
+        <button id="bingo">Bingo</button>
+    </div>
+    <div class="podatki" id="podatki">
+    <button id="skrij">Show</button>
+    </div>
 </div>
+<script src = "logic.js"></script>
 </body>
 </html>

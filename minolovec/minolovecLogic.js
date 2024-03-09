@@ -11,7 +11,98 @@ function omogociIgro(){
 
         //ustavi merjenje casa
     }
-    else document.getElementById("novaIgra").disabled = false;
+    else document.getElementById("novaIgra").disabled = false;let maxNumber = 25; // Default max number for 5x5 grid
+
+    function createBoard(player, columns) {
+      let board = document.createElement('table');
+      board.classList.add('board');
+      board.dataset.player = player;
+    
+      let numbers = Array.from({ length: maxNumber }, (_, i) => i + 1);
+      shuffle(numbers);
+    
+      for (let i = 0; i < maxNumber / columns; i++) {
+        let row = document.createElement('tr');
+        for (let j = 0; j < columns; j++) {
+          let cell = document.createElement('td');
+          cell.textContent = numbers[i * columns + j];
+          row.appendChild(cell);
+        }
+        board.appendChild(row);
+      }
+    
+      return board;
+    }
+    
+    function createBoards() {
+      let columnCount = parseInt(document.getElementById('columnCount').value);
+      let playersDiv = document.getElementById('players');
+      playersDiv.innerHTML = '';
+    
+      for (let i = 1; i <= 2; i++) {
+        let playerDiv = document.createElement('div');
+        playerDiv.id = `player${i}`;
+        playerDiv.classList.add('player');
+        playerDiv.innerHTML = `<h2>Player ${i}</h2>`;
+        
+        let board = createBoard(i, columnCount);
+        playerDiv.appendChild(board);
+        
+        let rollButton = document.createElement('button');
+        rollButton.textContent = 'Roll Dice';
+        rollButton.onclick = () => rollDice(i, columnCount);
+        playerDiv.appendChild(rollButton);
+    
+        playersDiv.appendChild(playerDiv);
+      }
+    }
+    
+    function rollDice(player, columns) {
+      let playerBoard = document.querySelector(`.board[data-player="${player}"]`);
+      let cells = playerBoard.getElementsByTagName('td');
+    
+      let availableNumbers = Array.from({ length: maxNumber }, (_, i) => i + 1)
+        .filter(num => !Array.from(cells).some(cell => cell.textContent == num));
+    
+      if (availableNumbers.length === 0) {
+        alert(`Player ${player} has no available numbers left!`);
+        return;
+      }
+    
+      let randomIndex = Math.floor(Math.random() * availableNumbers.length);
+      let number = availableNumbers[randomIndex];
+    
+      let cell = Array.from(cells).find(cell => cell.textContent === '');
+      cell.textContent = number;
+    
+      checkBingo(player, columns);
+    }
+    
+    function checkBingo(player, columns) {
+      let playerBoard = document.querySelector(`.board[data-player="${player}"]`);
+      let rows = playerBoard.getElementsByTagName('tr');
+    
+      // Check rows
+      for (let i = 0; i < maxNumber / columns; i++) {
+        let row = rows[i];
+        let cells = row.getElementsByTagName('td');
+        if (Array.from(cells).every(cell => cell.textContent !== '')) {
+          alert(`Bingo! Player ${player} wins!`);
+          break;
+        }
+      }
+    }
+    
+    function shuffle(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+    }
+    
+    // Initialize the boards with default column count
+    createBoards();
+    
     document.getElementById("IgralnoPolje").innerHTML = '';
 }
 function pozeniIgro(){
