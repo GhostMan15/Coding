@@ -31,21 +31,21 @@
         </select>
     </p>
     <button id="novaIgra" onclick="pozeniIgro()" disabled="true">Nova Igra</button>
+    <audio id="zvok" ></audio>
     <p>Čas igranja: <span id="casIgranja"></span><br/>
         Novo število: <span id="novoStevilo"></span> </p>
 </div>
 
+<div class="podatki" id="podatki">
+</div>
 <div class="igralnoPolje">
-    <div class="racunalnik" id="racunalnik">
+    <div class="racunalnik" id="racunalnik" >
         <h2>Računalnik</h2>
     </div>
-    <div class="igralec" id="igralec">
+    <div class="igralec" id="igralec" onclick="oznaciCelico()">
         <h2>Igralec</h2>
-        <button id="naprej" disabled="true">Naprej </button>
-        <button id="bingo">Bingo</button>
-    </div>
-    <div class="podatki" id="podatki">
-    <button id="skrij">Show</button>
+        <button id="naprej" disabled="true"  onclick="genereiraj()">Naprej </button>
+        <button id="bingo" onclick="preveriZmago()">Bingo</button>
     </div>
 </div>
 <script src = "logic.js"></script>
