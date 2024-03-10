@@ -30,7 +30,6 @@ function pozeniIgro() {
                     let st = i * 15 + j * 5 +stolp + 1;
                     if (st <= 75) {
                         tabela += '<td>' + st + '</td>';
-
                     }
                 }
                 tabela += '</tr>';
@@ -40,7 +39,6 @@ function pozeniIgro() {
         }
         podatkiDiv.innerHTML += tabela;
     } else if (stVrstic === 4) {
-
         let tabela = '';
         for (let i = 0; i < 5; i++) {
             tabela += '<table>';
@@ -50,7 +48,6 @@ function pozeniIgro() {
                     let st = i * 20 + j * 5 + k + 1;
                     if (st <= 80) {
                         tabela += '<td>' + st + '</td>';
-
                     }
                 }
                 tabela += '</tr>';
@@ -60,7 +57,6 @@ function pozeniIgro() {
         }
         podatkiDiv.innerHTML += tabela;
     } else if (stVrstic === 5) {
-
         let tabela = '';
         for (let i = 0; i < 3; i++) {
             tabela += '<table>';
@@ -70,7 +66,6 @@ function pozeniIgro() {
                     let st = i * 25 + j * 5 + k +1;
                     if (st <= 75) {
                         tabela += '<td>' + st + '</td>';
-
                     }
                 }
                 tabela += '</tr>';
@@ -80,7 +75,6 @@ function pozeniIgro() {
         }
         podatkiDiv.innerHTML += tabela;
     }
-
     racunalnikIzbere();
     racunalnikKopira();
     dodajanje();
@@ -142,7 +136,7 @@ function  genereiraj() {
         return;
     }
     stevila.forEach(numberCell => {
-        numberCell.style.color = ""; // Remove the color style
+        numberCell.style.color = ""; 
     });
     let randomIndex = Math.floor(Math.random() * stevila.length);
     let celica = stevila[randomIndex];
@@ -253,7 +247,6 @@ function ustaviTimer(){
     clearInterval(interval);
     let klik_aktiven=0;
 }
-
 let cas = 0;
 function izpisCasa(){
     cas++;
