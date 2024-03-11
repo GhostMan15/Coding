@@ -127,7 +127,6 @@ function racunalnikKopira()
 
     }
 }
-
 function  genereiraj() {
     let stevila = document.querySelectorAll("#podatki table td:not(.izbran)");
     if (stevila.length === 0) {
