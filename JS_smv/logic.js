@@ -131,7 +131,7 @@ function racunalnikKopira()
 function  genereiraj() {
     let stevila = document.querySelectorAll("#podatki table td:not(.izbran)");
     if (stevila.length === 0) {
-        alert("Vsa številke so izžrebane");
+        alert("Vse številke so izžrebane");
         ustaviTimer();
         return;
     }
@@ -149,26 +149,12 @@ function  genereiraj() {
     document.getElementById("novoStevilo").textContent = izbranaStevilka;
     izzrebaneStevilke.push(parseInt(izbranaStevilka));
     let racunalnikCelice = document.querySelectorAll("#racunalnik table td");
-    let stej = 0;
     racunalnikCelice.forEach(cell => {
         if (cell.textContent === izbranaStevilka && !cell.classList.contains("izbran")) {
             cell.style.backgroundColor = "green"; // Spremeni barvo ozadja
             cell.classList.add("izbran");
-            stej++;
-            if(stej ===5)
-            {
-               let racunalnikZ=preveriPetZaporednih("racunalnik","green");
-                if(racunalnikZ)
-                {
-                    alert("Računalnik je zmagal");
-                }
-            }
-        }
-        else {
-            stej =0;
         }
         });
-
     racunalnikPreveriZmago();
 }
 
