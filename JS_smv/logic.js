@@ -7,9 +7,11 @@ function omogociIgro() {
     if (velikost == 0) {
         document.getElementById("novaIgra").disabled = true;
         document.getElementById("naprej").disabled = true;
+        document.getElementById("bingo").disabled = true;
     } else {
         document.getElementById("novaIgra").disabled = false;
         document.getElementById("naprej").disabled = false;
+        document.getElementById("bingo").disabled = false;
         racunalnikIzbere();
     }
 }
@@ -134,25 +136,25 @@ function  genereiraj() {
         ustaviTimer();
         return;
     }
-    stevila.forEach(numberCell => {
-        numberCell.style.color = ""; 
+    stevila.forEach(function(stevilke) {
+        stevilke.style.color = "";
     });
     let randomIndex = Math.floor(Math.random() * stevila.length);
     let celica = stevila[randomIndex];
     let izbranaStevilka = celica.textContent;
 
-    //Beleži izbrane številke
     celica.classList.add("izbran");
     celica.style.backgroundColor = "green";
-    // Prikaže izžrebano številko
+
     document.getElementById("novoStevilo").textContent = izbranaStevilka;
     izzrebaneStevilke.push(parseInt(izbranaStevilka));
     let racunalnikCelice = document.querySelectorAll("#racunalnik table td");
-    racunalnikCelice.forEach(cell => {
+    racunalnikCelice.forEach(function (cell)  {
         if (cell.textContent === izbranaStevilka && !cell.classList.contains("izbran")) {
-            cell.style.backgroundColor = "green"; // Spremeni barvo ozadja
+            cell.style.backgroundColor = "green";
             cell.classList.add("izbran");
         }
+
         });
     racunalnikPreveriZmago();
 }

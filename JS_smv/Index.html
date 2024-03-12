@@ -24,7 +24,7 @@
     <p>
         Izberite število vrstic na igralni kartici:
         <select name="" id="steviloKartic" onchange="omogociIgro()">
-            <option value="0" selected>Izberi število kartic</option>
+            <option value="0" selected hidden="hidden">Izberi število kartic</option>
             <option value="3">3 vrstice</option>
             <option value="4">4 vrstice</option>
             <option value="5">5 vrstic</option>
@@ -45,7 +45,7 @@
     <div class="igralec" id="igralec" onclick="oznaciCelico()">
         <h2>Igralec</h2>
         <button id="naprej" disabled="true"  onclick="genereiraj()">Naprej </button>
-        <button id="bingo" onclick="preveriZmago()">Bingo</button>
+        <button id="bingo" disabled="true" onclick="preveriZmago()">Bingo</button>
     </div>
 </div>
 <script src = "logic.js"></script>
