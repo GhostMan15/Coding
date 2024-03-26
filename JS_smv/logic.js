@@ -87,7 +87,6 @@ function kopirajTabelo(tab) {
     let igralecDiv = document.getElementById("igralec");
     let ime = igralecDiv.querySelector("h2").cloneNode(true);
     let button = igralecDiv.querySelectorAll("button");
-
     igralecDiv.innerHTML='';
     igralecDiv.appendChild(ime);
     document.getElementById("igralec").appendChild(clone);
