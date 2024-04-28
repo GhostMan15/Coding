@@ -20,4 +20,9 @@
         <PackageReference Include="MySql.Data" Version="8.3.0" />
         <PackageReference Include="MySqlConnector" Version="2.3.7" />
     </ItemGroup>
+    <ItemGroup>
+         <Content Include="appsettings.json">
+             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+         </Content>
+    </ItemGroup>
 </Project>

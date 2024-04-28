@@ -12,17 +12,12 @@ public partial class MainWindow : Window
     {
         InitializeComponent();
         DataContext = this;
-        configuration = new ConfigurationBuilder()
-  
-            .AddJsonFile("conn.json", optional:true)
-            .Build();
-        conn = configuration.GetConnectionString("MyConnectionString");
     }
 
     private void LoginButton_OnClick(object? sender, RoutedEventArgs e)
-    {
-        var login = new Login(configuration);
-       //var login = new Login();
+    { 
+        var login = new Login();
         login.Show();
+        this.Hide();
     }
 }

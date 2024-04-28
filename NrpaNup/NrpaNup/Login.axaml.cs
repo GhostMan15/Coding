@@ -7,25 +7,24 @@ using Microsoft.Extensions.Configuration;
 using System.IO;
 using MySql.Data.MySqlClient;
 using Tmds.DBus.Protocol;
+using System.Configuration;
+using ConfigurationManager = System.Configuration.ConfigurationManager;
 
 namespace NrpaNup;
 
 public partial class Login : Window
 {
-    private static string kan = "Server=localhost;Database=nrpa;Uid=root;Pwd=root;"; 
-    private readonly IConfiguration _configuration; 
-    private static string conn; 
+    //private static string kan = "Server=localhost;Database=nrpa;Uid=root;Pwd=root;"; 
+    private static string conn;
+    public int userId;
     public Login()
     {
         InitializeComponent();
-       
+        var reader = new AppSettingsReader("appsettings.json");
+        conn = reader.GetStringValue("ConnectionStrings:MyConnectionString");
     }
 
-   public Login(IConfiguration configuration) : this()
-    {
-        _configuration = configuration;
-        conn = _configuration.GetConnectionString("MyConnectionString");
-    }
+
     private void SignIn_OnClick(object? sender, RoutedEventArgs e)
     {
         string username = Username.Text;
@@ -50,7 +49,15 @@ public partial class Login : Window
                 {
                     command.Parameters.AddWithValue("@name", username);
                     command.Parameters.AddWithValue("@geslo", password);
+                    using (MySqlDataReader reader = command.ExecuteReader() )
+                    {
+                        while ( reader.Read())
+                        {
+                            userId = reader.GetInt32("id_uporabnika");
+                        }
+                    }
                 }
+                Console.WriteLine(userId);
             }
             catch (Exception exception)
             {
@@ -60,4 +67,22 @@ public partial class Login : Window
             this.Close();
         }
     }
+}
+public class AppSettingsReader
+{
+    private readonly IConfiguration _configuration;
+
+    public AppSettingsReader(string FilePath)
+    {
+        var builder = new ConfigurationBuilder()
+            .AddJsonFile(FilePath, optional: false, reloadOnChange: false);
+        _configuration = builder.Build();
+    }
+
+    public string GetStringValue(string key)
+    {
+        return _configuration[key];
+    }
+
+
 }
