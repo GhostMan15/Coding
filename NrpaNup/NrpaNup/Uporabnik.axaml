@@ -4,6 +4,59 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="NrpaNup.Uporabnik"
+        x:CompileBindings="True"
+        Background="#262626"
+        WindowStartupLocation="CenterScreen"
         Title="Uporabnik">
-    Welcome to Avalonia!
+        <Grid ColumnDefinitions="*,*,*" RowDefinitions="*,*,*,*">
+            <!--Stanje-->
+            <Border Grid.Column="0" Grid.Row="0" BorderThickness="1" BorderBrush="Black" CornerRadius="10" Margin="3">
+                 <Label Content="Stanje"/>
+              </Border>
+            <!--Podatki kartice-->
+            <Border Grid.Column="0" Grid.Row="1" BorderThickness="1" BorderBrush="Black" CornerRadius="10" Margin="3">
+                <Label Content="Kartica"/>
+            </Border>
+           <!-- Profil -->
+            <StackPanel Grid.Row="0" Grid.Column="2" HorizontalAlignment="Center">
+                <DockPanel>
+                    <Menu DockPanel.Dock="Right" CornerRadius="10" Margin="3">
+                        <MenuItem Header="_Profile " CornerRadius="10">
+                            <Button CornerRadius="10" Margin="3" Content="Nakazilo"/>
+                            <Button CornerRadius="10" Margin="3" Content="Transakije"/>
+                            <Button CornerRadius="10" Margin="3" Content="Log"/>
+                            <Button CornerRadius="10" Margin="3"  Content="Odjava" Click="Logout_OnClick"/>
+                        </MenuItem>
+                    </Menu>
+                </DockPanel>
+            </StackPanel>
+            <!-- Moje narocnine -->
+            <Border Grid.Row="2" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="2" BorderThickness="1" BorderBrush="Black" CornerRadius="10" Margin="3">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <ListBox>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <Label Content="Moje narocnine"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+                </ScrollViewer>
+            </Border>
+            <!-- Vse mogoce narocnine -->
+            <Border Grid.Row="1" Grid.RowSpan="3" Grid.Column="2" BorderThickness="1" BorderBrush="Black" CornerRadius="10" Margin="3">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <ListBox>
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <Label Content="Mozne narocnine"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </ScrollViewer>
+            </Border>
+        </Grid>
 </Window>

@@ -4,6 +4,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="NrpaNup.Zaposlen"
+        x:CompileBindings="True"
+        Background="#262626"
+        WindowStartupLocation="CenterScreen"
         Title="Zaposlen">
-    Welcome to Avalonia!
+   <Grid ColumnDefinitions="*,*,*" RowDefinitions="*,*">
+       <!-- Ponudbe kreditov -->
+       <Border></Border>
+       <!-- Mozne narocnine ter kreiranje novih -->
+       <Border></Border>
+       <!-- Profile -->
+   </Grid>
 </Window>

@@ -8,12 +8,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="815d4385-3ef4-45ab-8746-3c7bc960ca5c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/NrpaNup/Admin.axaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/NrpaNup/Admin.axaml.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/NrpaNup/Uporabnik.axaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/NrpaNup/Uporabnik.axaml.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/NrpaNup/Zaposlen.axaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/NrpaNup/Zaposlen.axaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.NrpaNup/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NrpaNup/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.NrpaNup/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NrpaNup/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NrpaNup/Login.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/NrpaNup/Login.axaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NrpaNup/Login.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NrpaNup/Login.axaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NrpaNup/MainWindow.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/NrpaNup/MainWindow.axaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NrpaNup/Uporabnik.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/NrpaNup/Uporabnik.axaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NrpaNup/Uporabnik.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NrpaNup/Uporabnik.axaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NrpaNup/Zaposlen.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/NrpaNup/Zaposlen.axaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,9 +69,9 @@
       "mysql"
     ],
     "rider.external.source.directories": [
-      "/home/Faruk/.config/JetBrains/Rider2023.3/resharper-host/DecompilerCache",
-      "/home/Faruk/.config/JetBrains/Rider2023.3/resharper-host/SourcesCache",
-      "/home/Faruk/.local/share/Symbols/src"
+      "/home/faruk/.config/JetBrains/Rider2024.1/resharper-host/DecompilerCache",
+      "/home/faruk/.config/JetBrains/Rider2024.1/resharper-host/SourcesCache",
+      "/home/faruk/.local/share/Symbols/src"
     ]
   }
 }]]></component>
@@ -110,6 +112,7 @@
       <workItem from="1714317255110" duration="5599000" />
       <workItem from="1714322948070" duration="524000" />
       <workItem from="1714323401434" duration="44000" />
+      <workItem from="1714323998360" duration="3204000" />
     </task>
     <servers />
   </component>

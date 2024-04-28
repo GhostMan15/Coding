@@ -49,11 +49,21 @@ public partial class Login : Window
                 {
                     command.Parameters.AddWithValue("@name", username);
                     command.Parameters.AddWithValue("@geslo", password);
-                    using (MySqlDataReader reader = command.ExecuteReader() )
+                    using (MySqlDataReader reader = command.ExecuteReader())
                     {
-                        while ( reader.Read())
+                        if ( reader.Read())
                         {
                             userId = reader.GetInt32("id_uporabnika");
+                            Close();
+                            var uporabnik = new Uporabnik();
+                            uporabnik.Show();
+                        }
+                        else
+                        {
+                                Username.Text = "";
+                                Password.Text = "";
+                                wrong.IsVisible = true;
+                                prazno.IsVisible = false;
                         }
                     }
                 }
@@ -64,7 +74,7 @@ public partial class Login : Window
                 Console.WriteLine(exception);
                 throw;
             }
-            this.Close();
+           
         }
     }
 }
