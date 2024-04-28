@@ -8,12 +8,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="815d4385-3ef4-45ab-8746-3c7bc960ca5c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/NrpaNup/Login.axaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/NrpaNup/Login.axaml.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/NrpaNup/Register.axaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/NrpaNup/Register.axaml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.NrpaNup/.idea/dataSources/290d851c-5086-4829-8532-2fc0da318d8e.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.NrpaNup/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NrpaNup/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NrpaNup/Login.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/NrpaNup/Login.axaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NrpaNup/Login.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NrpaNup/Login.axaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NrpaNup/MainWindow.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NrpaNup/MainWindow.axaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NrpaNup/NrpaNup.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/NrpaNup/NrpaNup.csproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,6 +53,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "database.query.execution",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -62,9 +61,9 @@
       "mysql"
     ],
     "rider.external.source.directories": [
-      "/home/Faruk/.config/JetBrains/Rider2023.3/resharper-host/DecompilerCache",
-      "/home/Faruk/.config/JetBrains/Rider2023.3/resharper-host/SourcesCache",
-      "/home/Faruk/.local/share/Symbols/src"
+      "/home/faruk/.config/JetBrains/Rider2024.1/resharper-host/DecompilerCache",
+      "/home/faruk/.config/JetBrains/Rider2024.1/resharper-host/SourcesCache",
+      "/home/faruk/.local/share/Symbols/src"
     ]
   }
 }]]></component>
@@ -99,6 +98,7 @@
       <workItem from="1713805336509" duration="287000" />
       <workItem from="1714292196239" duration="1788000" />
       <workItem from="1714295600862" duration="51000" />
+      <workItem from="1714295995362" duration="2092000" />
     </task>
     <servers />
   </component>

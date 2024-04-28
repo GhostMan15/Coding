@@ -13,6 +13,7 @@ public partial class MainWindow : Window
 
     private void LoginButton_OnClick(object? sender, RoutedEventArgs e)
     {
-        
+        var login = new Login();
+        login.Show();
     }
 }
