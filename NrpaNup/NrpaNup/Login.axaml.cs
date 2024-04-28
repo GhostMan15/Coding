@@ -12,20 +12,20 @@ namespace NrpaNup;
 
 public partial class Login : Window
 {
-    private string conn; 
-    private readonly IConfiguration configuration; 
-    
+    private static string kan = "Server=localhost;Database=nrpa;Uid=root;Pwd=root;"; 
+    private readonly IConfiguration _configuration; 
+    private static string conn; 
     public Login()
     {
         InitializeComponent();
-      
-        configuration = new ConfigurationBuilder()
-  
-            .AddJsonFile("conn.json", optional:true)
-            .Build();
-        conn = configuration.GetConnectionString("MyConnectionString");
+       
     }
 
+   public Login(IConfiguration configuration) : this()
+    {
+        _configuration = configuration;
+        conn = _configuration.GetConnectionString("MyConnectionString");
+    }
     private void SignIn_OnClick(object? sender, RoutedEventArgs e)
     {
         string username = Username.Text;
@@ -57,7 +57,7 @@ public partial class Login : Window
                 Console.WriteLine(exception);
                 throw;
             }
-        
+            this.Close();
         }
     }
 }
