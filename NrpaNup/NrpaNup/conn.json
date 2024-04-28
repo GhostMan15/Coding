@@ -1,0 +1,5 @@
+{
+  "ConnectionStrings":{
+    "MyConnectionString": "Server=localhost;Database=nrpa;Uid=root;Pwd=root;"
+  } 
+}

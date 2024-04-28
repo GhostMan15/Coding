@@ -7,9 +7,11 @@
         x:CompileBindings="True"
         Background="#262626"
         Title="NrpaNup">
-    <Grid>
-        <StackPanel>
-            <Label Content="mememe"/>
+    <Grid ColumnDefinitions="*,*,*" RowDefinitions="*,*,*,*">
+        <StackPanel Grid.Row="2" Grid.Column="1">
+            <Label Content="Zlata Banka Slovenije ZLB " HorizontalAlignment="Center" VerticalAlignment="Center" IsVisible="True"/>
+            <Button x:Name="LoginButton" Content="Login" CornerRadius="10" Margin="3" Padding="5" 
+                    HorizontalAlignment="Center" VerticalAlignment="Center" Click="LoginButton_OnClick" IsVisible="True"/>
         </StackPanel>
     </Grid>
 </Window>
