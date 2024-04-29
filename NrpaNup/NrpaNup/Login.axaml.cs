@@ -1,4 +1,5 @@
 using System;
+using System.Collections.ObjectModel;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
@@ -8,6 +9,7 @@ using System.IO;
 using MySql.Data.MySqlClient;
 using Tmds.DBus.Protocol;
 using System.Configuration;
+using System.Data;
 using ConfigurationManager = System.Configuration.ConfigurationManager;
 
 namespace NrpaNup;
@@ -16,15 +18,18 @@ public partial class Login : Window
 {
     //private static string kan = "Server=localhost;Database=nrpa;Uid=root;Pwd=root;"; 
     private static string conn;
-    public int userId;
+    public static int userId;
+    public string ime;
+    private string vrsta;
+    private readonly Uporabnik _uporabnik;
     public Login()
     {
         InitializeComponent();
+        _uporabnik = new Uporabnik();
         var reader = new AppSettingsReader("appsettings.json");
         conn = reader.GetStringValue("ConnectionStrings:MyConnectionString");
     }
-
-
+    
     private void SignIn_OnClick(object? sender, RoutedEventArgs e)
     {
         string username = Username.Text;
@@ -44,19 +49,35 @@ public partial class Login : Window
             connection.Open();
             try
             {
-                string sql = "SELECT id_uporabnika, name,geslo FROM uporabniki WHERE name = @name AND geslo = @geslo";
-                using (MySqlCommand command = new MySqlCommand(sql,connection))
+                //string sql = "SELECT id_uporabnika, ime,geslo FROM uporabniki WHERE ime = @name AND geslo = @geslo";
+                using (MySqlCommand command = new MySqlCommand("Vpis",connection))
                 {
-                    command.Parameters.AddWithValue("@name", username);
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@ime", username);
                     command.Parameters.AddWithValue("@geslo", password);
                     using (MySqlDataReader reader = command.ExecuteReader())
                     {
                         if ( reader.Read())
                         {
                             userId = reader.GetInt32("id_uporabnika");
+                            vrsta = reader.GetString(reader.GetOrdinal("vrsta_uporabnika"));
                             Close();
-                            var uporabnik = new Uporabnik();
-                            uporabnik.Show();
+                            switch (vrsta)
+                            {
+                                case "uporabnik":
+                                    var uporabnik = new Uporabnik();
+                                    uporabnik.Show();
+                                    break;
+                                case "zaposlen":
+                                    var zaposlen = new Zaposlen();
+                                    zaposlen.Show();
+                                    break;
+                                case "admin":
+                                    var admin = new Admin();
+                                    admin.Show();
+                                    break;
+                            }
+                   
                         }
                         else
                         {
@@ -95,4 +116,15 @@ public class AppSettingsReader
     }
 
 
+}
+
+public class Prikaz
+{
+    public string Ime { get; set; }
+    public ObservableCollection<Prikaz> prikazeIme { get; } = new ObservableCollection<Prikaz>();
+    public Prikaz(string ime)
+    {
+        Ime = ime;
+    }
+    public Prikaz(){}
 }

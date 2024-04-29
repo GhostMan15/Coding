@@ -4,6 +4,33 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="NrpaNup.Admin"
+        x:CompileBindings="True"
+        Background="#262626"
+        WindowStartupLocation="CenterScreen"
         Title="Admin">
-    Welcome to Avalonia!
+        <Grid ColumnDefinitions="*,*" RowDefinitions="*,*,*">
+                <!-- Kreiranje profila -->
+                <Border Grid.Row="0" Grid.Column="0" BorderThickness="1" BorderBrush="Black" CornerRadius="10" Margin="3">
+                        <Label Content="Kreiranje profila"/>
+                </Border>
+                <!-- Pogled na uporabnike -->
+                <Border Grid.Row="1" Grid.Column="0" BorderThickness="1" BorderBrush="Black" CornerRadius="10" Margin="3">
+                        <Label Content="Pogled na uporabnike"/>
+                </Border>
+                <!-- Pogled transakcij -->
+                <Border Grid.Row="2" Grid.Column="0" BorderThickness="1" BorderBrush="Black" CornerRadius="10" Margin="3">
+                        <Label Content="Pogled na transakcije"/>
+                </Border>
+                <!-- Profile -->
+                <StackPanel Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right">
+                        <DockPanel>
+                                <Menu DockPanel.Dock="Right" CornerRadius="10" Margin="3">
+                                        <MenuItem Header="_Profile" CornerRadius="10">
+                                                <Button CornerRadius="10" Margin="3" Content="Log"/>
+                                                <Button CornerRadius="10" Margin="3"  Content="Odjava" Click="Logout_OnClick"/>
+                                        </MenuItem>
+                                </Menu>
+                        </DockPanel>
+                </StackPanel>
+        </Grid>
 </Window>

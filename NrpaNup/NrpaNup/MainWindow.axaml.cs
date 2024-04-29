@@ -6,8 +6,7 @@ namespace NrpaNup;
 
 public partial class MainWindow : Window
 {
-    private string conn; 
-    private readonly IConfiguration configuration; 
+
     public MainWindow()
     {
         InitializeComponent();

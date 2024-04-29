@@ -10,9 +10,44 @@
         Title="Zaposlen">
    <Grid ColumnDefinitions="*,*,*" RowDefinitions="*,*">
        <!-- Ponudbe kreditov -->
-       <Border></Border>
+       <Border Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" CornerRadius="10" Margin="3" BorderThickness="1" BorderBrush="Black">
+           <ScrollViewer VerticalScrollBarVisibility="Auto">
+               <ListBox>
+                   <ListBox.ItemTemplate>
+                       <DataTemplate>
+                           <StackPanel>
+                               <Button Content="krediti"/>
+                           </StackPanel>
+                       </DataTemplate>
+                   </ListBox.ItemTemplate>
+               </ListBox>
+           </ScrollViewer>
+       </Border>
        <!-- Mozne narocnine ter kreiranje novih -->
-       <Border></Border>
+       <Border Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" CornerRadius="10" Margin="3" BorderThickness="1" BorderBrush="Black">
+           <ScrollViewer VerticalScrollBarVisibility="Auto">
+               <ListBox>
+                   <ListBox.ItemTemplate>
+                       <DataTemplate>
+                           <StackPanel>
+                               <Button Content="narocnine"/>
+                           </StackPanel>
+                       </DataTemplate>
+                   </ListBox.ItemTemplate>
+               </ListBox>
+           </ScrollViewer>
+       </Border>
        <!-- Profile -->
+       <StackPanel Grid.Row="0" Grid.Column="2" HorizontalAlignment="Center">
+           <DockPanel>
+               <Menu DockPanel.Dock="Right" CornerRadius="10" Margin="3">
+                   <MenuItem Header="_Profile " CornerRadius="10">
+                       <Button CornerRadius="10" Margin="3" Content="Uporabniki"/>
+                       <Button CornerRadius="10" Margin="3" Content="Log"/>
+                       <Button CornerRadius="10" Margin="3"  Content="Odjava" Click="Logout_OnClick"/>
+                   </MenuItem>
+               </Menu>
+           </DockPanel>
+       </StackPanel>
    </Grid>
 </Window>
