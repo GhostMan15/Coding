@@ -17,6 +17,7 @@
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel>
+                                <Label Content="Stanje"/>
                                 <Label Content="{Binding Stanje, StringFormat={}{0}€}"/>
                             </StackPanel>
                         </DataTemplate>
@@ -29,6 +30,7 @@
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel>
+                                <Label Content="Kartica:"/>
                                 <Label Content="{Binding Vrsta}"/>
                             </StackPanel>
                         </DataTemplate>

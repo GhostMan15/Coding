@@ -4,6 +4,30 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="NrpaNup.Register"
+        x:CompileBindings="True"
+        Background="#262626"
         Title="Register">
-    Welcome to Avalonia!
+        <Grid RowDefinitions="*,*,*,*,*">
+               <StackPanel>
+                        <TextBlock Text="Register" TextAlignment="Center" FontSize="36" Margin="10" FontWeight="Black"/>
+                        <Label x:Name="error" Content="Prosim vpišite podatke" Foreground="Red" HorizontalAlignment="Center"  CornerRadius="10" IsVisible="False" FontSize="24"/>
+                </StackPanel>
+                <StackPanel Grid.Row="1"  HorizontalAlignment="Center" >
+                        <TextBlock Text="Ime uporabnika:" Margin="5"/>
+                        <TextBox  x:Name="Username" Width="400" CornerRadius="10" />           
+                </StackPanel>
+                <StackPanel Grid.Row="2" HorizontalAlignment="Center">
+                        <TextBlock Text="Password:" Margin="5"/>
+                        <TextBox PasswordChar="*" x:Name="Password" Width="400" CornerRadius="10"/>
+                </StackPanel>
+                <StackPanel Grid.Row="3" HorizontalAlignment="Center">
+                        <TextBlock Text="Re-enter password:" Margin="5"/>
+                        <TextBox PasswordChar="*"  x:Name="Reenter" Width="400"  CornerRadius="10"/>
+                </StackPanel>
+                <StackPanel Grid.Row="4">
+                        <Button CornerRadius="10" HorizontalAlignment="Center" Content="Register" />
+                </StackPanel>
+        
+      
+        </Grid>
 </Window>

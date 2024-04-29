@@ -36,7 +36,7 @@ public partial class Uporabnik : Window
         using (MySqlConnection connection = new MySqlConnection(conn))
         {
             connection.Open();
-            string sql = "SELECT k.id_kartica, u.id_uporabnika, st_kartice, vrsta, `limit`, status, stanje FROM kartica k JOIN uporabniki u " +
+            string sql = "SELECT k.id_kartica, u.id_uporabnika, st_kartice, vrsta, `limit`, status, stanje, veljavnost FROM kartica k JOIN uporabniki u " +
                          "ON k.id_uporabnika = u.id_uporabnika WHERE  u.id_uporabnika = @uporabnik AND  vrsta = 'debitna'";
             using (MySqlCommand command = new MySqlCommand(sql,connection))
             {
@@ -51,15 +51,8 @@ public partial class Uporabnik : Window
                         int limit = reader.GetInt32("limit");
                         string status = reader.GetString("status");
                         double stanje = reader.GetDouble("stanje");
-                        var kartica = new Kartica(
-                             id_kartica,
-                                     st_kartice,
-                                     vrsta, 
-                                     limit,
-                                     status,
-                                     stanje
-                            
-                        );
+                        string veljavnost = reader.GetString("veljavnost");
+                        var kartica = new Kartica(id_kartica, st_kartice, vrsta, limit, status, stanje, veljavnost);
                         podatkiKartice.Add(kartica);
                       
                     }
@@ -79,7 +72,7 @@ public partial class Uporabnik : Window
         using (MySqlConnection connection = new MySqlConnection(conn))
         {
             connection.Open();
-            string sql = "SELECT k.id_kartica, u.id_uporabnika, st_kartice, vrsta, `limit`, status, stanje FROM kartica k JOIN uporabniki u " +
+            string sql = "SELECT k.id_kartica, u.id_uporabnika, st_kartice, vrsta, `limit`, status, stanje, veljavnost FROM kartica k JOIN uporabniki u " +
                          "ON k.id_uporabnika = u.id_uporabnika WHERE  u.id_uporabnika = @uporabnik AND  vrsta = 'kreditna'";
             using (MySqlCommand command = new MySqlCommand(sql,connection))
             {
@@ -94,15 +87,8 @@ public partial class Uporabnik : Window
                         int limit = reader.GetInt32("limit");
                         string status = reader.GetString("status");
                         double stanje = reader.GetDouble("stanje");
-                        var kartica = new Kartica(
-                            id_kartica,
-                            st_kartice,
-                            vrsta, 
-                            limit,
-                            status,
-                            stanje
-                            
-                        );
+                        string veljavnost = reader.GetString("veljavnost");
+                        var kartica = new Kartica(id_kartica, st_kartice, vrsta, limit,  status, stanje, veljavnost);
                         podatkiKartice2.Add(kartica);
                         Console.WriteLine(stanje);
                     }
@@ -123,9 +109,10 @@ public class Kartica
     public int Limit { get; set; }
     public string Status { get; set; }
     public string Vrsta { get; set; }
+    public string Veljavnost { get; set; }
     public Kartica(){}
 
-    public Kartica(int idDkartica, long stKratice, string vrsta, int limit, string status, double stanje)
+    public Kartica(int idDkartica, long stKratice, string vrsta, int limit, string status, double stanje, string veljavnost)
     {
        IDkartica = idDkartica ;
        Stanje = stanje ;
@@ -133,6 +120,6 @@ public class Kartica
        Limit = limit;
        Status = status;
        Vrsta = vrsta;
-
+       Veljavnost = veljavnost;
     }
 }

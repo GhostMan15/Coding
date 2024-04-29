@@ -10,12 +10,9 @@
     <list default="true" id="815d4385-3ef4-45ab-8746-3c7bc960ca5c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.NrpaNup/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NrpaNup/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.NrpaNup/.idea/dataSources/290d851c-5086-4829-8532-2fc0da318d8e.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NrpaNup/.idea/dataSources/290d851c-5086-4829-8532-2fc0da318d8e.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.NrpaNup/.idea/dataSources/290d851c-5086-4829-8532-2fc0da318d8e/storage_v2/_src_/schema/nrpa.tbozAA.zip" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NrpaNup/.idea/dataSources/290d851c-5086-4829-8532-2fc0da318d8e/storage_v2/_src_/schema/nrpa.tbozAA.zip" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.NrpaNup/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NrpaNup/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NrpaNup/Admin.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/NrpaNup/Admin.axaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NrpaNup/Admin.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NrpaNup/Admin.axaml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NrpaNup/Login.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/NrpaNup/Login.axaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NrpaNup/Login.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NrpaNup/Login.axaml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NrpaNup/MainWindow.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NrpaNup/MainWindow.axaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NrpaNup/Register.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/NrpaNup/Register.axaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NrpaNup/Uporabnik.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/NrpaNup/Uporabnik.axaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NrpaNup/Uporabnik.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NrpaNup/Uporabnik.axaml.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NrpaNup/Zaposlen.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/NrpaNup/Zaposlen.axaml" afterDir="false" />
@@ -121,6 +118,7 @@
       <workItem from="1714377878375" duration="8789000" />
       <workItem from="1714386999393" duration="3298000" />
       <workItem from="1714390529749" duration="2237000" />
+      <workItem from="1714404167353" duration="4308000" />
     </task>
     <servers />
   </component>
