@@ -1343,7 +1343,7 @@ test\\_%|schema||PUBLIC|&apos;&apos;|UPDATE|G</Grants>
     </schema>
     <schema id="511" parent="1" name="nrpa">
       <Current>1</Current>
-      <LastIntrospectionLocalTimestamp>2024-04-30.12:27:21</LastIntrospectionLocalTimestamp>
+      <LastIntrospectionLocalTimestamp>2024-04-30.18:59:19</LastIntrospectionLocalTimestamp>
       <CollationName>utf8mb4_unicode_ci</CollationName>
     </schema>
     <schema id="512" parent="1" name="performance_schema">
@@ -1384,390 +1384,407 @@ test\\_%|schema||PUBLIC|&apos;&apos;|UPDATE|G</Grants>
       <RoutineKind>procedure</RoutineKind>
       <SourceTextLength>480</SourceTextLength>
     </routine>
-    <routine id="524" parent="511" name="Vpis">
+    <routine id="524" parent="511" name="Ustvari_Genericni_Kredit">
+      <Definer>root@localhost</Definer>
+      <RoutineKind>procedure</RoutineKind>
+      <SourceTextLength>305</SourceTextLength>
+    </routine>
+    <routine id="525" parent="511" name="Vpis">
       <Definer>root@localhost</Definer>
       <RoutineKind>procedure</RoutineKind>
       <SourceTextLength>145</SourceTextLength>
     </routine>
-    <table id="525" parent="511" name="kartica">
+    <table id="526" parent="511" name="kartica">
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_unicode_ci</CollationName>
     </table>
-    <table id="526" parent="511" name="krediti">
+    <table id="527" parent="511" name="krediti">
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_unicode_ci</CollationName>
     </table>
-    <table id="527" parent="511" name="kreditiU">
+    <table id="528" parent="511" name="kreditiU">
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_unicode_ci</CollationName>
     </table>
-    <table id="528" parent="511" name="narocnine">
+    <table id="529" parent="511" name="narocnine">
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_unicode_ci</CollationName>
     </table>
-    <table id="529" parent="511" name="transakcije">
+    <table id="530" parent="511" name="transakcije">
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_unicode_ci</CollationName>
     </table>
-    <table id="530" parent="511" name="uporabniki">
+    <table id="531" parent="511" name="uporabniki">
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_unicode_ci</CollationName>
     </table>
-    <view id="531" parent="511" name="PrikazUporabniskihPodatkov">
+    <view id="532" parent="511" name="PrikazUporabniskihPodatkov">
       <Definer>root@localhost</Definer>
       <SourceTextLength>717</SourceTextLength>
     </view>
-    <argument id="532" parent="523" name="ime">
+    <argument id="533" parent="523" name="ime">
       <DasType>varchar(255)|0s</DasType>
       <Position>1</Position>
     </argument>
-    <argument id="533" parent="523" name="limit">
+    <argument id="534" parent="523" name="limit">
       <DasType>decimal(10,2 digit)|0s</DasType>
       <Position>2</Position>
     </argument>
-    <argument id="534" parent="523" name="stanje">
+    <argument id="535" parent="523" name="stanje">
       <DasType>decimal(10,2 digit)|0s</DasType>
       <Position>3</Position>
     </argument>
-    <argument id="535" parent="524" name="ime">
-      <DasType>varchar(255)|0s</DasType>
+    <argument id="536" parent="524" name="vsota">
+      <DasType>int(11)|0s</DasType>
       <Position>1</Position>
     </argument>
-    <argument id="536" parent="524" name="geslo">
+    <argument id="537" parent="524" name="tip_kredita">
       <DasType>varchar(255)|0s</DasType>
       <Position>2</Position>
     </argument>
-    <column id="537" parent="525" name="id_kartica">
-      <AutoIncrement>7</AutoIncrement>
+    <argument id="538" parent="524" name="fixna_obrestna_mera">
+      <DasType>int(11)|0s</DasType>
+      <Position>3</Position>
+    </argument>
+    <argument id="539" parent="525" name="ime">
+      <DasType>varchar(255)|0s</DasType>
+      <Position>1</Position>
+    </argument>
+    <argument id="540" parent="525" name="geslo">
+      <DasType>varchar(255)|0s</DasType>
+      <Position>2</Position>
+    </argument>
+    <column id="541" parent="526" name="id_kartica">
+      <AutoIncrement>10</AutoIncrement>
       <DasType>int(11)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="538" parent="525" name="id_uporabnika">
+    <column id="542" parent="526" name="id_uporabnika">
       <DasType>int(11)|0s</DasType>
       <Position>2</Position>
     </column>
-    <column id="539" parent="525" name="st_kartice">
+    <column id="543" parent="526" name="st_kartice">
       <DasType>varchar(255)|0s</DasType>
       <Position>3</Position>
     </column>
-    <column id="540" parent="525" name="limit">
+    <column id="544" parent="526" name="limit">
       <DasType>decimal(10,2 digit)|0s</DasType>
       <DefaultExpression>1000.00</DefaultExpression>
       <Position>4</Position>
     </column>
-    <column id="541" parent="525" name="vrsta">
+    <column id="545" parent="526" name="vrsta">
       <DasType>enum(&apos;debitna&apos;, &apos;kreditna&apos;)|0e</DasType>
       <DefaultExpression>&apos;debitna&apos;</DefaultExpression>
       <Position>5</Position>
     </column>
-    <column id="542" parent="525" name="status">
+    <column id="546" parent="526" name="status">
       <DasType>enum(&apos;veljavna&apos;, &apos;neveljavna&apos;)|0e</DasType>
       <DefaultExpression>&apos;veljavna&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>6</Position>
     </column>
-    <column id="543" parent="525" name="stanje">
+    <column id="547" parent="526" name="stanje">
       <DasType>decimal(10,2 digit)|0s</DasType>
       <DefaultExpression>100.00</DefaultExpression>
       <Position>7</Position>
     </column>
-    <column id="544" parent="525" name="veljavnost">
+    <column id="548" parent="526" name="veljavnost">
       <DasType>varchar(255)|0s</DasType>
       <Position>8</Position>
     </column>
-    <foreign-key id="545" parent="525" name="kartica_ibfk_1">
+    <foreign-key id="549" parent="526" name="kartica_ibfk_1">
       <ColNames>id_uporabnika</ColNames>
       <RefColNames>id_uporabnika</RefColNames>
       <RefTableName>uporabniki</RefTableName>
     </foreign-key>
-    <index id="546" parent="525" name="PRIMARY">
+    <index id="550" parent="526" name="PRIMARY">
       <ColNames>id_kartica</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="547" parent="525" name="id_uporabnika">
+    <index id="551" parent="526" name="id_uporabnika">
       <ColNames>id_uporabnika</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="548" parent="525" name="PRIMARY">
+    <key id="552" parent="526" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="549" parent="526" name="id_krediti">
+    <column id="553" parent="527" name="id_krediti">
       <AutoIncrement>1</AutoIncrement>
       <DasType>int(11)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="550" parent="526" name="vsota">
+    <column id="554" parent="527" name="vsota">
       <DasType>int(11)|0s</DasType>
       <Position>2</Position>
     </column>
-    <column id="551" parent="526" name="tip_kredita">
+    <column id="555" parent="527" name="tip_kredita">
       <DasType>varchar(255)|0s</DasType>
       <Position>3</Position>
     </column>
-    <column id="552" parent="526" name="fixna_obrestna_mera">
-      <DasType>int(11)|0s</DasType>
+    <column id="556" parent="527" name="fixna_obrestna_mera">
+      <DasType>decimal(10,2 digit)|0s</DasType>
       <Position>4</Position>
     </column>
-    <index id="553" parent="526" name="PRIMARY">
+    <index id="557" parent="527" name="PRIMARY">
       <ColNames>id_krediti</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="554" parent="526" name="PRIMARY">
+    <key id="558" parent="527" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="555" parent="527" name="id">
+    <column id="559" parent="528" name="id">
       <AutoIncrement>1</AutoIncrement>
       <DasType>int(11)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="556" parent="527" name="id_uporabnika">
+    <column id="560" parent="528" name="id_uporabnika">
       <DasType>int(11)|0s</DasType>
       <Position>2</Position>
     </column>
-    <column id="557" parent="527" name="id_kartica">
+    <column id="561" parent="528" name="id_kartica">
       <DasType>int(11)|0s</DasType>
       <Position>3</Position>
     </column>
-    <column id="558" parent="527" name="cas">
+    <column id="562" parent="528" name="cas">
       <DasType>varchar(255)|0s</DasType>
       <Position>4</Position>
     </column>
-    <column id="559" parent="527" name="namen_kredita">
+    <column id="563" parent="528" name="namen_kredita">
       <DasType>varchar(255)|0s</DasType>
       <Position>5</Position>
     </column>
-    <column id="560" parent="527" name="obrestna_mera">
+    <column id="564" parent="528" name="obrestna_mera">
       <DasType>decimal(5,2 digit)|0s</DasType>
       <Position>6</Position>
     </column>
-    <foreign-key id="561" parent="527" name="kreditiU_ibfk_1">
+    <foreign-key id="565" parent="528" name="kreditiU_ibfk_1">
       <ColNames>id_uporabnika</ColNames>
       <RefColNames>id_uporabnika</RefColNames>
       <RefTableName>uporabniki</RefTableName>
     </foreign-key>
-    <foreign-key id="562" parent="527" name="kreditiU_ibfk_2">
+    <foreign-key id="566" parent="528" name="kreditiU_ibfk_2">
       <ColNames>id_kartica</ColNames>
       <RefColNames>id_kartica</RefColNames>
       <RefTableName>kartica</RefTableName>
     </foreign-key>
-    <index id="563" parent="527" name="PRIMARY">
+    <index id="567" parent="528" name="PRIMARY">
       <ColNames>id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="564" parent="527" name="id_uporabnika">
+    <index id="568" parent="528" name="id_uporabnika">
       <ColNames>id_uporabnika</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="565" parent="527" name="id_kartica">
+    <index id="569" parent="528" name="id_kartica">
       <ColNames>id_kartica</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="566" parent="527" name="PRIMARY">
+    <key id="570" parent="528" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="567" parent="528" name="id_narocnine">
+    <column id="571" parent="529" name="id_narocnine">
       <AutoIncrement>1</AutoIncrement>
       <DasType>int(11)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="568" parent="528" name="id_uporabnika">
+    <column id="572" parent="529" name="id_uporabnika">
       <DasType>int(11)|0s</DasType>
       <Position>2</Position>
     </column>
-    <column id="569" parent="528" name="id_kartica">
+    <column id="573" parent="529" name="id_kartica">
       <DasType>int(11)|0s</DasType>
       <Position>3</Position>
     </column>
-    <column id="570" parent="528" name="vsota">
+    <column id="574" parent="529" name="vsota">
       <DasType>decimal(10,2 digit)|0s</DasType>
       <Position>4</Position>
     </column>
-    <column id="571" parent="528" name="vrsta">
+    <column id="575" parent="529" name="vrsta">
       <DasType>enum(&apos;mesecno&apos;, &apos;letno&apos;)|0e</DasType>
       <Position>5</Position>
     </column>
-    <foreign-key id="572" parent="528" name="narocnine_ibfk_1">
+    <foreign-key id="576" parent="529" name="narocnine_ibfk_1">
       <ColNames>id_uporabnika</ColNames>
       <RefColNames>id_uporabnika</RefColNames>
       <RefTableName>uporabniki</RefTableName>
     </foreign-key>
-    <foreign-key id="573" parent="528" name="narocnine_ibfk_2">
+    <foreign-key id="577" parent="529" name="narocnine_ibfk_2">
       <ColNames>id_kartica</ColNames>
       <RefColNames>id_kartica</RefColNames>
       <RefTableName>kartica</RefTableName>
     </foreign-key>
-    <index id="574" parent="528" name="PRIMARY">
+    <index id="578" parent="529" name="PRIMARY">
       <ColNames>id_narocnine</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="575" parent="528" name="id_uporabnika">
+    <index id="579" parent="529" name="id_uporabnika">
       <ColNames>id_uporabnika</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="576" parent="528" name="id_kartica">
+    <index id="580" parent="529" name="id_kartica">
       <ColNames>id_kartica</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="577" parent="528" name="PRIMARY">
+    <key id="581" parent="529" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="578" parent="529" name="id_transakcije">
+    <column id="582" parent="530" name="id_transakcije">
       <AutoIncrement>1</AutoIncrement>
       <DasType>int(11)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="579" parent="529" name="id_uporabnika">
+    <column id="583" parent="530" name="id_uporabnika">
       <DasType>int(11)|0s</DasType>
       <Position>2</Position>
     </column>
-    <column id="580" parent="529" name="namen">
+    <column id="584" parent="530" name="namen">
       <DasType>enum(&apos;darilo&apos;, &apos;posojilo&apos;)|0e</DasType>
       <Position>3</Position>
     </column>
-    <column id="581" parent="529" name="vsota">
+    <column id="585" parent="530" name="vsota">
       <DasType>decimal(10,2 digit)|0s</DasType>
       <Position>4</Position>
     </column>
-    <foreign-key id="582" parent="529" name="transakcije_ibfk_1">
+    <foreign-key id="586" parent="530" name="transakcije_ibfk_1">
       <ColNames>id_uporabnika</ColNames>
       <RefColNames>id_uporabnika</RefColNames>
       <RefTableName>uporabniki</RefTableName>
     </foreign-key>
-    <index id="583" parent="529" name="PRIMARY">
+    <index id="587" parent="530" name="PRIMARY">
       <ColNames>id_transakcije</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="584" parent="529" name="id_uporabnika">
+    <index id="588" parent="530" name="id_uporabnika">
       <ColNames>id_uporabnika</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="585" parent="529" name="PRIMARY">
+    <key id="589" parent="530" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="586" parent="530" name="id_uporabnika">
-      <AutoIncrement>21</AutoIncrement>
+    <column id="590" parent="531" name="id_uporabnika">
+      <AutoIncrement>24</AutoIncrement>
       <DasType>int(11)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="587" parent="530" name="ime">
+    <column id="591" parent="531" name="ime">
       <DasType>varchar(255)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="588" parent="530" name="geslo">
+    <column id="592" parent="531" name="geslo">
       <DasType>varchar(255)|0s</DasType>
       <DefaultExpression>&apos;ne&apos;</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
-    <column id="589" parent="530" name="created">
+    <column id="593" parent="531" name="created">
       <DasType>varchar(255)|0s</DasType>
       <DefaultExpression>current_timestamp()</DefaultExpression>
       <Position>4</Position>
     </column>
-    <column id="590" parent="530" name="vrsta_uporabnika">
+    <column id="594" parent="531" name="vrsta_uporabnika">
       <DasType>enum(&apos;admin&apos;, &apos;zaposlen&apos;, &apos;uporabnik&apos;)|0e</DasType>
       <DefaultExpression>&apos;uporabnik&apos;</DefaultExpression>
       <Position>5</Position>
     </column>
-    <index id="591" parent="530" name="PRIMARY">
+    <index id="595" parent="531" name="PRIMARY">
       <ColNames>id_uporabnika</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="592" parent="530" name="PRIMARY">
+    <key id="596" parent="531" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <trigger id="593" parent="530" name="preverjanje_gesla">
+    <trigger id="597" parent="531" name="preverjanje_gesla">
       <Definer>root@localhost</Definer>
       <Events>I</Events>
       <SourceTextLength>237</SourceTextLength>
       <Turn>before-row</Turn>
     </trigger>
-    <trigger id="594" parent="530" name="ustvari_uporabnika">
+    <trigger id="598" parent="531" name="ustvari_uporabnika">
       <Definer>root@localhost</Definer>
       <Events>I</Events>
       <SourceTextLength>254</SourceTextLength>
       <Turn>before-row</Turn>
     </trigger>
-    <trigger id="595" parent="530" name="nova_kartica">
+    <trigger id="599" parent="531" name="nova_kartica">
       <Definer>root@localhost</Definer>
       <Events>I</Events>
-      <SourceTextLength>386</SourceTextLength>
+      <SourceTextLength>661</SourceTextLength>
     </trigger>
-    <column id="596" parent="531" name="uporabnik_id">
+    <column id="600" parent="532" name="uporabnik_id">
       <DasType>int(11)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="597" parent="531" name="uporabnik_ime">
+    <column id="601" parent="532" name="uporabnik_ime">
       <DasType>varchar(255)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="598" parent="531" name="uporabnik_geslo">
+    <column id="602" parent="532" name="uporabnik_geslo">
       <DasType>varchar(255)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
-    <column id="599" parent="531" name="uporabnik_created">
+    <column id="603" parent="532" name="uporabnik_created">
       <DasType>varchar(255)|0s</DasType>
       <Position>4</Position>
     </column>
-    <column id="600" parent="531" name="uporabnik_vrsta">
+    <column id="604" parent="532" name="uporabnik_vrsta">
       <DasType>enum(&apos;admin&apos;, &apos;zaposlen&apos;, &apos;uporabnik&apos;)|0e</DasType>
       <Position>5</Position>
     </column>
-    <column id="601" parent="531" name="kartica_id">
+    <column id="605" parent="532" name="kartica_id">
       <DasType>int(11)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>6</Position>
     </column>
-    <column id="602" parent="531" name="kartica_st">
+    <column id="606" parent="532" name="kartica_st">
       <DasType>varchar(255)|0s</DasType>
       <Position>7</Position>
     </column>
-    <column id="603" parent="531" name="kartica_limit">
+    <column id="607" parent="532" name="kartica_limit">
       <DasType>decimal(10,2 digit)|0s</DasType>
       <Position>8</Position>
     </column>
-    <column id="604" parent="531" name="kartica_vrsta">
+    <column id="608" parent="532" name="kartica_vrsta">
       <DasType>enum(&apos;debitna&apos;, &apos;kreditna&apos;)|0e</DasType>
       <Position>9</Position>
     </column>
-    <column id="605" parent="531" name="kartica_status">
+    <column id="609" parent="532" name="kartica_status">
       <DasType>enum(&apos;veljavna&apos;, &apos;neveljavna&apos;)|0e</DasType>
       <NotNull>1</NotNull>
       <Position>10</Position>
     </column>
-    <column id="606" parent="531" name="kartica_stanje">
+    <column id="610" parent="532" name="kartica_stanje">
       <DasType>decimal(10,2 digit)|0s</DasType>
       <Position>11</Position>
     </column>
-    <column id="607" parent="531" name="kartica_veljavnost">
+    <column id="611" parent="532" name="kartica_veljavnost">
       <DasType>varchar(255)|0s</DasType>
       <Position>12</Position>
     </column>

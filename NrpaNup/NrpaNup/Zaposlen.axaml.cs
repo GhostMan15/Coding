@@ -6,6 +6,9 @@ using Avalonia.Markup.Xaml;
 using Avalonia.Controls.ApplicationLifetimes;
 using MySql.Data.MySqlClient;
 using Org.BouncyCastle.Security;
+using Avalonia.Data.Converters;
+using System.Globalization;
+using System.Threading.Tasks;
 
 namespace NrpaNup;
 
@@ -88,14 +91,30 @@ public partial class Zaposlen : Window
     private void Ustvari_OnClick(object? sender, RoutedEventArgs e)
     { 
         UstvariUporabnika();
+        PrikazUporabniskihPodatkov();
+        UspesnoKreiran();
         Profil.IsVisible = true;
         Kreiranje.IsVisible = false;
+    }
+
+    private async Task UspesnoKreiran()
+    {
+        Uspesno.IsVisible = true;
+        await Task.Delay(1000);
+        Uspesno.IsVisible = false;
+    }
+
+    private void UstvariGenericniKredit_OnClick(object? sender, RoutedEventArgs e)
+    {
+        var register = new Register();
+        register.Show();
+        Hide();
     }
 }
 
 class UporabniskiPodatki : Kartica
 {
-    //public Uporabnik(){}
+    public UporabniskiPodatki(){}
     public int UporabnikID { get; set; }
     public string Ime { get; set; }
     public string Geslo { get; set; }

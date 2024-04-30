@@ -11,10 +11,8 @@
       <change beforePath="$PROJECT_DIR$/.idea/.idea.NrpaNup/.idea/dataSources/290d851c-5086-4829-8532-2fc0da318d8e.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NrpaNup/.idea/dataSources/290d851c-5086-4829-8532-2fc0da318d8e.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.NrpaNup/.idea/dataSources/290d851c-5086-4829-8532-2fc0da318d8e/storage_v2/_src_/schema/nrpa.tbozAA.zip" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NrpaNup/.idea/dataSources/290d851c-5086-4829-8532-2fc0da318d8e/storage_v2/_src_/schema/nrpa.tbozAA.zip" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.NrpaNup/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NrpaNup/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NrpaNup/Login.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NrpaNup/Login.axaml.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NrpaNup/Register.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/NrpaNup/Register.axaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NrpaNup/Register.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NrpaNup/Register.axaml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NrpaNup/Uporabnik.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NrpaNup/Uporabnik.axaml.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NrpaNup/Zaposlen.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/NrpaNup/Zaposlen.axaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NrpaNup/Zaposlen.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NrpaNup/Zaposlen.axaml.cs" afterDir="false" />
     </list>
@@ -52,32 +50,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;.NET Project.NrpaNup.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;database.data.extractors.current.export.id&quot;: &quot;Comma-separated (CSV)_id&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;database.query.execution&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    ".NET Project.NrpaNup.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "database.data.extractors.current.export.id": "Comma-separated (CSV)_id",
+    "git-widget-placeholder": "master",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "database.query.execution",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
     ],
-    &quot;rider.external.source.directories&quot;: [
-      &quot;/home/faruk/.config/JetBrains/Rider2024.1/resharper-host/DecompilerCache&quot;,
-      &quot;/home/faruk/.config/JetBrains/Rider2024.1/resharper-host/SourcesCache&quot;,
-      &quot;/home/faruk/.local/share/Symbols/src&quot;
+    "rider.external.source.directories": [
+      "/home/faruk/.config/JetBrains/Rider2024.1/resharper-host/DecompilerCache",
+      "/home/faruk/.config/JetBrains/Rider2024.1/resharper-host/SourcesCache",
+      "/home/faruk/.local/share/Symbols/src"
     ]
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="NrpaNup" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
@@ -123,6 +121,8 @@
       <workItem from="1714464564264" duration="76000" />
       <workItem from="1714464652368" duration="8577000" />
       <workItem from="1714477521755" duration="4005000" />
+      <workItem from="1714495545457" duration="4001000" />
+      <workItem from="1714499901891" duration="4892000" />
     </task>
     <servers />
   </component>

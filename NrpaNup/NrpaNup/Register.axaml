@@ -13,20 +13,25 @@
                         <Label x:Name="error" Content="Prosim vpišite podatke" Foreground="Red" HorizontalAlignment="Center"  CornerRadius="10" IsVisible="False" FontSize="24"/>
                 </StackPanel>
                 <StackPanel Grid.Row="1"  HorizontalAlignment="Center" >
-                        <TextBlock Text="Ime uporabnika:" Margin="5"/>
-                        <TextBox  x:Name="Username" CornerRadius="10" />           
+                        <TextBlock Text="Vsota:" Margin="5"/>
+                        <TextBox  x:Name="Vsota" CornerRadius="10" />           
                 </StackPanel>
                 <StackPanel Grid.Row="2" HorizontalAlignment="Center">
-                        <TextBlock Text="Dnevni limit" Margin="5"/>
-                        <TextBox x:Name="Limit"  CornerRadius="10"/>
+                        <TextBlock Text="Tip kredita:" Margin="5"/>
+                        <TextBox x:Name="TipKredita"  CornerRadius="10"/>
                 </StackPanel>
-                <StackPanel Grid.Row="3" HorizontalAlignment="Center">
-                        <TextBlock Text="Stanje" Margin="5"/>
-                        <TextBox  x:Name="Stanje"  CornerRadius="10"/>
+                <StackPanel x:Name="ObrestStackPanel" Grid.Row="3" HorizontalAlignment="Center">
+                        <TextBlock Text="Fixna obrestna mera:" Margin="5"/>
+                        <Grid ColumnDefinitions="*,*,*">
+                                <RadioButton Grid.Column="0" Content="2.5%" x:Name="Obrest2_5" Tag="2.5" Checked="Checked_OnChecked" />
+                                <RadioButton Grid.Column="1" Content="5%" x:Name="Obrest5" Tag="5" Checked="Checked_OnChecked"/>
+                                <RadioButton Grid.Column="2" Content="7.5%" x:Name="Obrest7_5" Tag="7.5" Checked="Checked_OnChecked"/>
+                        </Grid>
                 </StackPanel>
                 <StackPanel Grid.Row="4">
-                        <Button CornerRadius="10" HorizontalAlignment="Center" Content="Končaj" Click="Register_OnClick" />
+                        <Button CornerRadius="10" HorizontalAlignment="Center" Content="Ustvari" Click="Register_OnClick" />
                 </StackPanel>
       
         </Grid>
 </Window>
+
