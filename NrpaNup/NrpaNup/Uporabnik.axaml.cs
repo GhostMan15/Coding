@@ -46,7 +46,7 @@ public partial class Uporabnik : Window
                     while (reader.Read())
                     {
                         int id_kartica = reader.GetInt32("id_kartica");
-                        long st_kartice = reader.GetInt64("st_kartice");
+                        string st_kartice = reader.GetString("st_kartice");
                         string vrsta = reader.GetString("vrsta");
                         int limit = reader.GetInt32("limit");
                         string status = reader.GetString("status");
@@ -82,7 +82,7 @@ public partial class Uporabnik : Window
                     while (reader.Read())
                     {
                         int id_kartica = reader.GetInt32("id_kartica");
-                        long st_kartice = reader.GetInt64("st_kartice");
+                        string st_kartice = reader.GetString("st_kartice");
                         string vrsta = reader.GetString("vrsta");
                         int limit = reader.GetInt32("limit");
                         string status = reader.GetString("status");
@@ -105,14 +105,14 @@ public class Kartica
 {
     public int IDkartica { get; set; }
     public double Stanje { get; set; }
-    public long STKratice { get; set; }
+    public string STKratice { get; set; }
     public int Limit { get; set; }
     public string Status { get; set; }
     public string Vrsta { get; set; }
     public string Veljavnost { get; set; }
     public Kartica(){}
 
-    public Kartica(int idDkartica, long stKratice, string vrsta, int limit, string status, double stanje, string veljavnost)
+    public Kartica(int idDkartica, string stKratice, string vrsta, int limit, string status, double stanje, string veljavnost)
     {
        IDkartica = idDkartica ;
        Stanje = stanje ;

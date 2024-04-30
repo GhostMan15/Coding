@@ -12,7 +12,7 @@
         Title="Zaposlen">
    <Grid ColumnDefinitions="*,*,*" RowDefinitions="*,*,*">
        <!-- Ponudbe kreditov -->
-       <Border Grid.Row="0" Grid.RowSpan="3" Grid.Column="0" CornerRadius="10" Margin="3" BorderThickness="1" BorderBrush="Black">
+       <Border x:Name="PonudbeKreditov" Grid.Row="0" Grid.RowSpan="3" Grid.Column="1" CornerRadius="10" Margin="3" BorderThickness="1" BorderBrush="Black" IsVisible="True">
            <ScrollViewer VerticalScrollBarVisibility="Auto">
                <ListBox>
                    <ListBox.ItemTemplate>
@@ -25,18 +25,28 @@
                </ListBox>
            </ScrollViewer>
        </Border>
-       <!-- Krediti uporabnikov -->
-       <Border Grid.Row="0" Grid.RowSpan="3" Grid.Column="1" CornerRadius="10" Margin="3" BorderThickness="1" BorderBrush="Black">
+       <!-- Uporabniki-->
+       <Border x:Name="Uporabniki" Grid.Row="0" Grid.RowSpan="3" Grid.Column="0" CornerRadius="10" Margin="3" BorderThickness="1" BorderBrush="Black" IsVisible="True">
            <ScrollViewer VerticalScrollBarVisibility="Auto">
-               <ListBox>
+               <StackPanel>
+                   <Label Content="Uporabniki:"/>
+                   <ListBox x:Name="UporabnikiBox" ItemsSource="{Binding uporabniskiPodatki}" Margin="5" BorderBrush="Black" CornerRadius="10">
                    <ListBox.ItemTemplate>
                        <DataTemplate>
                            <StackPanel>
-                               <Button Content="krediti"/>
+                               <Grid>
+                               <Label Content="Ime:"/>
+                               <TextBlock Text="{Binding Ime}"/>
+                               <Label Content="Številka kartice:"/>
+                               <TextBlock Text="{Binding STKratice}" />
+                               <Label Content="Vrsta kartice:"/>
+                               <TextBlock Text="{Binding Vrsta}"/>
+                               </Grid>
                            </StackPanel>
                        </DataTemplate>
                    </ListBox.ItemTemplate>
                </ListBox>
+               </StackPanel>
            </ScrollViewer>
        </Border>
        <!-- Mozne narocnine ter kreiranje novih -->
@@ -69,7 +79,21 @@
        <StackPanel x:Name="Kreiranje" Grid.Row="0" Grid.Column="2"  HorizontalAlignment="Center" IsVisible="False">
            <TextBlock Text="Ime uporabnika:" Margin="5"/>
            <TextBox  x:Name="Username"  CornerRadius="10" />   
-           <Button CornerRadius="10" Margin="3"  Content="Ustvari" Click="Ustvarjen_OnClick"/>
+           <Button CornerRadius="10" Margin="3"  Content="Ustvari" Click="Ustvari_OnClick"/>
        </StackPanel>
+       <!-- Uporabniski krediti -->
+       <Border x:Name="KreditiDisplay" Grid.Column="2" Grid.Row="1" Grid.RowSpan="2" CornerRadius="10" Margin="3" BorderThickness="1" BorderBrush="Black" IsVisible="False">
+           <ScrollViewer VerticalScrollBarVisibility="Auto">
+               <ListBox>
+                   <ListBox.ItemTemplate>
+                       <DataTemplate>
+                           <StackPanel>
+                               <Button Content="narocnine"/>
+                           </StackPanel>
+                       </DataTemplate>
+                   </ListBox.ItemTemplate>
+               </ListBox>
+           </ScrollViewer>
+       </Border>
    </Grid>
 </Window>

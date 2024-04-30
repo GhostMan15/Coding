@@ -17,7 +17,7 @@ namespace NrpaNup;
 public partial class Login : Window
 {
     //private static string kan = "Server=localhost;Database=nrpa;Uid=root;Pwd=root;"; 
-    private static string conn;
+    private readonly string _conn;
     public static int userId;
     public string ime;
     private string vrsta;
@@ -27,7 +27,7 @@ public partial class Login : Window
         InitializeComponent();
         _uporabnik = new Uporabnik();
         var reader = new AppSettingsReader("appsettings.json");
-        conn = reader.GetStringValue("ConnectionStrings:MyConnectionString");
+        _conn = reader.GetStringValue("ConnectionStrings:MyConnectionString");
     }
     
     private void SignIn_OnClick(object? sender, RoutedEventArgs e)
@@ -44,7 +44,7 @@ public partial class Login : Window
             
         }
 
-        using (MySqlConnection connection  = new MySqlConnection(conn) )
+        using (MySqlConnection connection  = new MySqlConnection(_conn) )
         {
             connection.Open();
             try
