@@ -12,15 +12,33 @@
         Title="Zaposlen">
    <Grid ColumnDefinitions="*,*,*" RowDefinitions="*,*,*">
        <!-- Ponudbe kreditov -->
-       <Border x:Name="PonudbeKreditov" Grid.Row="0" Grid.RowSpan="3" Grid.Column="1" CornerRadius="10" Margin="3" BorderThickness="1" BorderBrush="Black" IsVisible="True">
+       <Border  Grid.Row="0" Grid.RowSpan="3" Grid.Column="1" CornerRadius="10" Margin="3" BorderThickness="1" BorderBrush="Black" IsVisible="True">
            <StackPanel>
                <Label Content="krediti"/>
                <ScrollViewer VerticalScrollBarVisibility="Auto">
-               <ListBox>
+               <ListBox x:Name="Kredit" ItemsSource="{Binding vsiMozniKredit}" Margin="5" BorderBrush="Black" CornerRadius="10">
                    <ListBox.ItemTemplate>
                        <DataTemplate>
                            <StackPanel>
-                               <Button Content="krediti"/>
+                               <Grid ColumnDefinitions="*,*" RowDefinitions="*,*,*,*">
+                                   <Label Grid.Row="0" Grid.Column="0" Content="Vsota kredita:"/>
+                                   <Label Grid.Row="0" Grid.Column="1" Content="{Binding VsotaKredita, StringFormat={}{0}€}"/>
+                                   <Label Grid.Row="1" Grid.Column="0" Content="Tip kredita:"/>
+                                   <Label Grid.Row="1" Grid.Column="1" Content="{Binding TipKredita}"/>
+                                   <Label Grid.Row="2" Grid.Column="0" Content="Fiksna obrestna mera:"/>
+                                   <Label Grid.Row="2" Grid.Column="1" Content="{Binding ObrestnaMera,StringFormat={}{0}%}"/>
+                                   <Expander  Header="Dodeli kredit" Grid.Column="0" Grid.Row="3" Tag="{Binding }" Expanded="Expander_OnExpanded" Margin="5" BorderBrush="Black" CornerRadius="10">
+                                       <Expander.Content>
+                                         <ListBox x:Name="ImeUporabnika" ItemsSource="{Binding uporabnikiImena, RelativeSource={RelativeSource AncestorType=local:Zaposlen}}" Margin="5" BorderBrush="Black" CornerRadius="10">
+                                             <ListBox.ItemTemplate>
+                                                 <DataTemplate>
+                                                     <Button Content="{Binding}" Margin="5" BorderBrush="Black" CornerRadius="10"/>
+                                                 </DataTemplate>
+                                             </ListBox.ItemTemplate>
+                                         </ListBox>
+                                       </Expander.Content>
+                                   </Expander>
+                               </Grid>
                            </StackPanel>
                        </DataTemplate>
                    </ListBox.ItemTemplate>
