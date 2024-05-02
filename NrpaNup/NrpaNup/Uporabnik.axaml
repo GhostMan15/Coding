@@ -78,15 +78,25 @@
             <!-- Vse mogoce narocnine -->
             <Border Grid.Row="1" Grid.RowSpan="3" Grid.Column="2" BorderThickness="1" BorderBrush="Black" CornerRadius="10" Margin="3">
                 <ScrollViewer VerticalScrollBarVisibility="Auto">
-                    <ListBox>
+                    <StackPanel>
+                        <Label Content="Narocnine"/>
+                    <ListBox x:Name="PrikazUporabnikomNarocnine" ItemsSource="{Binding vseNarocnine, RelativeSource={RelativeSource AncestorType=local:Zaposlen}}" CornerRadius="10" Margin="3">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel>
-                                    <Label Content="Mozne narocnine"/>
+                                    <Grid ColumnDefinitions="*,*" RowDefinitions="*,*,*">
+                                        <Label Grid.Row="0" Grid.Column="0" Content="Ime:"/>
+                                        <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding ImeNarocnine}"/>
+                                        <Label Grid.Row="1" Grid.Column="0" Content="Vsota mesecno:"/>
+                                        <Button Grid.Row="1" Grid.Column="1" Content="{Binding VsotaNarocnineMesecno,  StringFormat={}{0}€}" CornerRadius="10" Margin="3"/>
+                                        <Label Grid.Row="2" Grid.Column="0" Content="Vsota letno:"/>
+                                        <Button Grid.Row="2" Grid.Column="1" Content="{Binding VsotaNarocnineLetno,  StringFormat={}{0}€}" CornerRadius="10" Margin="3"/>
+                                    </Grid>
                                 </StackPanel>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
+                    </StackPanel>
                 </ScrollViewer>
             </Border>
         </Grid>

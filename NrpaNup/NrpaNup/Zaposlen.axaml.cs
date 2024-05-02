@@ -22,21 +22,29 @@ public partial class Zaposlen : Window
 {
     private ObservableCollection<UporabniskiPodatki> uporabniskiPodatki { get; } = new ObservableCollection<UporabniskiPodatki>();
     private ObservableCollection<Krediti> vsiMozniKredit { get; } = new ObservableCollection<Krediti>();
-    public ObservableCollection<string> uporabnikiImena { get; } = new ObservableCollection<string>();
+    private ObservableCollection<string> uporabnikiImena { get; } = new ObservableCollection<string>();
+    private ObservableCollection<Narocnine> vseNarocnine { get; } = new ObservableCollection<Narocnine>();
 
     private readonly string _conn;
+    private readonly Uporabnik _uporabnik;
     public int id_kredit;
     public int id_uporabnik;
     public Zaposlen()
     {
-        InitializeComponent();
-        var reader = new AppSettingsReader("appsettings.json");
-        _conn = reader.GetStringValue("ConnectionStrings:MyConnectionString");
-        PrikazVsehKreditov();
-        UporabnikiZaposlenega();
+       
+            InitializeComponent();
+            var reader = new AppSettingsReader("appsettings.json");
+            _conn = reader.GetStringValue("ConnectionStrings:MyConnectionString");
+            PrikazVsehKreditov();
+            UporabnikiZaposlenega();
+            vseMozneNarocnine();
     }
 
-    
+    public Zaposlen(Uporabnik uporabnik) : this()
+    {
+        _uporabnik = uporabnik;
+        
+    }
     private void UstvariUporabnika()
     {
         string username = Username.Text;
@@ -143,6 +151,50 @@ public partial class Zaposlen : Window
         }
         
     }
+
+    private void UstvariNarocnine()
+    {
+        string imeNarocnine = ImeNarocnine.Text;
+        string vsotaMesecno = VsotaMesecno.Text;
+        decimal vstoaMedecnoD = decimal.Parse(vsotaMesecno);
+        using (MySqlConnection connection = new MySqlConnection(_conn))
+        {
+            connection.Open();
+            using (MySqlCommand command = new MySqlCommand("UstvariNarocnino", connection))
+            {
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@p_ime_narocnine", imeNarocnine);
+                command.Parameters.AddWithValue("@p_vsota_mesecno", vstoaMedecnoD);
+                command.ExecuteNonQuery();
+            }
+        }
+    }
+    private void vseMozneNarocnine()
+    {
+            vseNarocnine.Clear();
+            using (MySqlConnection connection = new MySqlConnection(_conn))
+            {
+                connection.Open();
+                string sql = "SELECT * FROM narocnine";
+                using (MySqlCommand command = new MySqlCommand(sql,connection))
+                {
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            int id_narocnine = reader.GetInt32("id_narocnine");
+                            decimal vsota_mesecno = reader.GetDecimal("vsota_mesecno");
+                            string ime_narocnine = reader.GetString("ime_narocnine");
+                            decimal vsota_letno = reader.GetDecimal("vsota_letno");
+                            var narocnine = new Narocnine(id_narocnine,ime_narocnine,vsota_mesecno ,vsota_letno);
+                            vseNarocnine.Add(narocnine);
+                        }
+                    }
+                }
+            }
+
+            VseMozneNarocnine.ItemsSource = vseNarocnine;
+    }
     private void Logout_OnClick(object? sender, RoutedEventArgs e)
     {
         var close= (IClassicDesktopStyleApplicationLifetime)Application.Current.ApplicationLifetime;
@@ -172,13 +224,31 @@ public partial class Zaposlen : Window
         Uspesno.IsVisible = false;
     }
 
+    private async Task UspesnoKreiranaNarocnina()
+    {
+        UspesnoUstvarjenaNarocnina.IsVisible = true;
+        await Task.Delay(1000);
+        UspesnoUstvarjenaNarocnina.IsVisible = false;
+    }
     private void UstvariGenericniKredit_OnClick(object? sender, RoutedEventArgs e)
     {
         var register = new Register();
         register.Show();
         Hide();
     }
-
+    private void UstvariNarocnino_OnClick(object? sender, RoutedEventArgs e)
+    {
+        Profil.IsVisible = false;
+        UstvariNarocnino.IsVisible = true;
+    }
+    private void KreirajNarocnino_OnClick(object? sender, RoutedEventArgs e)
+    {
+        UstvariNarocnine();
+        UspesnoKreiranaNarocnina();
+        vseMozneNarocnine();
+        Profil.IsVisible = true;
+        UstvariNarocnino.IsVisible = false;
+    }
     private void Expander_OnExpanded(object? sender, RoutedEventArgs e)
     {
         var expander = (Expander)sender;
@@ -188,7 +258,7 @@ public partial class Zaposlen : Window
         if (sender is Expander expande  && expande.Tag is Krediti krediti)
         {
             id_kredit = krediti.IDkredita;
-            Console.WriteLine(id_kredit);
+           
         }
         
     }
@@ -203,7 +273,8 @@ public partial class Zaposlen : Window
         }
         return null;
     }
-   
 
+
+    
 }
 

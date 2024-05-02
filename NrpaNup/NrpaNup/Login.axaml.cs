@@ -22,14 +22,19 @@ public partial class Login : Window
     public string ime;
     private string vrsta;
     private readonly Uporabnik _uporabnik;
+    private readonly Zaposlen _zaposlen;
     public Login()
     {
         InitializeComponent();
-        _uporabnik = new Uporabnik();
         var reader = new AppSettingsReader("appsettings.json");
         _conn = reader.GetStringValue("ConnectionStrings:MyConnectionString");
     }
-    
+
+    public Login(Zaposlen zaposlen, Uporabnik uporabnik) : this()
+    {
+        _zaposlen = zaposlen;
+        _uporabnik = uporabnik;
+    }
     private void SignIn_OnClick(object? sender, RoutedEventArgs e)
     {
         string username = Username.Text;
@@ -88,7 +93,7 @@ public partial class Login : Window
                         }
                     }
                 }
-                Console.WriteLine(userId);
+               
             }
             catch (Exception exception)
             {

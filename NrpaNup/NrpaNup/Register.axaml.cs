@@ -51,39 +51,10 @@ public partial class Register : Window
 
     private void Checked_OnChecked(object? sender, RoutedEventArgs e)
     {
-        /*ToggleButton izbran = sender as ToggleButton;
-        foreach (var child in ObrestStackPanel.Children)
-        {
-            if (child is CheckBox toggleButton && toggleButton != sender)
-            {
-                toggleButton.IsChecked = false;
-            }
-        }
-        if (izbran != null && izbran.IsChecked == true)
-        {
-            switch (true)
-            {
-                case true when Obrest2_5.IsChecked == true:
-                    obrest = Convert.ToDecimal(2.5);
-                    break;
-                case true when Obrest5.IsChecked == true:
-                    obrest = 5;
-                    break;
-                case true when Obrest7_5.IsChecked == true:
-                    obrest = Convert.ToDecimal(7.5);
-                    break;
-            }
-
-        }*/
         RadioButton selectedRadioButton = sender as RadioButton;
         if (selectedRadioButton != null && selectedRadioButton.IsChecked == true)
         {
-         
             obrest = Convert.ToDecimal(selectedRadioButton.Tag); //mogoc nared da zgledao kt checkboxi
         }
-
-
     }
-
-  
 }
