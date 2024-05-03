@@ -12,6 +12,7 @@ using Avalonia.Data.Converters;
 using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
+using Avalonia.Controls.Primitives;
 using Avalonia.LogicalTree;
 using VisualExtensions = Avalonia.VisualTree.VisualExtensions;
 using Avalonia.VisualTree;
@@ -22,29 +23,27 @@ public partial class Zaposlen : Window
 {
     private ObservableCollection<UporabniskiPodatki> uporabniskiPodatki { get; } = new ObservableCollection<UporabniskiPodatki>();
     private ObservableCollection<Krediti> vsiMozniKredit { get; } = new ObservableCollection<Krediti>();
-    private ObservableCollection<string> uporabnikiImena { get; } = new ObservableCollection<string>();
+    private ObservableCollection<UporabniskiPodatki> uporabnikiImena { get; } = new ObservableCollection<UporabniskiPodatki>();
     private ObservableCollection<Narocnine> vseNarocnine { get; } = new ObservableCollection<Narocnine>();
 
     private readonly string _conn;
-    private readonly Uporabnik _uporabnik;
-    public int id_kredit;
-    public int id_uporabnik;
+    private int id_kredit;
+    private int id_uporabnik;
+    private int id_kartica;
+    private int cas;
+    private decimal obrest;
+    private int vsota;
     public Zaposlen()
     {
-       
-            InitializeComponent();
-            var reader = new AppSettingsReader("appsettings.json");
-            _conn = reader.GetStringValue("ConnectionStrings:MyConnectionString");
-            PrikazVsehKreditov();
-            UporabnikiZaposlenega();
-            vseMozneNarocnine();
+
+        InitializeComponent();
+        var reader = new AppSettingsReader("appsettings.json");
+        _conn = reader.GetStringValue("ConnectionStrings:MyConnectionString");
+        PrikazVsehKreditov();
+        UporabnikiZaposlenega();
+        vseMozneNarocnine();
     }
 
-    public Zaposlen(Uporabnik uporabnik) : this()
-    {
-        _uporabnik = uporabnik;
-        
-    }
     private void UstvariUporabnika()
     {
         string username = Username.Text;
@@ -67,7 +66,7 @@ public partial class Zaposlen : Window
         {
             connection.Open();
             string sql = "SELECT * FROM VsiKrediti";
-            using (MySqlCommand command = new MySqlCommand(sql,connection))
+            using (MySqlCommand command = new MySqlCommand(sql, connection))
             {
                 using (MySqlDataReader reader = command.ExecuteReader())
                 {
@@ -76,7 +75,7 @@ public partial class Zaposlen : Window
                         int id_krediti = reader.GetInt32("id_krediti");
                         int vsota = reader.GetInt32("vsota");
                         string tip_kredita = reader.GetString("tip_kredita");
-                        decimal obrestna_mera  = reader.GetDecimal("fixna_obrestna_mera");
+                        decimal obrestna_mera = reader.GetDecimal("fixna_obrestna_mera");
                         decimal obrest_procent = obrestna_mera * 100;
                         var krediti = new Krediti(id_krediti, vsota, tip_kredita, obrest_procent);
                         vsiMozniKredit.Add(krediti);
@@ -87,16 +86,16 @@ public partial class Zaposlen : Window
 
         Kredit.ItemsSource = vsiMozniKredit;
     }
-   
-  
+
+
     private void UporabnikiZaposlenega()
     {
         uporabniskiPodatki.Clear();
         using (MySqlConnection connection = new MySqlConnection(_conn))
         {
             connection.Open();
-            
-            using (MySqlCommand command = new MySqlCommand("UporabnikiZaposlenega",connection))
+
+            using (MySqlCommand command = new MySqlCommand("UporabnikiZaposlenega", connection))
             {
                 command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.AddWithValue("id_zaposlen", Login.userId);
@@ -118,13 +117,16 @@ public partial class Zaposlen : Window
                         string kartica_status = reader.GetString("kartica_status");
                         double kartica_stanje = reader.GetDouble("kartica_stanje");
                         string kartica_veljavnost = reader.GetString("kartica_veljavnost");
-                        var uporabniki = new UporabniskiPodatki(uporabnikId,ime, geslo, created, vrstaUporabnika, id_kartica,
-                            st_kartice, kartica_vrsta, kartica_limit, kartica_status, kartica_stanje, kartica_veljavnost);
-                        uporabniskiPodatki.Add(uporabniki);      
+                        var uporabniki = new UporabniskiPodatki(uporabnikId, ime, geslo, created, vrstaUporabnika,
+                            id_kartica,
+                            st_kartice, kartica_vrsta, kartica_limit, kartica_status, kartica_stanje,
+                            kartica_veljavnost);
+                        uporabniskiPodatki.Add(uporabniki);
                     }
                 }
             }
         }
+
         UporabnikiBox.ItemsSource = uporabniskiPodatki;
     }
 
@@ -134,22 +136,28 @@ public partial class Zaposlen : Window
         using (MySqlConnection connection = new MySqlConnection(_conn))
         {
             connection.Open();
-            string sql = " SELECT id_zaposlen, z.id_uporabnika, u.id_uporabnika, u.ime FROM uporabniki u JOIN zaposlen z " +
-                         "ON u.id_uporabnika = z.id_uporabnika WHERE id_zaposlen = @zaposlen ";
-            using (MySqlCommand command = new MySqlCommand(sql,connection))
+            //Za dodelitev kredita uporabniku
+            string sql =
+                " SELECT id_zaposlen, z.id_uporabnika, u.id_uporabnika, u.ime, k.id_kartica, k.id_uporabnika FROM uporabniki u " +
+                "JOIN zaposlen z ON u.id_uporabnika = z.id_uporabnika " +
+                "JOIN kartica k ON  u.id_uporabnika = k.id_uporabnika WHERE id_zaposlen = @zaposlen ";
+            using (MySqlCommand command = new MySqlCommand(sql, connection))
             {
                 command.Parameters.AddWithValue("@zaposlen", Login.userId);
                 using (MySqlDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
+                        int uporabnik_id = reader.GetInt32("id_uporabnika");
                         string ime = reader.GetString("ime");
-                        uporabnikiImena.Add(ime);
+                        int kartica_id = reader.GetInt32("id_kartica");
+                        var ime_uporabnik_zaposlen = new UporabniskiPodatki(uporabnik_id, ime, kartica_id);
+                        uporabnikiImena.Add(ime_uporabnik_zaposlen);
                     }
                 }
             }
         }
-        
+
     }
 
     private void UstvariNarocnine()
@@ -169,35 +177,64 @@ public partial class Zaposlen : Window
             }
         }
     }
+
     private void vseMozneNarocnine()
     {
-            vseNarocnine.Clear();
-            using (MySqlConnection connection = new MySqlConnection(_conn))
+        vseNarocnine.Clear();
+        using (MySqlConnection connection = new MySqlConnection(_conn))
+        {
+            connection.Open();
+            string sql = "SELECT * FROM narocnine";
+            using (MySqlCommand command = new MySqlCommand(sql, connection))
             {
-                connection.Open();
-                string sql = "SELECT * FROM narocnine";
-                using (MySqlCommand command = new MySqlCommand(sql,connection))
+                using (MySqlDataReader reader = command.ExecuteReader())
                 {
-                    using (MySqlDataReader reader = command.ExecuteReader())
+                    while (reader.Read())
                     {
-                        while (reader.Read())
-                        {
-                            int id_narocnine = reader.GetInt32("id_narocnine");
-                            decimal vsota_mesecno = reader.GetDecimal("vsota_mesecno");
-                            string ime_narocnine = reader.GetString("ime_narocnine");
-                            decimal vsota_letno = reader.GetDecimal("vsota_letno");
-                            var narocnine = new Narocnine(id_narocnine,ime_narocnine,vsota_mesecno ,vsota_letno);
-                            vseNarocnine.Add(narocnine);
-                        }
+                        int id_narocnine = reader.GetInt32("id_narocnine");
+                        decimal vsota_mesecno = reader.GetDecimal("vsota_mesecno");
+                        string ime_narocnine = reader.GetString("ime_narocnine");
+                        decimal vsota_letno = reader.GetDecimal("vsota_letno");
+                        var narocnine = new Narocnine(id_narocnine, ime_narocnine, vsota_mesecno, vsota_letno);
+                        vseNarocnine.Add(narocnine);
                     }
                 }
             }
+        }
 
-            VseMozneNarocnine.ItemsSource = vseNarocnine;
+        VseMozneNarocnine.ItemsSource = vseNarocnine;
     }
+
+    private void DodeliKredit()
+    {
+        using (MySqlConnection connection = new MySqlConnection(_conn))
+        {
+            connection.Open();
+            using (MySqlCommand komanda = new MySqlCommand("Izracun", connection))
+            {
+                komanda.CommandType = CommandType.StoredProcedure;
+                komanda.Parameters.AddWithValue("@vsota", vsota);
+                komanda.Parameters.AddWithValue("@obrestna_mera", obrest);
+                komanda.Parameters.AddWithValue("@cas", cas);
+                decimal izracun = Convert.ToDecimal(komanda.ExecuteScalar());
+                string sql = "INSERT INTO kreditiU(id_uporabnika,id_kartica,cas,id_krediti, mesecno_odplacilo, st_odplacil) VALUES (@id_uporabnika,@id_kartica,@cas,@id_krediti, @mesecno_odplacilo, @st_odplacil)";
+                using (MySqlCommand command = new MySqlCommand(sql, connection))
+                {
+                  command.Parameters.AddWithValue("@id_uporabnika", id_uporabnik);
+                  command.Parameters.AddWithValue("@id_kartica", id_kartica);
+                  command.Parameters.AddWithValue("@cas", cas);
+                  command.Parameters.AddWithValue("@id_krediti", id_kredit);
+                  command.Parameters.AddWithValue("@mesecno_odplacilo", izracun);
+                  command.Parameters.AddWithValue("@st_odplacil", cas*12);
+                  command.ExecuteNonQuery();
+                }
+            }
+        }
+    }
+
     private void Logout_OnClick(object? sender, RoutedEventArgs e)
     {
-        var close= (IClassicDesktopStyleApplicationLifetime)Application.Current.ApplicationLifetime;
+        var close = (IClassicDesktopStyleApplicationLifetime)Application.Current.ApplicationLifetime;
         close.Shutdown();
     }
 
@@ -205,11 +242,11 @@ public partial class Zaposlen : Window
     {
         Profil.IsVisible = false;
         Kreiranje.IsVisible = true;
-      
+
     }
 
     private void Ustvari_OnClick(object? sender, RoutedEventArgs e)
-    { 
+    {
         UstvariUporabnika();
         UporabnikiZaposlenega();
         UspesnoKreiran();
@@ -220,15 +257,22 @@ public partial class Zaposlen : Window
     private async Task UspesnoKreiran()
     {
         Uspesno.IsVisible = true;
-        await Task.Delay(1000);
+        await Task.Delay(2000);
         Uspesno.IsVisible = false;
     }
 
     private async Task UspesnoKreiranaNarocnina()
     {
         UspesnoUstvarjenaNarocnina.IsVisible = true;
-        await Task.Delay(1000);
+        await Task.Delay(2000);
         UspesnoUstvarjenaNarocnina.IsVisible = false;
+    }
+
+    private async Task KreditDodeljen()
+    {
+        LabelKredit.IsVisible = true;
+        await Task.Delay(2000);
+        LabelKredit.IsVisible = false;
     }
     private void UstvariGenericniKredit_OnClick(object? sender, RoutedEventArgs e)
     {
@@ -236,11 +280,13 @@ public partial class Zaposlen : Window
         register.Show();
         Hide();
     }
+
     private void UstvariNarocnino_OnClick(object? sender, RoutedEventArgs e)
     {
         Profil.IsVisible = false;
         UstvariNarocnino.IsVisible = true;
     }
+
     private void KreirajNarocnino_OnClick(object? sender, RoutedEventArgs e)
     {
         UstvariNarocnine();
@@ -249,19 +295,36 @@ public partial class Zaposlen : Window
         Profil.IsVisible = true;
         UstvariNarocnino.IsVisible = false;
     }
+
     private void Expander_OnExpanded(object? sender, RoutedEventArgs e)
     {
         var expander = (Expander)sender;
         var imenaUporabnika = FindInnerListBox(expander);
         imenaUporabnika.ItemsSource = uporabnikiImena;
         Imena();
-        if (sender is Expander expande  && expande.Tag is Krediti krediti)
+        if (sender is Expander expande && expande.Tag is Krediti krediti)
         {
             id_kredit = krediti.IDkredita;
-           
+            obrest = krediti.ObrestnaMera;
+            
+            vsota = krediti.VsotaKredita;
+            Console.WriteLine($"ID Kredita: {id_kredit} \n Obrstna Mera: {obrest} \n Vsota Kredita: {vsota}");
         }
-        
     }
+
+    private void DodeliKredit_OnClick(object? sender, RoutedEventArgs e)
+    {
+        if (sender is Button button && button.Tag is UporabniskiPodatki uporabniskiPodatki)
+        {
+            id_uporabnik = uporabniskiPodatki.UporabnikID;
+            id_kartica = uporabniskiPodatki.IDkartica;
+            Console.WriteLine($" ID Uporabnika: {id_uporabnik} \n ID Kartice Uporabnika: {id_kartica}");
+        }
+
+        KreditiBorder.IsVisible = false;
+        CasOdplacevanja.IsVisible= true;
+    }
+
     private ListBox? FindInnerListBox(Expander expander)
     {
         foreach (var item in expander.GetLogicalChildren())
@@ -271,10 +334,23 @@ public partial class Zaposlen : Window
                 return listBox;
             }
         }
+
         return null;
     }
-
-
     
+    private void ShraniVBazo_OnClick(object? sender, RoutedEventArgs e)
+    {
+        if (sender is Button button)
+        {
+           if (int.TryParse(button.Tag.ToString(), out cas)){}
+        }
+        Console.WriteLine($"ID Kredita: {id_kredit}  ID Uporabnika: {id_uporabnik}  ID Kartice Uporabnika: {id_kartica}");
+        CasOdplacevanja.IsVisible = false;
+        KreditiBorder.IsVisible = true;
+        DodeliKredit();
+        KreditDodeljen();
+        
+    }
+    
+ 
 }
-

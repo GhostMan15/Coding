@@ -2,10 +2,6 @@ namespace NrpaNup;
 
 public class UporabniskiPodatki : Kartica
 {
-    public UporabniskiPodatki(string ime)
-    {
-        Ime = ime;
-    }
     public int UporabnikID { get; set; }
     public string Ime { get; set; }
     public string Geslo { get; set; }
@@ -23,7 +19,6 @@ public class UporabniskiPodatki : Kartica
         Geslo = geslo;
         Created = created;
         VrstaUporabnika = vrstaUporabnika;
-       
     }
 
     public UporabniskiPodatki(int zaposlenId, int uporabnikId, string zaposlenIme, string zaposlenGeslo)
@@ -31,6 +26,13 @@ public class UporabniskiPodatki : Kartica
         ZaposlenID = zaposlenId;
         UporabnikID = uporabnikId;
         ZaposlenIme = zaposlenIme;
-        ZaposlenGeslo = zaposlenIme;
+        ZaposlenGeslo = zaposlenGeslo;
+    }
+
+    public UporabniskiPodatki(int uporabnikId, string ime, int karticaID)
+    {
+        UporabnikID = uporabnikId;
+        Ime = ime;
+        IDkartica = karticaID;
     }
 }

@@ -13,12 +13,17 @@ public class Kartica
 
     public Kartica(int idDkartica, string stKratice, string vrsta, int limit, string status, double stanje, string veljavnost)
     {
-        IDkartica = idDkartica ;
-        Stanje = stanje ;
-        STKratice = stKratice ;
+        IDkartica = idDkartica;
+        Stanje = stanje;
+        STKratice = stKratice;
         Limit = limit;
         Status = status;
         Vrsta = vrsta;
         Veljavnost = veljavnost;
+    }
+
+    public Kartica(string vrsta)
+    {
+        Vrsta = vrsta;
     }
 }

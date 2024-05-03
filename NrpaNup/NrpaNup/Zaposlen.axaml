@@ -11,12 +11,21 @@
         WindowStartupLocation="CenterScreen"
         Title="Zaposlen">
    <Grid ColumnDefinitions="*,*,*" RowDefinitions="*,*,*">
+       <Label Grid.Row="0" Grid.Column="2"  x:Name="LabelKredit" Content="Kredit upsešno dodeljen" FontSize="18" IsVisible="False"/>
+       <StackPanel Grid.Row="0" Grid.Column="1"  x:Name="CasOdplacevanja"  IsVisible="False">
+           <Label Content="Na koliko let?" FontSize="18" />
+           <Grid ColumnDefinitions="*,*,*">
+           <Button Grid.Column="0"  Content="5 Let" Tag="5" CornerRadius="10" Margin="3" Click="ShraniVBazo_OnClick"/>
+           <Button Grid.Column="1" Content="10 Let" Tag="10" CornerRadius="10" Margin="3" Click="ShraniVBazo_OnClick"/>
+           <Button Grid.Column="2" Content="15 Let" Tag="15" CornerRadius="10" Margin="3" Click="ShraniVBazo_OnClick"/>
+           </Grid>
+       </StackPanel>
        <!-- Ponudbe kreditov -->
-       <Border  Grid.Row="0" Grid.RowSpan="3" Grid.Column="1" CornerRadius="10" Margin="3" BorderThickness="1" BorderBrush="Black" IsVisible="True">
+       <Border  x:Name="KreditiBorder" Grid.Row="0" Grid.RowSpan="3" Grid.Column="1" CornerRadius="10" Margin="3" BorderThickness="1" BorderBrush="Black" IsVisible="True">
            <StackPanel>
                <Label Content="krediti"/>
                <ScrollViewer VerticalScrollBarVisibility="Auto">
-               <ListBox x:Name="Kredit" ItemsSource="{Binding vsiMozniKredit}" Margin="5" BorderBrush="Black" CornerRadius="10">
+                   <ListBox x:Name="Kredit" ItemsSource="{Binding vsiMozniKredit}" Margin="5" BorderBrush="Black" CornerRadius="10">
                    <ListBox.ItemTemplate>
                        <DataTemplate>
                            <StackPanel>
@@ -32,7 +41,7 @@
                                          <ListBox x:Name="ImeUporabnika" ItemsSource="{Binding uporabnikiImena, RelativeSource={RelativeSource AncestorType=local:Zaposlen}}" Margin="5" BorderBrush="Black" CornerRadius="10">
                                              <ListBox.ItemTemplate>
                                                  <DataTemplate>
-                                                     <Button Content="{Binding}" Margin="5"  CornerRadius="10"/>
+                                                     <Button Content="{Binding Ime }" Tag="{Binding}" Margin="5"  CornerRadius="10" Click="DodeliKredit_OnClick"/>
                                                  </DataTemplate>
                                              </ListBox.ItemTemplate>
                                          </ListBox>

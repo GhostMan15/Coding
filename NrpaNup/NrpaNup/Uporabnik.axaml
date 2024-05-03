@@ -13,7 +13,7 @@
         <Grid ColumnDefinitions="*,*,*" RowDefinitions="*,*,*,*">
             <!--Stanje-->
             <Border Grid.Column="0" Grid.Row="0" BorderThickness="1" BorderBrush="Black" CornerRadius="10" Margin="3">
-                <ListBox x:Name="Stanje" ItemsSource="{Binding podatkiKartice}" Margin="5" BorderBrush="Black" CornerRadius="10">
+                <ListBox x:Name="Stanje" ItemsSource="{Binding podatkiKartice1}" Margin="5" BorderBrush="Black" CornerRadius="10">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel>
@@ -26,7 +26,7 @@
               </Border>
             <!--Podatki kartice-->
             <Border Grid.Column="0" Grid.Row="1" BorderThickness="1" BorderBrush="Black" CornerRadius="10" Margin="3">
-                <ListBox x:Name="KarticaD" ItemsSource="{Binding podatkiKartice}" Margin="5" BorderBrush="Black" CornerRadius="10">
+                <ListBox x:Name="KarticaD" ItemsSource="{Binding podatkiKartice1}" Margin="5" BorderBrush="Black" CornerRadius="10">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel>
@@ -38,7 +38,7 @@
                 </ListBox>
             </Border>
             <Border Grid.Column="1" Grid.Row="1" BorderThickness="1" BorderBrush="Black" CornerRadius="10" Margin="3">
-                <ListBox x:Name="KarticaK" ItemsSource="{Binding podatkiKartice}" Margin="5" BorderBrush="Black" CornerRadius="10">
+                <ListBox x:Name="KarticaK" ItemsSource="{Binding podatkiKartice2}" Margin="5" BorderBrush="Black" CornerRadius="10">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel>
@@ -53,7 +53,7 @@
                 <DockPanel>
                     <Menu x:Name="ProfileUpo" DockPanel.Dock="Right" CornerRadius="10" Margin="3">
                         <MenuItem Header="_Profile" CornerRadius="10">
-                            <Button CornerRadius="10" Margin="3" Content="Nakazilo"/>
+                          <!--  <Button CornerRadius="10" Margin="3" Content="Nakazilo"/> -->
                             <Button CornerRadius="10" Margin="3" Content="Transakije"/>
                             <Button CornerRadius="10" Margin="3" Content="Log"/>
                             <Button CornerRadius="10" Margin="3"  Content="Odjava" Click="Logout_OnClick"/>
@@ -76,7 +76,7 @@
                 </ScrollViewer>
             </Border>
             <!-- Vse mogoce narocnine -->
-            <Border Grid.Row="1" Grid.RowSpan="3" Grid.Column="2" BorderThickness="1" BorderBrush="Black" CornerRadius="10" Margin="3">
+            <Border x:Name="Narocnine" Grid.Row="1" Grid.RowSpan="3" Grid.Column="2" BorderThickness="1" BorderBrush="Black" CornerRadius="10" Margin="3" IsVisible="True">
                 <ScrollViewer VerticalScrollBarVisibility="Auto">
                     <StackPanel>
                         <Label Content="Narocnine"/>
@@ -88,9 +88,11 @@
                                         <Label Grid.Row="0" Grid.Column="0" Content="Ime:"/>
                                         <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding ImeNarocnine}"/>
                                         <Label Grid.Row="1" Grid.Column="0" Content="Vsota mesecno:"/>
-                                        <Button Grid.Row="1" Grid.Column="1" Content="{Binding VsotaNarocnineMesecno,  StringFormat={}{0}€}" CornerRadius="10" Margin="3"/>
+                                        <Button Grid.Row="1" Grid.Column="1" Content="{Binding VsotaNarocnineMesecno,  StringFormat={}{0}€}" 
+                                             Tag="{Binding}"   CornerRadius="10" Margin="3" Click="Subscribe_OnClick"/>
                                         <Label Grid.Row="2" Grid.Column="0" Content="Vsota letno:"/>
-                                        <Button Grid.Row="2" Grid.Column="1" Content="{Binding VsotaNarocnineLetno,  StringFormat={}{0}€}" CornerRadius="10" Margin="3"/>
+                                        <Button Grid.Row="2" Grid.Column="1" Content="{Binding VsotaNarocnineLetno,  StringFormat={}{0}€}" 
+                                                Tag="{Binding}" CornerRadius="10" Margin="3" Click="SubscribeLetno_OnClick"/>
                                     </Grid>
                                 </StackPanel>
                             </DataTemplate>
@@ -99,5 +101,17 @@
                     </StackPanel>
                 </ScrollViewer>
             </Border>
+            <StackPanel Grid.Row="1" Grid.Column="2" x:Name="NarociSe" IsVisible="False" >
+                <Label Content="Na kartico?" FontSize="16"/>
+                <ListBox x:Name="KarticeBox" ItemsSource="{Binding podatkiKartic }">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                            <Button Content="{Binding Vrsta}" Tag="{Binding  }" CornerRadius="10" Margin="3" Click="Sub_OnClick"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </StackPanel>
         </Grid>
 </Window>

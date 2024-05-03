@@ -119,18 +119,9 @@ public partial class Admin : Window
             string sql = "INSERT INTO uporabniki (ime,vrsta_uporabnika) VALUES (@ime, @vrsta_uporabnika)";
             using (MySqlCommand command = new MySqlCommand(sql,connection))
             {
-                try
-                {
                     command.Parameters.AddWithValue("@ime", ustvari_ime);
                     command.Parameters.AddWithValue("@vrsta_uporabnika", izbrani_tip);
                     command.ExecuteNonQuery();
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e);
-                    throw;
-                }
-             
             }
         }
     }
