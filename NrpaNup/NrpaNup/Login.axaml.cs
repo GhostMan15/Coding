@@ -35,20 +35,7 @@ public partial class Login : Window
        var reader = new AppSettingsReader("appsettings.json");
         _conn = reader.GetStringValue("ConnectionStrings:MyConnectionString");
        Console.WriteLine(_conn);
-      /*  string jsonString = File.ReadAllText("appsettings.json");
-
-        DatabaseConfig config = JsonSerializer.Deserialize<DatabaseConfig>(jsonString);
-
-        // Extract values
-        string server = config.Server;
-        string port = config.Port;
-        string database = config.Database;
-        string username = config.Username;
-        string password = config.Password;
-
-       string _conn = $"Server={server};Port={port};Database={database};Uid={username};Pwd={password};";
-        Console.WriteLine(_conn);*/
-
+       
     } 
 
     public Login(Zaposlen zaposlen, Uporabnik uporabnik) : this()
@@ -131,22 +118,3 @@ public partial class Login : Window
     
 }
 
-
-public class Prikaz
-{
-    public string Ime { get; set; }
-    public ObservableCollection<Prikaz> prikazeIme { get; } = new ObservableCollection<Prikaz>();
-    public Prikaz(string ime)
-    {
-        Ime = ime;
-    }
-    public Prikaz(){}
-}
-class DatabaseConfig
-{
-    public string Server { get; set; }
-    public string Port { get; set; }
-    public string Database { get; set; }
-    public string Username { get; set; }
-    public string Password { get; set; }
-}

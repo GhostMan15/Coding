@@ -40,7 +40,6 @@ public class Loginanje
         }
         else
         {
-            // If the file already exists, append the log entry to it
             using (StreamWriter writer = new StreamWriter(filePath, true))
             {
                 writer.WriteLine(log);
