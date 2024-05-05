@@ -8,19 +8,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="815d4385-3ef4-45ab-8746-3c7bc960ca5c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/NrpaNup/KreditiUporabnika.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NrpaNup/AppSettingsReader.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NrpaNup/Loginanje.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NrpaNup/Transakcije.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NrpaNup/appsettings2.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.NrpaNup/.idea/dataSources/290d851c-5086-4829-8532-2fc0da318d8e.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NrpaNup/.idea/dataSources/290d851c-5086-4829-8532-2fc0da318d8e.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.NrpaNup/.idea/dataSources/290d851c-5086-4829-8532-2fc0da318d8e/storage_v2/_src_/schema/nrpa.tbozAA.zip" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NrpaNup/.idea/dataSources/290d851c-5086-4829-8532-2fc0da318d8e/storage_v2/_src_/schema/nrpa.tbozAA.zip" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.NrpaNup/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NrpaNup/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NrpaNup/Admin.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/NrpaNup/Admin.axaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NrpaNup/Admin.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NrpaNup/Admin.axaml.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NrpaNup/Kartica.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NrpaNup/Kartica.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NrpaNup/Krediti.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NrpaNup/Krediti.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NrpaNup/KreditiUporabnika.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NrpaNup/KreditiUporabnika.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NrpaNup/Login.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NrpaNup/Login.axaml.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NrpaNup/Narocnine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NrpaNup/Narocnine.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NrpaNup/NrpaNup.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/NrpaNup/NrpaNup.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NrpaNup/Uporabnik.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/NrpaNup/Uporabnik.axaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NrpaNup/Uporabnik.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NrpaNup/Uporabnik.axaml.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NrpaNup/UporabniskiPodatki.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NrpaNup/UporabniskiPodatki.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NrpaNup/Zaposlen.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/NrpaNup/Zaposlen.axaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NrpaNup/Zaposlen.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NrpaNup/Zaposlen.axaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NrpaNup/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/NrpaNup/appsettings.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,8 +41,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JSON File" />
         <option value="XML File" />
+        <option value="JSON File" />
       </list>
     </option>
   </component>
@@ -74,6 +82,7 @@
   },
   &quot;keyToStringList&quot;: {
     &quot;DatabaseDriversLRU&quot;: [
+      &quot;azure&quot;,
       &quot;mysql&quot;
     ],
     &quot;rider.external.source.directories&quot;: [
@@ -141,6 +150,10 @@
       <workItem from="1714726626818" duration="8662000" />
       <workItem from="1714736886759" duration="10120000" />
       <workItem from="1714747075181" duration="11098000" />
+      <workItem from="1714815184904" duration="5474000" />
+      <workItem from="1714851933423" duration="11377000" />
+      <workItem from="1714896254457" duration="8552000" />
+      <workItem from="1714904866047" duration="7617000" />
     </task>
     <servers />
   </component>

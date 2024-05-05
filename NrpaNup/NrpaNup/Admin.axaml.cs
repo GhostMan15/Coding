@@ -1,5 +1,6 @@
 using System;
 using System.Collections.ObjectModel;
+using System.Data;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
@@ -26,6 +27,9 @@ public partial class Admin : Window
         var reader = new AppSettingsReader("appsettings.json");
         _conn = reader.GetStringValue("ConnectionStrings:MyConnectionString");
         PrikazUporabniskihPodatkov();
+        var loginanje = new Loginanje();
+        var logi = loginanje.ReadLogFile(Login.userId);
+        MojePrijaveBox.ItemsSource = logi;
     }
     private void PrikazUporabniskihPodatkov()
     {
@@ -53,7 +57,7 @@ public partial class Admin : Window
                         string vrsta = reader.GetString("kartica_vrsta");
                         int limit = reader.GetInt32("kartica_limit");
                         string status = reader.GetString("kartica_status");
-                        double stanje = reader.GetDouble("kartica_stanje");
+                        decimal? stanje = reader.GetDecimal("kartica_stanje");
                         string veljavnost = reader.GetString("kartica_veljavnost");
                         var uporabniki = new UporabniskiPodatki(uporabnikId,ime, geslo, created, vrstaUporabnika, id_kartica,
                             st_kartice, vrsta, limit, status, stanje, veljavnost);
@@ -128,6 +132,8 @@ public partial class Admin : Window
     private void Logout_OnClick(object? sender, RoutedEventArgs e)
     {
         var close= (IClassicDesktopStyleApplicationLifetime)Application.Current.ApplicationLifetime;
+        var logut = new Loginanje();
+        logut.Logout(Login.ime, Login.userId);
         close.Shutdown();
     }
 

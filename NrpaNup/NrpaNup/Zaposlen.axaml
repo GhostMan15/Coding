@@ -22,9 +22,9 @@
        </StackPanel>
        <!-- Ponudbe kreditov -->
        <Border  x:Name="KreditiBorder" Grid.Row="0" Grid.RowSpan="3" Grid.Column="1" CornerRadius="10" Margin="3" BorderThickness="1" BorderBrush="Black" IsVisible="True">
+           <ScrollViewer VerticalScrollBarVisibility="Auto">
            <StackPanel>
                <Label Content="krediti"/>
-               <ScrollViewer VerticalScrollBarVisibility="Auto">
                    <ListBox x:Name="Kredit" ItemsSource="{Binding vsiMozniKredit}" Margin="5" BorderBrush="Black" CornerRadius="10">
                    <ListBox.ItemTemplate>
                        <DataTemplate>
@@ -52,8 +52,8 @@
                        </DataTemplate>
                    </ListBox.ItemTemplate>
                </ListBox>
-           </ScrollViewer>
            </StackPanel>
+           </ScrollViewer>
        </Border>
        <!-- Uporabniki-->
        <Border x:Name="Uporabniki" Grid.Row="0" Grid.RowSpan="3" Grid.Column="0" CornerRadius="10" Margin="3" BorderThickness="1" BorderBrush="Black" IsVisible="True">
@@ -64,13 +64,14 @@
                    <ListBox.ItemTemplate>
                        <DataTemplate>
                            <StackPanel>
-                               <Grid ColumnDefinitions="*,*" RowDefinitions="*,*,*">
+                               <Grid ColumnDefinitions="*,*,*" RowDefinitions="*,*,*">
                                <Label Grid.Row="0" Grid.Column="0" Content="Ime:"/>
                                <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Ime}"/>
                                <Label Grid.Row="1" Grid.Column="0" Content="Številka kartice:"/>
                                <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding STKratice}" />
                                <Label Grid.Row="2" Grid.Column="0" Content="Vrsta kartice:"/>
                                <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Vrsta}"/>
+                               <Button Grid.Row="2" Grid.Column="2" Content="Več informacij" Tag="{Binding}" CornerRadius="10" Margin="3" Click="Vecinformacij_OnClick"/>
                                </Grid>
                            </StackPanel>
                        </DataTemplate>
@@ -79,8 +80,40 @@
                </StackPanel>
            </ScrollViewer>
        </Border>
+       <Border x:Name="VecInformacij" Grid.Row="0" Grid.RowSpan="3" Grid.Column="0" CornerRadius="10" Margin="3" BorderThickness="1" BorderBrush="Black" IsVisible="False">
+           <ScrollViewer VerticalScrollBarVisibility="Auto">
+               <StackPanel>
+                   <Label Content="Uporabniki:"/>
+                   <ListBox x:Name="Vecinformacij" ItemsSource="{Binding vecinInfromacijOUporabniku}" Margin="5" BorderBrush="Black" CornerRadius="10">
+                       <ListBox.ItemTemplate>
+                           <DataTemplate>
+                               <StackPanel>
+                                   <Grid ColumnDefinitions="*,*,*" RowDefinitions="*,*,*,*,*,*,*">
+                                       <Label Grid.Row="0" Grid.Column="0" Content="Ime:"/>
+                                       <Label Grid.Row="0" Grid.Column="1" Content="{Binding Ime}"/>
+                                       <Label Grid.Row="1" Grid.Column="0" Content="Pin:"/>
+                                       <Label Grid.Row="1" Grid.Column="1" Content="{Binding Geslo}" />
+                                       <Label Grid.Row="2" Grid.Column="0" Content="Vrsta kartice:"/>
+                                       <Label Grid.Row="2" Grid.Column="1" Content="{Binding Vrsta}"/>
+                                       <Label Grid.Column="0" Grid.Row="3" Content="Številka kartice:"/>
+                                       <Label Grid.Column="1" Grid.Row="3" Content="{Binding STKratice}"/>
+                                       <Label Grid.Column="0" Grid.Row="4" Content="Veljavna/Neveljavna:"/>
+                                       <Label Grid.Column="1" Grid.Row="4" Content="{Binding Status}"/>
+                                       <Label Grid.Column="0" Grid.Row="5" Content="Stanje:"/>
+                                       <Label Grid.Column="1" Grid.Row="5" Content="{Binding Stanje,  StringFormat={}{0}€}"/> 
+                                       <Label Grid.Column="0" Grid.Row="6" Content="Veljavna do:"/>
+                                       <Label Grid.Column="1" Grid.Row="6" Content="{Binding Veljavnost}"/> 
+                                       <Button Grid.Row="6" Grid.Column="2" Content="Nazaj"  CornerRadius="10" Margin="3" Click="Nazaj_OnClick"/>
+                                   </Grid>
+                               </StackPanel>
+                           </DataTemplate>
+                       </ListBox.ItemTemplate>
+                   </ListBox>
+               </StackPanel>
+           </ScrollViewer>
+       </Border>
        <!-- Mozne narocnine ter kreiranje novih -->
-       <Border Grid.Column="2" Grid.Row="1" Grid.RowSpan="2" CornerRadius="10" Margin="3" BorderThickness="1" BorderBrush="Black" IsVisible="True">
+    <!--   <Border Grid.Column="2" Grid.Row="1" Grid.RowSpan="2" CornerRadius="10" Margin="3" BorderThickness="1" BorderBrush="Black" IsVisible="True">
            <ScrollViewer VerticalScrollBarVisibility="Auto">
                <ListBox x:Name="VseMozneNarocnine" ItemsSource="{Binding vseNarocnine}" Margin="5" BorderBrush="Black" CornerRadius="10">
                    <ListBox.ItemTemplate>
@@ -99,48 +132,82 @@
                    </ListBox.ItemTemplate>
                </ListBox>
            </ScrollViewer>
-       </Border>
+       </Border> -->
        <!-- Profile -->
        <StackPanel x:Name="Profil" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Right" IsVisible="True">
        <DockPanel>
                <Menu  DockPanel.Dock="Right" CornerRadius="10" Margin="3">
                    <MenuItem Header="_Profile " CornerRadius="10" >
-                       <Button CornerRadius="10" Margin="3" Content="Uporabniski krediti"/>
+                       <Button CornerRadius="10" Margin="3" Content="Kreiraj uporabnika" Click="Kreiraj_OnClick"/>
                        <Button CornerRadius="10" Margin="3" Content="Ustvari Kredit" Click="UstvariGenericniKredit_OnClick"/>
-                       <Button CornerRadius="10" Margin="3" Content="Ustvari narocnino" Click="UstvariNarocnino_OnClick"/>
-                       <Button CornerRadius="10" Margin="3" Content="Log"/>
+                   <!--    <Button CornerRadius="10" Margin="3" Content="Ustvari narocnino" Click="UstvariNarocnino_OnClick"/> -->
+                       <Button CornerRadius="10" Margin="3" Content="Log" Click="LogLog_OnClick"/>
                        <Button CornerRadius="10" Margin="3" Content="Odjava" Click="Logout_OnClick"/>
                    </MenuItem>
                </Menu>
            </DockPanel>
-           <Button CornerRadius="10" Margin="3" Content="Kreiraj uporabnika" Click="Kreiraj_OnClick"/>
-           <Label x:Name="Uspesno" Content="Uporabnik uspesno ustvarjen" FontSize="24" IsVisible="False" HorizontalAlignment="Center"/>
-           <Label x:Name="UspesnoUstvarjenaNarocnina" Content="Narocnina uspesno ustvarjena" FontSize="24" IsVisible="False" HorizontalAlignment="Center"/>
+           <Label x:Name="Uspesno" Content="Uporabnik uspesno ustvarjen" FontSize="16" IsVisible="False" HorizontalAlignment="Center"/>
+           <Label x:Name="UspesnoUstvarjenaNarocnina" Content="Narocnina uspesno ustvarjena" FontSize="16" IsVisible="False" HorizontalAlignment="Center"/>
        </StackPanel>
        <StackPanel x:Name="Kreiranje" Grid.Row="0" Grid.Column="2"  HorizontalAlignment="Center" IsVisible="False">
            <TextBlock Text="Ime uporabnika:" Margin="5"/>
            <TextBox  x:Name="Username"  CornerRadius="10" />   
            <Button CornerRadius="10" Margin="3"  Content="Ustvari" Click="Ustvari_OnClick"/>
        </StackPanel>
-       <StackPanel x:Name="UstvariNarocnino" Grid.Row="0" Grid.Column="2" IsVisible="False">
+    <!--   <StackPanel x:Name="UstvariNarocnino" Grid.Row="0" Grid.Column="2" IsVisible="False">
            <TextBlock Text="Ime narocnine:"/>
            <TextBox x:Name="ImeNarocnine" CornerRadius="10"/>
            <TextBlock Text="Vsota mesecno"/>
            <TextBox x:Name="VsotaMesecno" CornerRadius="10"/>
            <Button CornerRadius="10" Margin="3"  Content="Ustvari" Click="KreirajNarocnino_OnClick" />
-       </StackPanel>
+       </StackPanel> -->
        <!-- Uporabniski krediti -->
-       <Border x:Name="KreditiDisplay" Grid.Column="2" Grid.Row="1" Grid.RowSpan="2" CornerRadius="10" Margin="3" BorderThickness="1" BorderBrush="Black" IsVisible="False">
+       <Border   Grid.Column="2" Grid.Row="1" Grid.RowSpan="2" CornerRadius="10" Margin="3" BorderThickness="1" BorderBrush="Black" >
            <ScrollViewer VerticalScrollBarVisibility="Auto">
-               <ListBox>
+           <StackPanel>
+               <Label Content="Krediti vaših uporabnikov"/>
+               <ListBox x:Name="KreditiDisplay" ItemsSource="{Binding KreditiUporabnikaZaposlen}" Margin="5" BorderBrush="Black" CornerRadius="10">
                    <ListBox.ItemTemplate>
                        <DataTemplate>
                            <StackPanel>
-                               <Button Content="narocnine"/>
+                               <Grid ColumnDefinitions="*,*" RowDefinitions="*,*,*,*,*,*,*">
+                                   <Label Grid.Row="0" Grid.Column="0" Content="Ime uporabnika:"/>
+                                   <Label Grid.Row="0" Grid.Column="1" Content="{Binding Ime }"/>
+                                   <Label Grid.Row="1" Grid.Column="0" Content="Vsota kredita:"/>
+                                   <Label Grid.Row="1" Grid.Column="1" Content="{Binding  VsotaKredita,StringFormat={}{0}€}" />
+                                   <Label Grid.Row="2" Grid.Column="0" Content="Mesečno odplačilo"/>
+                                   <Label Grid.Row="2" Grid.Column="1" Content="{Binding MesecnoOdplacilo, StringFormat={}{0}€}" />
+                                   <Label Grid.Row="3" Grid.Column="0" Content="Št odplačil:"/>
+                                   <Label Grid.Row="3" Grid.Column="1" Content="{Binding  StOdplacil}"/>
+                                   <Label Grid.Row="4" Grid.Column="0" Content="Na:"/>
+                                   <Label Grid.Row="4" Grid.Column="1" Content="{Binding Cas,StringFormat={}{0} Let }"/>
+                                   <Label Grid.Row="5" Grid.Column="0" Content="Na kartico"/>
+                                   <Label Grid.Row="5" Grid.Column="1" Content="{Binding STKratice}"/>
+                                   <Label Grid.Row="6" Grid.Column="0" Content="Obrestna mera"/>
+                                   <Label Grid.Row="6" Grid.Column="1" Content="{Binding ObrestnaMera,StringFormat={}{0}%}"/>
+                               </Grid>
                            </StackPanel>
                        </DataTemplate>
                    </ListBox.ItemTemplate>
                </ListBox>
+           </StackPanel>
+           </ScrollViewer>
+       </Border>
+       <Border x:Name="PrijaveBorder" Grid.Row="0" Grid.Column="2"  BorderThickness="1" BorderBrush="Black" CornerRadius="10" Margin="3" IsVisible="False">
+           <ScrollViewer VerticalScrollBarVisibility="Auto">
+           <StackPanel>
+               <Button Content="Nazaj" CornerRadius="10" Margin="3" Click="Back_OnClick"/>
+               <Label Content="Prijava/Odjava:"/>
+                   <ListBox  x:Name="MojePrijaveBox" ItemsSource="{Binding Logginanje, RelativeSource={RelativeSource AncestorType=local:Loginanje}  }" Margin="5" BorderBrush="Black" CornerRadius="10">
+                       <ListBox.ItemTemplate>
+                           <DataTemplate>
+                               <StackPanel>
+                                   <Label Content="{Binding}"/>
+                               </StackPanel>
+                           </DataTemplate>
+                       </ListBox.ItemTemplate>
+                   </ListBox>
+           </StackPanel>
            </ScrollViewer>
        </Border>
    </Grid>

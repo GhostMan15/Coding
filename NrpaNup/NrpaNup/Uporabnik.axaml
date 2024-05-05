@@ -10,73 +10,139 @@
         Background="#262626"
         WindowStartupLocation="CenterScreen"
         Title="Uporabnik">
-        <Grid ColumnDefinitions="*,*,*" RowDefinitions="*,*,*,*">
+        <Grid ColumnDefinitions="*,*" RowDefinitions="*,*,*">
             <!--Stanje-->
-            <Border Grid.Column="0" Grid.Row="0" BorderThickness="1" BorderBrush="Black" CornerRadius="10" Margin="3">
+          <!--  <Border Grid.Column="0" Grid.Row="0" BorderThickness="1" BorderBrush="Black" CornerRadius="10" Margin="3">
                 <ListBox x:Name="Stanje" ItemsSource="{Binding podatkiKartice1}" Margin="5" BorderBrush="Black" CornerRadius="10">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel>
-                                <Label Content="Stanje"/>
-                                <Label Content="{Binding Stanje, StringFormat={}{0}€}"/>
+                                <Grid ColumnDefinitions="*,*">
+                                <Label Content="Stanje na debitni kartici:" FontSize="24" VerticalContentAlignment="Center"/>
+                                <Label  Grid.Column="1" Content="{Binding Stanje, StringFormat={}{0}€}" FontSize="24" VerticalContentAlignment="Center"/>
+                                </Grid>
                             </StackPanel>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
-              </Border>
+              </Border> -->
             <!--Podatki kartice-->
-            <Border Grid.Column="0" Grid.Row="1" BorderThickness="1" BorderBrush="Black" CornerRadius="10" Margin="3">
-                <ListBox x:Name="KarticaD" ItemsSource="{Binding podatkiKartice1}" Margin="5" BorderBrush="Black" CornerRadius="10">
+            <Border Grid.Column="0" Grid.Row="0" BorderThickness="1" BorderBrush="Black" CornerRadius="10" Margin="3">
+                <StackPanel>
+                    <Label Content="Kartica 1:"/>
+                    <ListBox x:Name="KarticaD" ItemsSource="{Binding podatkiKartice1}" Margin="5" BorderBrush="Black" CornerRadius="10">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel>
-                                <Label Content="Kartica:"/>
-                                <Label Content="{Binding Vrsta}"/>
+                                <Grid ColumnDefinitions="*,*" RowDefinitions="*,*,*,*,*">
+                                <Label Grid.Column="0" Grid.Row="0" Content="Kartica:"/>
+                                <Label Grid.Column="1" Grid.Row="0" Content="{Binding Vrsta}"/>
+                                <Label Grid.Column="0" Grid.Row="1" Content="Številka kartice:"/>
+                                <Label Grid.Column="1" Grid.Row="1" Content="{Binding STKratice}"/>
+                                <Label Grid.Column="0" Grid.Row="2" Content="Veljavna/Neveljavna:"/>
+                                <Label Grid.Column="1" Grid.Row="2" Content="{Binding Status}"/>
+                                <Label Grid.Column="0" Grid.Row="3" Content="Stanje:"/>
+                                <Label Grid.Column="1" Grid.Row="3" Content="{Binding Stanje, StringFormat={}{0}€}"/> 
+                                <Label Grid.Column="0" Grid.Row="4" Content="Veljavna do:"/>
+                                <Label Grid.Column="1" Grid.Row="4" Content="{Binding Veljavnost}"/> 
+                                </Grid>
                             </StackPanel>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
+                </StackPanel>
             </Border>
-            <Border Grid.Column="1" Grid.Row="1" BorderThickness="1" BorderBrush="Black" CornerRadius="10" Margin="3">
-                <ListBox x:Name="KarticaK" ItemsSource="{Binding podatkiKartice2}" Margin="5" BorderBrush="Black" CornerRadius="10">
+            <Border x:Name="Kreditna" Grid.Column="1" Grid.Row="0" BorderThickness="1" BorderBrush="Black" CornerRadius="10" Margin="3" IsVisible="False">
+                <StackPanel>
+                    <Label Content="Kartica 2"/>
+                <ListBox x:Name="KarticaK" ItemsSource="{Binding podatkiKartice2}" Margin="5" BorderBrush="Black" CornerRadius="10" >
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel>
-                                <Label Content="{Binding Vrsta}"/>
+                                <Grid ColumnDefinitions="*,*" RowDefinitions="*,*,*,*,*">
+                                    <Label Grid.Column="0" Grid.Row="0" Content="Kartica:"/>
+                                    <Label Grid.Column="1" Grid.Row="0" Content="{Binding Vrsta}"/>
+                                    <Label Grid.Column="0" Grid.Row="1" Content="Številka kartice:"/>
+                                    <Label Grid.Column="1" Grid.Row="1" Content="{Binding STKratice}"/>
+                                    <Label Grid.Column="0" Grid.Row="2" Content="Veljavna/Neveljavna:"/>
+                                    <Label Grid.Column="1" Grid.Row="2" Content="{Binding Status}"/>
+                                    <Label Grid.Column="0" Grid.Row="3" Content="Stanje:"/>
+                                    <Label Grid.Column="1" Grid.Row="3" Content="{Binding Stanje,  StringFormat={}{0}€}"/> 
+                                    <Label Grid.Column="0" Grid.Row="4" Content="Veljavna do:"/>
+                                    <Label Grid.Column="1" Grid.Row="4" Content="{Binding Veljavnost}"/> 
+                                </Grid>
                             </StackPanel>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
+                </StackPanel>
             </Border>
            <!-- Profil -->
-            <StackPanel Grid.Row="0" Grid.Column="2" HorizontalAlignment="Center" >
+            <StackPanel x:Name="Profil" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right" IsVisible="True">
+                <Label x:Name="UspesnoNakazano" Content="Uspešno nakazano" FontSize="14" IsVisible="False"/>
                 <DockPanel>
                     <Menu x:Name="ProfileUpo" DockPanel.Dock="Right" CornerRadius="10" Margin="3">
                         <MenuItem Header="_Profile" CornerRadius="10">
-                          <!--  <Button CornerRadius="10" Margin="3" Content="Nakazilo"/> -->
-                            <Button CornerRadius="10" Margin="3" Content="Transakije"/>
+                            <Button CornerRadius="10" Margin="3" Content="Nakazilo" Click="UstvariNakazilo_OnClick"/> 
+                         <!--   <Button CornerRadius="10" Margin="3" Content="Transakije"/> -->
                             <Button CornerRadius="10" Margin="3" Content="Log"/>
                             <Button CornerRadius="10" Margin="3"  Content="Odjava" Click="Logout_OnClick"/>
                         </MenuItem>
                     </Menu>
                 </DockPanel>
             </StackPanel>
-            <!-- Moje narocnine -->
-            <Border Grid.Row="2" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="2" BorderThickness="1" BorderBrush="Black" CornerRadius="10" Margin="3">
+            <StackPanel x:Name="Nakazilo" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" IsVisible="False">
+                <TextBlock Text="Vsota:" Margin="5"/>
+                <TextBox  x:Name="value"  CornerRadius="10" />   
+                <Button CornerRadius="10" Margin="3"  Content="Nakaži" Click="Nakazi_OnClick"/>
+            </StackPanel>
+            <!-- Moji krediti -->
+            <Border Grid.Row="1" Grid.Column="0" Grid.RowSpan="2" BorderThickness="1" BorderBrush="Black" CornerRadius="10" Margin="3">
                 <ScrollViewer VerticalScrollBarVisibility="Auto">
-                <ListBox>
+                <StackPanel>
+                    <Label Content="Moji krediti:"/>
+                <ListBox x:Name="MojiKreditiBox" ItemsSource="{Binding kreditiUporabnika}" Margin="5" BorderBrush="Black" CornerRadius="10">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel>
-                                <Label Content="Moje narocnine"/>
-                            </StackPanel>
+                            <Grid ColumnDefinitions="*,*" RowDefinitions="*,*,*,*,*,*">
+                                <Label Grid.Row="0" Grid.Column="0" Content="Vsota Kredita:"/>
+                                <Label Grid.Row="0" Grid.Column="1" Content="{Binding  VsotaKredita,StringFormat={}{0}€}" />
+                                <Label Grid.Row="1" Grid.Column="0" Content="Mesecno odplačilo"/>
+                                <Label Grid.Row="1" Grid.Column="1" Content="{Binding MesecnoOdplacilo, StringFormat={}{0}€}" />
+                                <Label Grid.Row="2" Grid.Column="0" Content="Št odplačil:"/>
+                                <Label Grid.Row="2" Grid.Column="1" Content="{Binding  StOdplacil}"/>
+                                <Label Grid.Row="3" Grid.Column="0" Content="Na:"/>
+                                <Label Grid.Row="3" Grid.Column="1" Content="{Binding Cas,StringFormat={}{0} Let }"/>
+                                <Label Grid.Row="4" Grid.Column="0" Content="Na kartico"/>
+                                <Label Grid.Row="4" Grid.Column="1" Content="{Binding STKratice}"/>
+                                <Label Grid.Row="5" Grid.Column="0" Content="Obrestna mera"/>
+                                <Label Grid.Row="5" Grid.Column="1" Content="{Binding ObrestnaMera,StringFormat={}{0}%}"/>
+                                </Grid>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
+                </StackPanel>
+                </ScrollViewer>
+            </Border>
+            <!-- Moji loggi -->
+            <Border Grid.Row="1" Grid.Column="1" Grid.RowSpan="2"  BorderThickness="1" BorderBrush="Black" CornerRadius="10" Margin="3">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel>
+                    <Label Content="Prijava/Odjava:"/>
+                    <ListBox x:Name="MojePrijaveBox" ItemsSource="{Binding Logginanje, RelativeSource={RelativeSource AncestorType=local:Loginanje}  }" Margin="5" BorderBrush="Black" CornerRadius="10">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <Label Content="{Binding}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </StackPanel>
                 </ScrollViewer>
             </Border>
             <!-- Vse mogoce narocnine -->
-            <Border x:Name="Narocnine" Grid.Row="1" Grid.RowSpan="3" Grid.Column="2" BorderThickness="1" BorderBrush="Black" CornerRadius="10" Margin="3" IsVisible="True">
+           <!-- <Border x:Name="Narocnine" Grid.Row="1" Grid.RowSpan="3" Grid.Column="2" BorderThickness="1" BorderBrush="Black" CornerRadius="10" Margin="3" IsVisible="False">
                 <ScrollViewer VerticalScrollBarVisibility="Auto">
                     <StackPanel>
                         <Label Content="Narocnine"/>
@@ -100,8 +166,8 @@
                     </ListBox>
                     </StackPanel>
                 </ScrollViewer>
-            </Border>
-            <StackPanel Grid.Row="1" Grid.Column="2" x:Name="NarociSe" IsVisible="False" >
+            </Border> -->
+           <!-- <StackPanel Grid.Row="1" Grid.Column="2" x:Name="NarociSe" IsVisible="False" >
                 <Label Content="Na kartico?" FontSize="16"/>
                 <ListBox x:Name="KarticeBox" ItemsSource="{Binding podatkiKartic }">
                     <ListBox.ItemTemplate>
@@ -112,6 +178,6 @@
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
-            </StackPanel>
-        </Grid>
+            </StackPanel> -->
+        </Grid> 
 </Window>

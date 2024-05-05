@@ -3,7 +3,7 @@ namespace NrpaNup;
 public class Kartica
 {
     public int IDkartica { get; set; }
-    public double Stanje { get; set; }
+    public decimal? Stanje { get; set; }
     public string STKratice { get; set; }
     public int Limit { get; set; }
     public string Status { get; set; }
@@ -11,7 +11,7 @@ public class Kartica
     public string Veljavnost { get; set; }
     public Kartica(){}
 
-    public Kartica(int idDkartica, string stKratice, string vrsta, int limit, string status, double stanje, string veljavnost)
+    public Kartica(int idDkartica, string stKratice, string vrsta, int limit, string status, decimal? stanje, string veljavnost)
     {
         IDkartica = idDkartica;
         Stanje = stanje;
@@ -26,4 +26,5 @@ public class Kartica
     {
         Vrsta = vrsta;
     }
+    
 }

@@ -12,7 +12,8 @@ public class Narocnine : Kartica
     public int IDNarocnineU { get; set; }
     public int IDUporabnika { get; set; }
     public int IDKartica { get; set; }
-    
+    public int VsotaNarocnine { get; set; }
+    public string TipNarocnine { get; set; }
     public Narocnine() {}
 
     public Narocnine(int idNarocnine, string imeNarocnine ,decimal vsotaNarocnineMesecno, decimal vsotaNarocnineLetno)
@@ -23,12 +24,14 @@ public class Narocnine : Kartica
         VsotaNarocnineLetno = vsotaNarocnineLetno;
     }
     
-    public Narocnine(int idNarocnineU, int idUporabnika, int idKartica, int idNarocnine, string tipNarocnine, string vrsta) : base (vrsta)
+    public Narocnine(int idNarocnineU, int idUporabnika, int idKartica,  string tipNarocnine, string vrsta, string imeNarocnine, int vsotaNarocnine) : base (vrsta)
     {
         IDNarocnineU = idNarocnineU;
         IDUporabnika = idUporabnika;
         IDKartica = idKartica;
-        IDNarocnine = idNarocnine;
-        Vrsta = tipNarocnine;
+        TipNarocnine = tipNarocnine;
+        Vrsta = vrsta;
+        ImeNarocnine = imeNarocnine;
+        VsotaNarocnine = vsotaNarocnine;
     }
 }

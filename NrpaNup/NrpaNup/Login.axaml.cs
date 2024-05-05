@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using Avalonia;
 using Avalonia.Controls;
@@ -10,6 +11,8 @@ using MySql.Data.MySqlClient;
 using Tmds.DBus.Protocol;
 using System.Configuration;
 using System.Data;
+using System.Text.Json;
+using System.Threading.Tasks;
 using ConfigurationManager = System.Configuration.ConfigurationManager;
 
 namespace NrpaNup;
@@ -19,16 +22,34 @@ public partial class Login : Window
     //private static string kan = "Server=localhost;Database=nrpa;Uid=root;Pwd=root;"; 
     private readonly string _conn;
     public static int userId;
-    public string ime;
+    public static string ime;
+    public static int id_kartica_uporabnika;
     private string vrsta;
     private readonly Uporabnik _uporabnik;
     private readonly Zaposlen _zaposlen;
+  
+
     public Login()
     {
         InitializeComponent();
-        var reader = new AppSettingsReader("appsettings.json");
+       var reader = new AppSettingsReader("appsettings.json");
         _conn = reader.GetStringValue("ConnectionStrings:MyConnectionString");
-    }
+       Console.WriteLine(_conn);
+      /*  string jsonString = File.ReadAllText("appsettings.json");
+
+        DatabaseConfig config = JsonSerializer.Deserialize<DatabaseConfig>(jsonString);
+
+        // Extract values
+        string server = config.Server;
+        string port = config.Port;
+        string database = config.Database;
+        string username = config.Username;
+        string password = config.Password;
+
+       string _conn = $"Server={server};Port={port};Database={database};Uid={username};Pwd={password};";
+        Console.WriteLine(_conn);*/
+
+    } 
 
     public Login(Zaposlen zaposlen, Uporabnik uporabnik) : this()
     {
@@ -65,7 +86,11 @@ public partial class Login : Window
                         if ( reader.Read())
                         {
                             userId = reader.GetInt32("id_uporabnika");
+                            ime = reader.GetString("ime");
                             vrsta = reader.GetString(reader.GetOrdinal("vrsta_uporabnika"));
+                            var login = new Loginanje();
+                             login.Login(ime, userId);
+                             login.ReadLogFile(userId);
                             Close();
                             switch (vrsta)
                             {
@@ -103,25 +128,9 @@ public partial class Login : Window
            
         }
     }
+    
 }
-public class AppSettingsReader
-{
-    private readonly IConfiguration _configuration;
 
-    public AppSettingsReader(string FilePath)
-    {
-        var builder = new ConfigurationBuilder()
-            .AddJsonFile(FilePath, optional: false, reloadOnChange: false);
-        _configuration = builder.Build();
-    }
-
-    public string GetStringValue(string key)
-    {
-        return _configuration[key];
-    }
-
-
-}
 
 public class Prikaz
 {
@@ -132,4 +141,12 @@ public class Prikaz
         Ime = ime;
     }
     public Prikaz(){}
+}
+class DatabaseConfig
+{
+    public string Server { get; set; }
+    public string Port { get; set; }
+    public string Database { get; set; }
+    public string Username { get; set; }
+    public string Password { get; set; }
 }

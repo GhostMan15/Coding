@@ -11,7 +11,7 @@ public class UporabniskiPodatki : Kartica
     public string ZaposlenIme { get; set; }
     public string ZaposlenGeslo { get; set; }
     public UporabniskiPodatki(int uporabnikId,string ime, string geslo, string created, string vrstaUporabnika, int idKartica,
-        string stKratice, string vrsta, int limit, string status, double stanje, string veljavnost) : base(idKartica,
+        string stKratice, string vrsta, int limit, string status, decimal? stanje, string veljavnost) : base(idKartica,
         stKratice, vrsta, limit, status, stanje, veljavnost)
     {
         UporabnikID = uporabnikId;

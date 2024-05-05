@@ -68,9 +68,9 @@
                         </ScrollViewer>
                 </Border>
                 <!-- Pogled transakcij -->
-                <Border Grid.Row="1" Grid.RowSpan="2" Grid.Column="1" BorderThickness="1" BorderBrush="Black" CornerRadius="10" Margin="3">
+               <!--  <Border Grid.Row="1" Grid.RowSpan="2" Grid.Column="1" BorderThickness="1" BorderBrush="Black" CornerRadius="10" Margin="3">
                         <Label Content="Pogled na transakcije"/>
-                </Border>
+                </Border> -->
                 <!-- Profile -->
                 <StackPanel x:Name="ProfilPanel" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right" IsVisible="True">
                         <DockPanel>
@@ -83,5 +83,22 @@
                         </DockPanel>
                         <Button CornerRadius="10" Margin="3" Content="Kreriraj profil" Click="KreirajProfil_OnClick"/>
                 </StackPanel>
+                <Border x:Name="PrijaveBorder" Grid.Row="1" Grid.Column="1" Grid.RowSpan="2"  BorderThickness="1" BorderBrush="Black" CornerRadius="10" Margin="3" IsVisible="True">
+                        <ScrollViewer VerticalScrollBarVisibility="Auto">
+                                <StackPanel>
+                                        <Button Content="Nazaj" CornerRadius="10" Margin="3" />
+                                        <Label Content="Prijava/Odjava:"/>
+                                        <ListBox  x:Name="MojePrijaveBox" ItemsSource="{Binding Logginanje, RelativeSource={RelativeSource AncestorType=local:Loginanje}  }" Margin="5" BorderBrush="Black" CornerRadius="10">
+                                                <ListBox.ItemTemplate>
+                                                        <DataTemplate>
+                                                                <StackPanel>
+                                                                        <Label Content="{Binding}"/>
+                                                                </StackPanel>
+                                                        </DataTemplate>
+                                                </ListBox.ItemTemplate>
+                                        </ListBox>
+                                </StackPanel>
+                        </ScrollViewer>
+                </Border>
         </Grid>
 </Window>
