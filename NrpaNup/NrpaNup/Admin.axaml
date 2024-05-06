@@ -96,12 +96,12 @@
                         <DockPanel>
                                 <Menu DockPanel.Dock="Right" CornerRadius="10" Margin="3">
                                         <MenuItem Header="_Profile" CornerRadius="10">
+                                                <Button CornerRadius="10" Margin="3" Content="Kreriraj profil" Click="KreirajProfil_OnClick"/>
                                                 <Button CornerRadius="10" Margin="3" Content="Log" Click="Log_OnClick"/>
                                                 <Button CornerRadius="10" Margin="3"  Content="Odjava" Click="Logout_OnClick"/>
                                         </MenuItem>
                                 </Menu>
                         </DockPanel>
-                        <Button CornerRadius="10" Margin="3" Content="Kreriraj profil" Click="KreirajProfil_OnClick"/>
                 </StackPanel>
                 <Border x:Name="PrijaveBorder" Grid.Row="1" Grid.Column="1" Grid.RowSpan="2"  BorderThickness="1" BorderBrush="Black" CornerRadius="10" Margin="3" IsVisible="False">
                         <ScrollViewer VerticalScrollBarVisibility="Auto">

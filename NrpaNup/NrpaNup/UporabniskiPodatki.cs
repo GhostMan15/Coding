@@ -20,15 +20,7 @@ public class UporabniskiPodatki : Kartica
         Created = created;
         VrstaUporabnika = vrstaUporabnika;
     }
-
-    public UporabniskiPodatki(int zaposlenId, int uporabnikId, string zaposlenIme, string zaposlenGeslo)
-    {
-        ZaposlenID = zaposlenId;
-        UporabnikID = uporabnikId;
-        ZaposlenIme = zaposlenIme;
-        ZaposlenGeslo = zaposlenGeslo;
-    }
-
+    
     public UporabniskiPodatki(int uporabnikId, string ime, int karticaID)
     {
         UporabnikID = uporabnikId;

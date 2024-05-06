@@ -8,20 +8,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="815d4385-3ef4-45ab-8746-3c7bc960ca5c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.NrpaNup/.idea/avalonia.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NrpaNup/.idea/avalonia.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.NrpaNup/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NrpaNup/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.NrpaNup/.idea/dataSources/290d851c-5086-4829-8532-2fc0da318d8e.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.NrpaNup/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NrpaNup/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NrpaNup.sln" beforeDir="false" afterPath="$PROJECT_DIR$/NrpaNup.sln" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NrpaNup/Admin.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/NrpaNup/Admin.axaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NrpaNup/Admin.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NrpaNup/Admin.axaml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NrpaNup/Login.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/NrpaNup/Login.axaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NrpaNup/Login.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NrpaNup/Login.axaml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NrpaNup/Loginanje.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NrpaNup/Loginanje.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NrpaNup/MainWindow.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/NrpaNup/MainWindow.axaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NrpaNup/Uporabnik.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/NrpaNup/Uporabnik.axaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NrpaNup/Uporabnik.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NrpaNup/Uporabnik.axaml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NrpaNup/UporabniskiPodatki.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NrpaNup/UporabniskiPodatki.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NrpaNup/Zaposlen.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NrpaNup/Zaposlen.axaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NrpaNup/Register.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/NrpaNup/Register.axaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,6 +53,7 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;.NET Project.NrpaNup.executor&quot;: &quot;Run&quot;,
+    &quot;Publish to folder.Publish NrpaNup to folder.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;database.data.extractors.current.export.id&quot;: &quot;Comma-separated (CSV)_id&quot;,
@@ -79,13 +72,17 @@
       &quot;mysql&quot;
     ],
     &quot;rider.external.source.directories&quot;: [
-      &quot;/home/Faruk/.config/JetBrains/Rider2023.3/resharper-host/DecompilerCache&quot;,
-      &quot;/home/Faruk/.config/JetBrains/Rider2023.3/resharper-host/SourcesCache&quot;,
-      &quot;/home/Faruk/.local/share/Symbols/src&quot;
+      &quot;C:\\Users\\faruk\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\DecompilerCache&quot;,
+      &quot;C:\\Users\\faruk\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\SourcesCache&quot;,
+      &quot;C:\\Users\\faruk\\AppData\\Local\\Symbols\\src&quot;
     ]
   }
 }</component>
-  <component name="RunManager">
+  <component name="RunManager" selected=".NET Project.NrpaNup">
+    <configuration name="Publish NrpaNup to folder" type="DotNetFolderPublish" factoryName="Publish to folder">
+      <riderPublish configuration="Release" platform="Any CPU" runtime="Portable" target_folder="$USER_HOME$/Desktop/neki nouga" target_framework="net8.0" uuid_high="680286278116134367" uuid_low="-5005709524361788149" />
+      <method v="2" />
+    </configuration>
     <configuration name="NrpaNup" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
       <option name="PROGRAM_PARAMETERS" value="" />
@@ -152,6 +149,11 @@
       <workItem from="1714918030128" duration="51000" />
       <workItem from="1714984507171" duration="4230000" />
       <workItem from="1714991865755" duration="429000" />
+      <workItem from="1714993778846" duration="275000" />
+      <workItem from="1714995905184" duration="1791000" />
+      <workItem from="1715011929466" duration="797000" />
+      <workItem from="1715018050093" duration="523000" />
+      <workItem from="1715024352008" duration="1042000" />
     </task>
     <servers />
   </component>

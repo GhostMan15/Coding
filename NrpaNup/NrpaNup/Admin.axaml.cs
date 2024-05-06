@@ -80,20 +80,19 @@ public partial class Admin : Window
         using (MySqlConnection connection = new MySqlConnection(_conn))
         {
             connection.Open();
-            string sql = "SELECT  z.id_zaposlen, z.id_uporabnika, z.ime,z.geslo, u.vrsta_uporabnika FROM zaposlen z JOIN  uporabniki u " +
-                         " ON z.id_uporabnika = u.id_uporabnika WHERE z.id_uporabnika != @id_uporabnika GROUP BY z.ime ";
+            string sql = "SELECT  id_zaposlen, ime,geslo FROM zaposlen  WHERE id_zaposlen = id_zaposlen GROUP BY id_zaposlen ";
             using (MySqlCommand command = new MySqlCommand(sql, connection))
             {
-                command.Parameters.AddWithValue("@id_uporabnika", id_uporabnika);
+              
                 using (MySqlDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
                         int zaposlen_id = reader.GetInt32("id_zaposlen");
-                        int uporabnik_id = reader.GetInt32("id_uporabnika");
+                       // int uporabnik_id = reader.GetInt32("id_uporabnika");
                          string ime = reader.GetString("ime");
                          string geslo = reader.GetString("geslo");
-                        var vsiZaposleni = new UporabniskiPodatki(zaposlen_id, uporabnik_id, ime, geslo);
+                        var vsiZaposleni = new UporabniskiPodatki(zaposlen_id, ime, geslo);
                         zposleni.Add(vsiZaposleni);
                         zposleni.Add(vsiZaposleni);
                     }
@@ -169,6 +168,8 @@ public partial class Admin : Window
 
     private void KreirajProfil_OnClick(object? sender, RoutedEventArgs e)
     {
+        PrikazUporabniskihPodatkov();
+        PrikazZaposlenih();
         ProfilPanel.IsVisible = false;
         KreiranjeProfila.IsVisible = true;
     }
@@ -188,11 +189,12 @@ public partial class Admin : Window
         {
             id_uporabnika = krediti.UporabnikID;
             Console.WriteLine(id_uporabnika);
+            var expander = (Expander)sender;
+            var imeZaposlenega = FindInnerListBox(expander);
+            imeZaposlenega.ItemsSource = vsiZaposlen;
+            PrikazZaposlenih();
         }
-        var expander = (Expander)sender;
-        var imeZaposlenega = FindInnerListBox(expander);
-        imeZaposlenega.ItemsSource = zposleni;
-        PrikazZaposlenih();
+       
         
     }
     

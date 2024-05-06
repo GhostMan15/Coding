@@ -9,16 +9,16 @@
         Title="Register">
         <Grid RowDefinitions="*,*,*,*,*">
                <StackPanel>
-                        <TextBlock Text="Kreiranje uporabnika" TextAlignment="Center" FontSize="36" Margin="10" FontWeight="Black"/>
+                        <TextBlock Text="Kreiranje kredita" TextAlignment="Center" FontSize="36" Margin="10" FontWeight="Black"/>
                         <Label x:Name="error" Content="Prosim vpišite podatke" Foreground="Red" HorizontalAlignment="Center"  CornerRadius="10" IsVisible="False" FontSize="24"/>
                 </StackPanel>
                 <StackPanel Grid.Row="1"  HorizontalAlignment="Center" >
                         <TextBlock Text="Vsota:" Margin="5"/>
-                        <TextBox  x:Name="Vsota" CornerRadius="10" />           
+                        <TextBox  x:Name="Vsota" Width="200" CornerRadius="10" />           
                 </StackPanel>
                 <StackPanel Grid.Row="2" HorizontalAlignment="Center">
                         <TextBlock Text="Tip kredita:" Margin="5"/>
-                        <TextBox x:Name="TipKredita"  CornerRadius="10"/>
+                        <TextBox x:Name="TipKredita" Width="200" CornerRadius="10"/>
                 </StackPanel>
                 <StackPanel x:Name="ObrestStackPanel" Grid.Row="3" HorizontalAlignment="Center">
                         <TextBlock Text="Fixna obrestna mera:" Margin="5"/>
