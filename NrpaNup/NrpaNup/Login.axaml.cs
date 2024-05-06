@@ -76,7 +76,7 @@ public partial class Login : Window
                             ime = reader.GetString("ime");
                             vrsta = reader.GetString(reader.GetOrdinal("vrsta_uporabnika"));
                             var login = new Loginanje();
-                             login.Login(ime, userId);
+                             login.Login(userId);
                              login.ReadLogFile(userId);
                             Close();
                             switch (vrsta)

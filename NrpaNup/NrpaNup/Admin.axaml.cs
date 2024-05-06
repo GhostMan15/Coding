@@ -15,6 +15,9 @@ public partial class Admin : Window
 {
     private ObservableCollection<UporabniskiPodatki> vsiUporabniskiPodatki { get; } = new ObservableCollection<UporabniskiPodatki>();
     private ObservableCollection<UporabniskiPodatki> zposleni { get; } = new ObservableCollection<UporabniskiPodatki>();
+
+    private ObservableCollection<UporabniskiPodatki> vsiZaposlen { get; } =
+        new ObservableCollection<UporabniskiPodatki>();
     private readonly string _conn;
     private int id_uporabnika;
     private int id_zaposlenega;
@@ -27,6 +30,7 @@ public partial class Admin : Window
         var reader = new AppSettingsReader("appsettings.json");
         _conn = reader.GetStringValue("ConnectionStrings:MyConnectionString");
         PrikazUporabniskihPodatkov();
+        ZaposleniLista();
         var loginanje = new Loginanje();
         var logi = loginanje.ReadLogFile(Login.userId);
         MojePrijaveBox.ItemsSource = logi;
@@ -37,7 +41,7 @@ public partial class Admin : Window
         using (MySqlConnection connection = new MySqlConnection(_conn))
         {
             connection.Open();
-            string sql = "SELECT * FROM PrikazUporabniskihPodatkov ";
+            string sql = "SELECT * FROM PrikazUporabniskihPodatkov WHERE uporabnik_vrsta != 'zaposlen' ";
             using (MySqlCommand command = new MySqlCommand(sql,connection))
             {
                
@@ -91,12 +95,38 @@ public partial class Admin : Window
                          string geslo = reader.GetString("geslo");
                         var vsiZaposleni = new UporabniskiPodatki(zaposlen_id, uporabnik_id, ime, geslo);
                         zposleni.Add(vsiZaposleni);
+                        zposleni.Add(vsiZaposleni);
                     }
                 }
             }
         }
     }
 
+    private void ZaposleniLista()
+    {
+        vsiZaposlen.Clear();
+        using (MySqlConnection connection = new MySqlConnection(_conn))
+        {
+            connection.Open();
+            string sql = "SELECT  z.id_zaposlen, z.ime,z.geslo FROM zaposlen z WHERE z.id_zaposlen = z.id_zaposlen GROUP BY z.ime ";
+            using (MySqlCommand command = new MySqlCommand(sql, connection))
+            {
+                using (MySqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        int zaposlen_id = reader.GetInt32("id_zaposlen");
+                        string ime = reader.GetString("ime");
+                        string geslo = reader.GetString("geslo");
+                        var vsiZaposleni = new UporabniskiPodatki(zaposlen_id, ime, geslo);
+                        vsiZaposlen.Add(vsiZaposleni);
+                    }
+                }
+            }
+        }
+
+        ZaposleniBox.ItemsSource = vsiZaposlen;
+    }
     private void DodajKZaposlenom()
     {
         using (MySqlConnection connection = new MySqlConnection(_conn))
@@ -133,7 +163,7 @@ public partial class Admin : Window
     {
         var close= (IClassicDesktopStyleApplicationLifetime)Application.Current.ApplicationLifetime;
         var logut = new Loginanje();
-        logut.Logout(Login.ime, Login.userId);
+        logut.Logout(Login.userId);
         close.Shutdown();
     }
 
@@ -195,5 +225,17 @@ public partial class Admin : Window
         UstvariPRofil();
         ProfilPanel.IsVisible = true;
         KreiranjeProfila.IsVisible = false;
+    }
+
+    private void Log_OnClick(object? sender, RoutedEventArgs e)
+    {
+        ZaposleniBorder.IsVisible = false;
+        PrijaveBorder.IsVisible = true;
+    }
+
+    private void Nazaj_OnClick(object? sender, RoutedEventArgs e)
+    {
+        PrijaveBorder.IsVisible = false;
+        ZaposleniBorder.IsVisible = true;
     }
 }

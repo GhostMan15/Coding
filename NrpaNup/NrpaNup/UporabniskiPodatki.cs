@@ -35,4 +35,10 @@ public class UporabniskiPodatki : Kartica
         Ime = ime;
         IDkartica = karticaID;
     }
+    public UporabniskiPodatki(int zaposlenId,string zaposlenIme, string zaposlenGeslo)
+    {
+        ZaposlenID = zaposlenId;
+        ZaposlenIme = zaposlenIme;
+        ZaposlenGeslo = zaposlenGeslo;
+    }
 }

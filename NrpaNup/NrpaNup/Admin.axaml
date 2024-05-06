@@ -39,16 +39,18 @@
                                         <ListBox.ItemTemplate>
                                                 <DataTemplate>
                                                         <StackPanel>
-                                                                <Grid ColumnDefinitions="*,*" RowDefinitions="*,*,*,*,*">
+                                                                <Grid ColumnDefinitions="*,*" RowDefinitions="*,*,*,*,*,*">
                                                                         <Label Grid.Row="0" Grid.Column="0" Content="Ime:"/>
                                                                         <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Ime}"/>
-                                                                        <Label Grid.Row="1" Grid.Column="0" Content="Številka kartice:"/>
-                                                                        <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding STKratice}" />
-                                                                        <Label Grid.Row="2" Grid.Column="0" Content="Vrsta kartice:"/>
-                                                                        <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Vrsta}"/>
-                                                                        <Label Grid.Row="3" Grid.Column="0" Content="Račun:"/>
-                                                                        <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding VrstaUporabnika}"/>
-                                                                        <Expander  Header="Dodeli zaposlenom" Grid.Column="0" Grid.Row="4" Tag="{Binding }" Expanded="Expander_OnExpanded" Margin="5" BorderBrush="Black" CornerRadius="10">
+                                                                        <Label Grid.Row="1" Grid.Column="0" Content="Pin:"/>
+                                                                        <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Geslo}"/>
+                                                                        <Label Grid.Row="2" Grid.Column="0" Content="Številka kartice:"/>
+                                                                        <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding STKratice}" />
+                                                                        <Label Grid.Row="3" Grid.Column="0" Content="Vrsta kartice:"/>
+                                                                        <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding Vrsta}"/>
+                                                                        <Label Grid.Row="4" Grid.Column="0" Content="Stanje:"/>
+                                                                        <TextBlock Grid.Row="4" Grid.Column="1" Text="{Binding Stanje, StringFormat={}{0}€}"/>
+                                                                        <Expander  Header="Dodeli zaposlenom" Grid.Column="0" Grid.Row="5" Tag="{Binding }" Expanded="Expander_OnExpanded" Margin="5" BorderBrush="Black" CornerRadius="10">
                                                                                 <Expander.Content>
                                                                                         <ListBox x:Name="ImeZaposlenega" ItemsSource="{Binding zposleni , RelativeSource={RelativeSource AncestorType=local:Admin}}" Margin="5" BorderBrush="Black" CornerRadius="10">
                                                                                                 <ListBox.ItemTemplate>
@@ -67,26 +69,44 @@
                         </StackPanel>
                         </ScrollViewer>
                 </Border>
-                <!-- Pogled transakcij -->
-               <!--  <Border Grid.Row="1" Grid.RowSpan="2" Grid.Column="1" BorderThickness="1" BorderBrush="Black" CornerRadius="10" Margin="3">
-                        <Label Content="Pogled na transakcije"/>
-                </Border> -->
+                <!-- Pogled Zposlenih -->
+                <Border x:Name="ZaposleniBorder" Grid.Row="1" Grid.Column="1" Grid.RowSpan="2" BorderThickness="1" BorderBrush="Black" CornerRadius="10" Margin="3" IsVisible="True">
+                        <ScrollViewer VerticalScrollBarVisibility="Auto">
+                        <StackPanel>
+                        <Label Content="Zaposleni:"/>
+                        <ListBox x:Name="ZaposleniBox" ItemsSource="{Binding vsiZaposlen}">
+                                <ListBox.ItemTemplate>
+                                        <DataTemplate>
+                                                <StackPanel>
+                                                        <Grid ColumnDefinitions="*,*" RowDefinitions="*,*">
+                                                                <Label Grid.Row="0" Grid.Column="0" Content="Ime:"/>
+                                                                <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding ZaposlenIme }"/>
+                                                                <Label Grid.Row="1" Grid.Column="0" Content="Pin:"/>
+                                                                <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding ZaposlenGeslo }" />
+                                                                </Grid>
+                                                </StackPanel>
+                                        </DataTemplate>
+                                </ListBox.ItemTemplate>
+                        </ListBox>
+                        </StackPanel>
+                        </ScrollViewer>
+                </Border>
                 <!-- Profile -->
                 <StackPanel x:Name="ProfilPanel" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right" IsVisible="True">
                         <DockPanel>
                                 <Menu DockPanel.Dock="Right" CornerRadius="10" Margin="3">
                                         <MenuItem Header="_Profile" CornerRadius="10">
-                                                <Button CornerRadius="10" Margin="3" Content="Log"/>
+                                                <Button CornerRadius="10" Margin="3" Content="Log" Click="Log_OnClick"/>
                                                 <Button CornerRadius="10" Margin="3"  Content="Odjava" Click="Logout_OnClick"/>
                                         </MenuItem>
                                 </Menu>
                         </DockPanel>
                         <Button CornerRadius="10" Margin="3" Content="Kreriraj profil" Click="KreirajProfil_OnClick"/>
                 </StackPanel>
-                <Border x:Name="PrijaveBorder" Grid.Row="1" Grid.Column="1" Grid.RowSpan="2"  BorderThickness="1" BorderBrush="Black" CornerRadius="10" Margin="3" IsVisible="True">
+                <Border x:Name="PrijaveBorder" Grid.Row="1" Grid.Column="1" Grid.RowSpan="2"  BorderThickness="1" BorderBrush="Black" CornerRadius="10" Margin="3" IsVisible="False">
                         <ScrollViewer VerticalScrollBarVisibility="Auto">
                                 <StackPanel>
-                                        <Button Content="Nazaj" CornerRadius="10" Margin="3" />
+                                        <Button Content="Nazaj" CornerRadius="10" Margin="3" Click="Nazaj_OnClick"/>
                                         <Label Content="Prijava/Odjava:"/>
                                         <ListBox  x:Name="MojePrijaveBox" ItemsSource="{Binding Logginanje, RelativeSource={RelativeSource AncestorType=local:Loginanje}  }" Margin="5" BorderBrush="Black" CornerRadius="10">
                                                 <ListBox.ItemTemplate>

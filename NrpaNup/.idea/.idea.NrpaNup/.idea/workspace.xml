@@ -7,7 +7,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="815d4385-3ef4-45ab-8746-3c7bc960ca5c" name="Changes" comment="" />
+    <list default="true" id="815d4385-3ef4-45ab-8746-3c7bc960ca5c" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.NrpaNup/.idea/avalonia.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NrpaNup/.idea/avalonia.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.NrpaNup/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NrpaNup/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.NrpaNup/.idea/dataSources/290d851c-5086-4829-8532-2fc0da318d8e.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.NrpaNup/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NrpaNup/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NrpaNup/Admin.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/NrpaNup/Admin.axaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NrpaNup/Admin.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NrpaNup/Admin.axaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NrpaNup/Login.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/NrpaNup/Login.axaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NrpaNup/Login.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NrpaNup/Login.axaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NrpaNup/Loginanje.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NrpaNup/Loginanje.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NrpaNup/MainWindow.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/NrpaNup/MainWindow.axaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NrpaNup/Uporabnik.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/NrpaNup/Uporabnik.axaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NrpaNup/Uporabnik.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NrpaNup/Uporabnik.axaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NrpaNup/UporabniskiPodatki.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NrpaNup/UporabniskiPodatki.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NrpaNup/Zaposlen.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NrpaNup/Zaposlen.axaml.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -64,9 +79,9 @@
       &quot;mysql&quot;
     ],
     &quot;rider.external.source.directories&quot;: [
-      &quot;/home/faruk/.config/JetBrains/Rider2024.1/resharper-host/DecompilerCache&quot;,
-      &quot;/home/faruk/.config/JetBrains/Rider2024.1/resharper-host/SourcesCache&quot;,
-      &quot;/home/faruk/.local/share/Symbols/src&quot;
+      &quot;/home/Faruk/.config/JetBrains/Rider2023.3/resharper-host/DecompilerCache&quot;,
+      &quot;/home/Faruk/.config/JetBrains/Rider2023.3/resharper-host/SourcesCache&quot;,
+      &quot;/home/Faruk/.local/share/Symbols/src&quot;
     ]
   }
 }</component>
@@ -135,6 +150,8 @@
       <workItem from="1714915850374" duration="118000" />
       <workItem from="1714917469084" duration="140000" />
       <workItem from="1714918030128" duration="51000" />
+      <workItem from="1714984507171" duration="4230000" />
+      <workItem from="1714991865755" duration="429000" />
     </task>
     <servers />
   </component>

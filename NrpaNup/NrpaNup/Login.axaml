@@ -18,7 +18,7 @@
          <TextBox x:Name="Username" Width="400" CornerRadius="10" />           
      </StackPanel>
      <StackPanel Grid.Row="2"  HorizontalAlignment="Center" >
-         <TextBlock Text="Geslo:" Margin="5"/>
+         <TextBlock Text="Pin:" Margin="5"/>
          <TextBox PasswordChar="*" x:Name="Password" Width="400" CornerRadius="10"/>           
      </StackPanel>
      <StackPanel Grid.Row="3" HorizontalAlignment="Center">

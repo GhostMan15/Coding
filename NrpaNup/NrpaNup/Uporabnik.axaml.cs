@@ -61,7 +61,7 @@ private readonly Zaposlen _zaposlen;
     {
        var close= (IClassicDesktopStyleApplicationLifetime)Application.Current.ApplicationLifetime;
        var logut = new Loginanje();
-       logut.Logout(Login.ime, Login.userId);
+       logut.Logout(Login.userId);
        close.Shutdown();
     }
 
