@@ -10,10 +10,6 @@
     <list default="true" id="815d4385-3ef4-45ab-8746-3c7bc960ca5c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.NrpaNup/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NrpaNup/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.NrpaNup/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NrpaNup/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NrpaNup.sln" beforeDir="false" afterPath="$PROJECT_DIR$/NrpaNup.sln" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NrpaNup/Admin.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/NrpaNup/Admin.axaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NrpaNup/Admin.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NrpaNup/Admin.axaml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NrpaNup/Register.axaml" beforeDir="false" afterPath="$PROJECT_DIR$/NrpaNup/Register.axaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,9 +68,9 @@
       &quot;mysql&quot;
     ],
     &quot;rider.external.source.directories&quot;: [
-      &quot;C:\\Users\\faruk\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\DecompilerCache&quot;,
-      &quot;C:\\Users\\faruk\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\SourcesCache&quot;,
-      &quot;C:\\Users\\faruk\\AppData\\Local\\Symbols\\src&quot;
+      &quot;/home/Faruk/.config/JetBrains/Rider2023.3/resharper-host/DecompilerCache&quot;,
+      &quot;/home/Faruk/.config/JetBrains/Rider2023.3/resharper-host/SourcesCache&quot;,
+      &quot;/home/Faruk/.local/share/Symbols/src&quot;
     ]
   }
 }</component>
@@ -154,6 +150,9 @@
       <workItem from="1715011929466" duration="797000" />
       <workItem from="1715018050093" duration="523000" />
       <workItem from="1715024352008" duration="1042000" />
+      <workItem from="1715060670435" duration="456000" />
+      <workItem from="1715062380332" duration="169000" />
+      <workItem from="1715062899997" duration="34000" />
     </task>
     <servers />
   </component>
