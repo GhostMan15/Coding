@@ -85,7 +85,6 @@
                         <MenuItem Header="_Profile" CornerRadius="10">
                             <Button CornerRadius="10" Margin="3" Content="Nakazilo" Click="UstvariNakazilo_OnClick"/> 
                          <!--   <Button CornerRadius="10" Margin="3" Content="Transakije"/> -->
-                            <Button CornerRadius="10" Margin="3" Content="Log"/>
                             <Button CornerRadius="10" Margin="3"  Content="Odjava" Click="Logout_OnClick"/>
                         </MenuItem>
                     </Menu>

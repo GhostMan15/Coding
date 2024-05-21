@@ -9,16 +9,16 @@ namespace NrpaNup;
 public class Loginanje
 {
     public ObservableCollection<string> Logginanje { get; } = new ObservableCollection<string>();
-    public async Task Login(string ime, int userId)
+    public async Task Login( int userId)
     {
        
-        LogToFile($"{ime} prijava: {DateTime.Now}" , userId);
+        LogToFile($"prijava: {DateTime.Now}" , userId);
     }
 
-    public async Task Logout(string ime, int userId)
+    public async Task Logout(int userId)
     {
        
-        LogToFile($"{ime} odjava: {DateTime.Now}", userId);
+        LogToFile($"odjava: {DateTime.Now}", userId);
     }
 
     private void LogToFile(string log, int userId)

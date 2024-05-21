@@ -5,6 +5,7 @@
       <map>
         <entry key="NrpaNup/Admin.axaml" value="NrpaNup/NrpaNup.csproj" />
         <entry key="NrpaNup/Login.axaml" value="NrpaNup/NrpaNup.csproj" />
+        <entry key="NrpaNup/MainWindow.axaml" value="NrpaNup/NrpaNup.csproj" />
         <entry key="NrpaNup/Register.axaml" value="NrpaNup/NrpaNup.csproj" />
         <entry key="NrpaNup/Uporabnik.axaml" value="NrpaNup/NrpaNup.csproj" />
         <entry key="NrpaNup/Zaposlen.axaml" value="NrpaNup/NrpaNup.csproj" />
