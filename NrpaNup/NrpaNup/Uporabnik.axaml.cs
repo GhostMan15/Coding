@@ -184,7 +184,7 @@ private readonly Zaposlen _zaposlen;
         KarticaK.ItemsSource = podatkiKartice2;
         
     }
-    private void vseMozneNarocnine()
+   /* private void vseMozneNarocnine()
     {
         vseNarocnineUporabnik.Clear();
         using (MySqlConnection connection = new MySqlConnection(_conn))
@@ -209,7 +209,7 @@ private readonly Zaposlen _zaposlen;
         }
 
         //PrikazUporabnikomNarocnine.ItemsSource = vseNarocnineUporabnik;
-    }
+    }*/
 
     private void Subscribe()
     {

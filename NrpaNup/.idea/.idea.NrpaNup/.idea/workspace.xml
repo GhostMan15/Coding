@@ -7,7 +7,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="815d4385-3ef4-45ab-8746-3c7bc960ca5c" name="Changes" comment="" />
+    <list default="true" id="815d4385-3ef4-45ab-8746-3c7bc960ca5c" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.NrpaNup/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NrpaNup/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NrpaNup/Uporabnik.axaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NrpaNup/Uporabnik.axaml.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -135,6 +138,9 @@
       <workItem from="1714915850374" duration="118000" />
       <workItem from="1714917469084" duration="140000" />
       <workItem from="1714918030128" duration="51000" />
+      <workItem from="1714939924459" duration="94000" />
+      <workItem from="1715531860734" duration="482000" />
+      <workItem from="1715626012341" duration="12000" />
     </task>
     <servers />
   </component>
