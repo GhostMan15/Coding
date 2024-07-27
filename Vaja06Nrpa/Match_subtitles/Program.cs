@@ -8,7 +8,7 @@ class Program
     {
         string[] videoExtensions = { ".mp4", ".mkv", ".avi", ".mov" }; // Add more video extensions if needed
         string[] subtitleExtensions = { ".srt" }; // Add more subtitle extensions if needed
-        const string? directoryPath = @"G:\Filmovi\Silicon Valley Complete Series (S01 - S06) 1080p 5.1 - 2.0 x264 Phun Psyz\Season 5";
+        const string? directoryPath = @"G:\Filmovi\Better.Call.Saul.S01-S06.COMPLETE.1080p.WEBRip.x264.EAC3-SURGE\Better.Call.Saul.S01.1080p.x264.EAC3-SURGE";
         var files = Directory.GetFiles(directoryPath);
 
         // Filter video files
