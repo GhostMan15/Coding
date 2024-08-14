@@ -2,7 +2,7 @@ use std::io::{Read, Write};
 use std::net::{TcpListener, TcpStream};
 
 
-fn  handle_client(mut stream: TcpStream){
+fn handle_client(mut stream: TcpStream){
     let mut buffer = [0; 1024];
     stream.read(&mut buffer).expect("Failal prebat clienta");
 
