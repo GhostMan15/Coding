@@ -40,18 +40,9 @@ int main(int argc, char *argv[])
   fclose(input);
   quickSort(left, 0, MAX_SIZE - 1); 
   quickSort(right, 0, MAX_SIZE - 1);
-    for (int i = 0; i < m; i++) {
-      distc += abs(left[i] - right[i]);
-    }
-    printf("\n");
-
-    printf("%d", distc);
-
-  /*int arr[] = {2,523,3,546,1,4,0,600};
-  int n = sizeof(arr)/sizeof(arr[0]);
-  quickSort(arr, 0, n-1);
-  for(int i = 0; i < n ; i++){
-    printf("%d ",arr[i]);
-  }*/
+  for (int i = 0; i < m; i++) {
+    distc += abs(left[i] - right[i]);
+  }
+  printf("%d", distc); 
   return 0;
 }
