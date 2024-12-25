@@ -7,18 +7,18 @@
 
 
 bool isSafe(int arr[MAX_SIZE][MAX_LINE_LENGTH], int row, int row_size){
-    bool isIncreasing = false;
-    bool isDecreasing = false;
-    for (int j = 0; j < row_size - 1; j++) {
-     int diff = abs(arr[row][j] - arr[row][j + 1]);
-     if (diff < 1 || diff > 3) {
+  bool isIncreasing = false;
+  bool isDecreasing = false;
+  for (int j = 0; j < row_size - 1; j++) {
+    int diff = abs(arr[row][j] - arr[row][j + 1]);
+    if (diff < 1 || diff > 3) {
       return false;
     }
-     if (arr[row][j] < arr[row][j + 1]) {
-        isIncreasing = true;
-     } else if (arr[row][j] > arr[row][j + 1]) {
-        isDecreasing = true;
-     }  
+    if (arr[row][j] < arr[row][j + 1]) {
+      isIncreasing = true;
+    }else if (arr[row][j] > arr[row][j + 1]) {
+      isDecreasing = true;
+    }    
   }
   return !(isIncreasing && isDecreasing);
 }

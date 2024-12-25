@@ -2,7 +2,6 @@
 
 #include <stdlib.h>
 #include <stdio.h>
-#include <string.h>
 #define MAX_SIZE 1000
 void swap(int *a, int *b){
   int t = *a;
@@ -12,7 +11,7 @@ void swap(int *a, int *b){
 int partition(int arr[], int low, int high){
   int pivot = arr[high];
   int i = low -1;
-  for(int j = low; j < high; j++ ){
+  for(int j = low; j <= high; j++ ){
     if(arr[j] < pivot){
       i++;
       swap(&arr[i], &arr[j]);
@@ -35,13 +34,16 @@ int main(int argc, char *argv[]){
   int left[MAX_SIZE];
   int right[MAX_SIZE];
   FILE* input = fopen("../AOC2024/1.txt", "r");
-  if(input == NULL){
-    printf("ni slo allocat");
-  }
   while(fscanf(input, "%d %d", &left[m], &right[m])==2){
     m++;
   }
   fclose(input);
+  quickSort(left, 0, MAX_SIZE - 1); 
+  quickSort(right, 0, MAX_SIZE - 1);
+  for (int i = 0; i < m; i++) {
+    distc += abs(left[i] - right[i]);
+  }
+  printf("%d", distc); 
   for(int i = 0 ; i < m; i++) {
     int leftSide = left[i];
     int count = 0;
@@ -52,12 +54,6 @@ int main(int argc, char *argv[]){
     }
     similarity += leftSide * count;
   }
-  quickSort(left, 0, m - 1); 
-  quickSort(right, 0, m - 1);
-  for (int i = 0; i < m; i++) {
-    distc += abs(left[i] - right[i]);
-  }
-  printf("%d", distc);  
   printf("%d", similarity);
   return 0;
 }
