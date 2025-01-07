@@ -1,4 +1,4 @@
-#include <stdlib.h>
+
 #include <stdio.h>
 
 void encrpyton(FILE *open_file, FILE *encrpyt, FILE *key_file){
