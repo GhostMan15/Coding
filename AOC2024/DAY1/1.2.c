@@ -1,7 +1,9 @@
 
 #include <stdio.h>
 #define MAX_SIZE 1000
-
+void neki(){
+  
+}
 int main(int argc, char *argv[])
 {
   int m = 0;
